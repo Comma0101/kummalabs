@@ -1,0 +1,154 @@
+{
+  "header": {
+    "howItWorks": "How it Works",
+    "useCases": "Use Cases",
+    "contact": "Contact",
+    "getDemo": "Get a Demo"
+  },
+  "hero": {
+    "answer": "Answer",
+    "everyCall": "every call.",
+    "capture": "Capture every order.",
+    "description": "KOTA answers restaurant calls during rush—takes orders and reservations, then sends confirmed details to your team via Cloud Printer or SMS.",
+    "getDemo": "Get a Demo",
+    "listenCall": "Listen to a Sample Call",
+    "roiMetric": "The average restaurant misses 30% of peak-hour calls, costing over $1,200 weekly. KOTA automatically captures that lost revenue.",
+    "marquee": {
+      "noPos": "NO POS INTEGRATION REQUIRED",
+      "cloudPrinters": "WORKS WITH CLOUD PRINTERS",
+      "fallback": "HUMAN FALLBACK",
+      "multipleCalls": "MULTIPLE CALLS AT ONCE"
+    }
+  },
+  "socialProof": {
+    "title": "Trusted by busy restaurants to handle the dinner rush"
+  },
+  "problemOutcome": {
+    "theProblem": "The Problem",
+    "theOutcome": "The Outcome",
+    "problems": [
+      "Missed calls during rush hours",
+      "Staff stuck on the phone instead of serving customers",
+      "Wrong or missed items leading to refunds and bad reviews",
+      "Only one call can be handled at a time",
+      "Language barriers cause misunderstandings and slow service"
+    ],
+    "outcomes": [
+      "Calls answered automatically, every time",
+      "Orders captured consistently with confirmation",
+      "Staff stays focused on in-person service",
+      "Handles multiple calls at once",
+      "Supports English and Mandarin"
+    ],
+    "bottomText": "No POS integration required. Orders delivered via Cloud Printer or SMS."
+  },
+  "howItWorks": {
+    "title": "How it Works",
+    "subtitle": "Simple call handling that fits your current workflow.",
+    "description": "No POS integration required. Orders are delivered via Cloud Printer or SMS.",
+    "steps": [
+      {
+        "title": "Answer",
+        "description": "KOTA picks up instantly when staff is busy"
+      },
+      {
+        "title": "Confirm",
+        "description": "Repeats back items and details to reduce mistakes"
+      },
+      {
+        "title": "Deliver",
+        "description": "Prints a kitchen ticket via Cloud Printer (or texts your team)"
+      }
+    ],
+    "setupInstruction": "Setup is fast: forward your phone line → choose delivery → go live."
+  },
+  "useCases": {
+    "title1": "Built for",
+    "title2": "Restaurants",
+    "subtitle": "Handle every type of call that comes into your restaurant, organized seamlessly.",
+    "comingSoon": "Coming Soon",
+    "features": [
+      {
+        "title": "Phone Orders",
+        "description": "Captures items, modifiers, and customer info—confirmed with 100% accuracy."
+      },
+      {
+        "title": "Reservations & Waitlist",
+        "description": "Books reservations and manages waitlist requests dynamically."
+      },
+      {
+        "title": "Menu & Allergens Q&A",
+        "description": "Answers complex allergen and ingredient questions instantly based on your custom menu data."
+      },
+      {
+        "title": "Hours, Location & Parking",
+        "description": "Stops repetitive logistical calls during rush hour."
+      },
+      {
+        "title": "Catering Inquiries",
+        "description": "Collects group sizes, dietary restrictions, and dates, routing them directly to your event manager."
+      },
+      {
+        "title": "Order Status & Timing",
+        "description": "Eliminates 'is it ready yet?' calls. Gives real-time status updates based on your prep times."
+      }
+    ]
+  },
+  "safety": {
+    "title1": "Built for",
+    "title2": "Reliability",
+    "description": "KOTA doesn't guess. Smart guardrails ensure orders are perfectly captured, or instantly escalated to your team.",
+    "features": [
+      {
+        "title": "Human Fallback",
+        "description": "Handoffs to staff when confidence is low or complex questions arise."
+      },
+      {
+        "title": "Full Transparency",
+        "description": "Every call is transcribed and logged. Review exactly what was said."
+      },
+      {
+        "title": "Custom Guardrails",
+        "description": "Enforce strict rules for 86'd items, custom hours, and required upsells."
+      }
+    ],
+    "languages": {
+      "title1": "Speaks Your",
+      "title2": "Customers' Language",
+      "description": "Never lose a massive catering order to a language barrier again. KOTA seamlessly detects and switches languages instantly.",
+      "english": "English",
+      "mandarin": "Mandarin",
+      "chinese": "(中文)",
+      "spanish": "Spanish",
+      "espanol": "(Español)",
+      "comingSoon": "Coming Soon"
+    }
+  },
+  "cta": {
+    "title1": "Want to see it handle your",
+    "title2": "restaurant",
+    "title3": "calls?",
+    "subtitle": "Get a demo—see how KOTA captures orders during rush",
+    "pricingHint": "Starting at $149/month — less than the cost of a single missed VIP order."
+  },
+  "contact": {
+    "name": "Name *",
+    "namePlaceholder": "John Doe",
+    "restaurant": "Restaurant Name *",
+    "restaurantPlaceholder": "Your Restaurant",
+    "phone": "Phone *",
+    "phonePlaceholder": "(555) 123-4567",
+    "city": "City (Optional)",
+    "cityPlaceholder": "San Francisco",
+    "message": "Message (Optional)",
+    "messagePlaceholder": "Tell us about your restaurant...",
+    "success": "We'll reach out within 24 hours.",
+    "button": "Request Demo",
+    "buttonLoading": "Sending...",
+    "errorGeneric": "Failed to send message"
+  },
+  "footer": {
+    "copyright": "© 2025 Kummalabs",
+    "builtWith": "Built with Twilio, Deepgram, OpenAI"
+  }
+}

@@ -3,15 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
+  --background: #FAFAFA;
+  --foreground: #111216;
   --font-inter: "Inter", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
+  --font-noto-sc: "Noto Sans SC", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0d0d0d;
-    --foreground: #ffffff;
+    --background: #FAFAFA;
+    /* Keeping light mode active by default for landing page conversion */
+    --foreground: #111216;
   }
 }
 
@@ -21,4 +24,13 @@ body {
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html[lang="zh"] body,
+html[lang="zh"] .font-sans {
+  font-family: var(--font-noto-sc), var(--font-inter), sans-serif;
+}
+
+html[lang="zh"] .font-display {
+  font-family: var(--font-noto-sc), var(--font-space), sans-serif;
 }

@@ -12,20 +12,25 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         korami: {
-          black: "#000000",
-          gray: "#0D0D0D",
-          white: "#FFFFFF",
-          border: "#EDEDED",
-          accent: "#FF4500", // Vibrant orange for food/AI tech accents
-          accentHover: "#E63E00",
+          black: "#111216", // Deep charcoal instead of pure black
+          gray: "#1C1E24", // Softer dark gray
+          white: "#FAFAFA", // Apple-style off-white
+          border: "#EAEAEC", // Softer border cream
+          accent: "#E13725", // Prosperity Red-Orange
+          accentHover: "#C82D1D", // Deeper red for hovers
+          success: "#2E8B57", // Sage green for positive actions
+          trustBlue: "#0F172A", // Deep tech blue for b2b security/reliability
+          gold: "#D4AF37", // Prestige Gold for ROI and value
         },
       },
       boxShadow: {
-        neo: "8px 8px 0px 0px rgba(0,0,0,1)",
-        "neo-hover": "4px 4px 0px 0px rgba(0,0,0,1)",
+        'neo': '4px 4px 0px 0px rgba(17,18,22,1)', // Hard, unblurred shadow
+        'neo-hover': '8px 8px 0px 0px rgba(17,18,22,1)', // Pronounced lifted hard shadow
       },
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],
+        display: ["var(--font-space)", "sans-serif"], // Grotesk for headers
+        zh: ["var(--font-noto-sc)", "var(--font-inter)", "sans-serif"],
       },
       keyframes: {
         fadeInUp: {

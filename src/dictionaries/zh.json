@@ -1,0 +1,154 @@
+{
+  "header": {
+    "howItWorks": "运作原理",
+    "useCases": "应用场景",
+    "contact": "联系我们",
+    "getDemo": "预约演示"
+  },
+  "hero": {
+    "answer": "极速响应",
+    "everyCall": "每一通来电。",
+    "capture": "锁定每一笔订单。",
+    "description": "KOTA 在营业高峰期为您智能接听来电——高效处理点餐与订座诉求，并随后通过云打印机或短信将确认详情无缝发送给您的团队。",
+    "getDemo": "预约演示",
+    "listenCall": "收听真实沟通录音",
+    "roiMetric": "普通餐厅在高峰期会流失近 30% 的来电，每周因此直接损失超 $1,200。KOTA 帮您自动挽回这笔潜在收入。",
+    "marquee": {
+      "noPos": "无需对接 POS 系统",
+      "cloudPrinters": "完美兼容云打印机",
+      "fallback": "智能无缝转接人工",
+      "multipleCalls": "支持多线并发接听"
+    }
+  },
+  "socialProof": {
+    "title": "深受繁忙餐厅信赖，轻松应对晚餐高峰"
+  },
+  "problemOutcome": {
+    "theProblem": "行业痛点",
+    "theOutcome": "核心优势",
+    "problems": [
+      "营业高峰期漏接来电，流失潜在客户",
+      "员工疲于接听电话，严重影响堂食服务质量",
+      "订单频发错漏，导致退单、经济损失及负评",
+      "单线接听模式，高峰期服务效率低下",
+      "语言沟通障碍造成误解与运营效率损耗"
+    ],
+    "outcomes": [
+      "全天候自动接听，确保零漏接率",
+      "精准识别订单信息并实现自动确认",
+      "释放员工精力，专注提升堂食顾客体验",
+      "支持多线程并发接听，高效无忧",
+      "全面支持英语与普通话智能双语服务"
+    ],
+    "bottomText": "无需对接 POS 系统。您的订单将直接通过云打印机或短信准确送达。"
+  },
+  "howItWorks": {
+    "title": "运作原理",
+    "subtitle": "极简的来电处理流程，完美融入您现有的运营模式。",
+    "description": "无需对接 POS 系统。您的订单将直接通过云打印机或短信准确送达。",
+    "steps": [
+      {
+        "title": "极速响应",
+        "description": "在员工繁忙时，KOTA 会瞬间接管并响应您的业务来电"
+      },
+      {
+        "title": "智能确认",
+        "description": "准确核对订单数据与各项细节，实现零差错级沟通"
+      },
+      {
+        "title": "高效送达",
+        "description": "订单详情直接传输至后厨云打印机（或通过短信发送给团队）"
+      }
+    ],
+    "setupInstruction": "极简部署：设置电话转接 → 配置信息送达方式 → 即刻上线运行。"
+  },
+  "useCases": {
+    "title1": "专为",
+    "title2": "餐饮业量身定制",
+    "subtitle": "智能接管并无缝处理打入餐厅的各类业务来电。",
+    "comingSoon": "敬请期待",
+    "features": [
+      {
+        "title": "外卖与外带订餐",
+        "description": "精准捕捉菜品、定制化要求与客户信息，确保订单 100% 准确无误。"
+      },
+      {
+        "title": "订座与等位管理",
+        "description": "智能、动态地处理餐厅的座位预订与排号等位请求。"
+      },
+      {
+        "title": "菜单与过敏原咨询",
+        "description": "基于您专属的菜单知识库，即时、准确地解答过敏原及食材相关问询。"
+      },
+      {
+        "title": "营业信息与停车指引",
+        "description": "有效拦截并自动解答高峰期重复的日常营业信息咨询来电。"
+      },
+      {
+        "title": "宴会与团餐预订",
+        "description": "高效收集团队人数、饮食禁忌与预订日期，并无缝转交至活动负责人。"
+      },
+      {
+        "title": "订单状态与取餐追踪",
+        "description": "告别繁琐的催单电话。根据后厨备餐进度为您提供实时的状态更新服务。"
+      }
+    ]
+  },
+  "safety": {
+    "title1": "专注于",
+    "title2": "业务级可靠性",
+    "description": "KOTA 拒绝含糊。我们的智能防护规则可确保订单万无一失，遇复杂情况即刻转接人工团队处理。",
+    "features": [
+      {
+        "title": "智能转接人工",
+        "description": "当识别置信度较低或面对复杂业务问题时，将无缝转接给您的员工处理。"
+      },
+      {
+        "title": "数据全透明化",
+        "description": "每一通来电均提供完整录音与文本转录，全维度的沟通细节随时可供查阅。"
+      },
+      {
+        "title": "定制化运营引擎",
+        "description": "严格遵守菜品售罄、特殊营业时间以及必推销项目等高度定制化的业务规则。"
+      }
+    ],
+    "languages": {
+      "title1": "使用您客户的",
+      "title2": "偏好语言进行对话",
+      "description": "彻底告别因语言沟通障碍造成的客户流失。KOTA 能够无缝识别并根据客户需求即刻切换双语服务模式。",
+      "english": "English",
+      "mandarin": "Mandarin",
+      "chinese": "(中文)",
+      "spanish": "Spanish",
+      "espanol": "(Español)",
+      "comingSoon": "敬请期待"
+    }
+  },
+  "cta": {
+    "title1": "想要体验如何高效处理您的",
+    "title2": "餐厅",
+    "title3": "业务来电？",
+    "subtitle": "立即预约演示—见证 KOTA 如何在营业高峰期为您从容锁定每一个订单",
+    "pricingHint": "每月起步价 $149 —— 成本甚至低于一笔错失的 VIP 团餐订单。"
+  },
+  "contact": {
+    "name": "姓名 *",
+    "namePlaceholder": "例如：张三",
+    "restaurant": "餐厅名称 *",
+    "restaurantPlaceholder": "您所在的餐厅名称",
+    "phone": "联系电话 *",
+    "phonePlaceholder": "(626)-000-0000",
+    "city": "所在城市 (选填)",
+    "cityPlaceholder": "例如：纽约 (New York)",
+    "message": "留言信息 (选填)",
+    "messagePlaceholder": "请向我们简单介绍您的餐厅及具体业务需求...",
+    "success": "感谢您的提交，我们将在 24 小时内与您取得联系。",
+    "button": "预约演示",
+    "buttonLoading": "正在提交请求...",
+    "errorGeneric": "请求提交失败，请稍后重试"
+  },
+  "footer": {
+    "copyright": "© 2025 Kummalabs 版权所有",
+    "builtWith": "基于 Twilio, Deepgram 及 OpenAI 构建"
+  }
+}

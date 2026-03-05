@@ -3,44 +3,53 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export default function Hero() {
+export default function Hero({ dict }: { dict: any }) {
     return (
         <section className="relative min-h-[90vh] flex flex-col justify-center bg-korami-white overflow-hidden pt-24 pb-24">
             <div className="max-w-6xl mx-auto px-6 w-full">
                 <div className="max-w-4xl">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
                     >
-                        <h1 className="text-korami-black font-black text-6xl md:text-8xl lg:text-[6.5rem] leading-[1.05] tracking-tight mb-8">
-                            <span className="text-korami-accent">Answer</span> every call. <br />
-                            Capture every order.
+                        <h1 className="text-korami-black font-display font-black text-6xl md:text-8xl lg:text-[6.5rem] leading-[1.05] tracking-tight mb-8">
+                            <span className="text-korami-accent">{dict.hero.answer}</span> {dict.hero.everyCall} <br />
+                            {dict.hero.capture}
                         </h1>
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                        initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const, delay: 0.1 }}
                     >
-                        <p className="text-korami-black/80 text-2xl md:text-3xl leading-relaxed max-w-2xl mb-12 font-semibold">
-                            KOTA answers restaurant calls during rush—takes orders and reservations, then sends confirmed details to your team via Cloud Printer or SMS.
+                        <p className="text-korami-black/80 text-2xl md:text-3xl leading-relaxed max-w-2xl mb-6 font-semibold">
+                            {dict.hero.description}
+                        </p>
+                        <p className="text-korami-black/60 text-lg md:text-xl leading-relaxed max-w-2xl mb-12 border-l-4 border-korami-gold pl-4">
+                            {dict.hero.roiMetric}
                         </p>
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-                        className="flex flex-col sm:flex-row items-start gap-4 mb-16"
+                        initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const, delay: 0.2 }}
+                        className="flex flex-col sm:flex-row items-center gap-4 mb-16"
                     >
                         <Link
                             href="#contact"
-                            className="px-10 py-5 bg-korami-accent text-korami-white font-black text-xl border-4 border-korami-black shadow-neo hover:shadow-neo-hover hover:translate-x-1 hover:translate-y-1 transition-all w-full sm:w-auto text-center"
+                            className="px-10 py-5 bg-korami-accent text-korami-white font-black text-xl border-2 border-korami-black shadow-neo hover:shadow-neo-hover hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 active:shadow-neo transition-all duration-150 w-full sm:w-auto text-center"
                         >
-                            Get a Demo
+                            {dict.hero.getDemo}
                         </Link>
+                        <button className="px-10 py-5 bg-korami-white text-korami-black font-black text-xl border-2 border-korami-black shadow-neo hover:shadow-neo-hover hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 active:shadow-neo transition-all duration-150 w-full sm:w-auto text-center flex items-center justify-center gap-2">
+                            <svg className="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" fillRule="evenodd" />
+                            </svg>
+                            {dict.hero.listenCall}
+                        </button>
                     </motion.div>
                 </div>
             </div>
@@ -50,13 +59,13 @@ export default function Hero() {
                 <div className="flex whitespace-nowrap animate-marquee">
                     {[...Array(4)].map((_, i) => (
                         <div key={i} className="flex space-x-12 mx-6 items-center">
-                            <span className="text-korami-white font-black text-xl uppercase tracking-widest">NO POS INTEGRATION REQUIRED</span>
+                            <span className="text-korami-white font-black text-xl uppercase tracking-widest">{dict.hero.marquee.noPos}</span>
                             <span className="text-korami-accent font-black text-xl">•</span>
-                            <span className="text-korami-white font-black text-xl uppercase tracking-widest">WORKS WITH CLOUD PRINTERS</span>
+                            <span className="text-korami-white font-black text-xl uppercase tracking-widest">{dict.hero.marquee.cloudPrinters}</span>
                             <span className="text-korami-accent font-black text-xl">•</span>
-                            <span className="text-korami-white font-black text-xl uppercase tracking-widest">HUMAN FALLBACK</span>
+                            <span className="text-korami-white font-black text-xl uppercase tracking-widest">{dict.hero.marquee.fallback}</span>
                             <span className="text-korami-accent font-black text-xl">•</span>
-                            <span className="text-korami-white font-black text-xl uppercase tracking-widest">MULTIPLE CALLS AT ONCE</span>
+                            <span className="text-korami-white font-black text-xl uppercase tracking-widest">{dict.hero.marquee.multipleCalls}</span>
                             <span className="text-korami-accent font-black text-xl">•</span>
                         </div>
                     ))}
