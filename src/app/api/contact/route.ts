@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
         const resend = new Resend(process.env.RESEND_API_KEY);
 
         // Send email notification using Resend
-        const data = await resend.emails.send({
+        const { data, error } = await resend.emails.send({
             from: "KOTA Contact Form <onboarding@resend.dev>",
             to: process.env.NOTIFICATION_EMAIL || "your@email.com",
             subject: `New Demo Request from ${restaurant}`,
@@ -54,10 +54,18 @@ export async function POST(request: NextRequest) {
       `,
         });
 
+        if (error) {
+            console.error("Resend API error:", error);
+            return NextResponse.json(
+                { error: error.message || "Failed to send email via Resend" },
+                { status: 400 }
+            );
+        }
+
         return NextResponse.json({
             success: true,
             message: "Email sent successfully",
-            id: data.data?.id
+            id: data?.id
         });
 
     } catch (error) {

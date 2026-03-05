@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function HowItWorks() {
     const steps = [
         {
@@ -17,11 +21,26 @@ export default function HowItWorks() {
         }
     ];
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+    };
+
     return (
         <section id="how-it-works" className="bg-korami-white py-24 border-t-4 border-korami-black">
             <div className="max-w-6xl mx-auto px-6">
                 <div className="text-center mb-16">
-                    <h2 className="text-korami-black font-black text-5xl md:text-6xl mb-6">
+                    <h2 className="text-korami-black font-black text-5xl md:text-6xl mb-6 uppercase tracking-tight">
                         How it Works
                     </h2>
                     <p className="text-korami-black/80 text-2xl font-semibold max-w-3xl mx-auto leading-relaxed mb-4">
@@ -32,27 +51,40 @@ export default function HowItWorks() {
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-16 mb-16">
+                <motion.div 
+                    className="grid md:grid-cols-3 gap-8 md:gap-12 mb-16"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                >
                     {steps.map((step, index) => (
-                        <div key={index} className="text-center">
-                            <div className="mb-8 flex justify-center">
-                                <div className="w-20 h-20 rounded-full bg-korami-accent text-korami-white flex items-center justify-center text-3xl font-black shadow-lg">
-                                    {step.number}
-                                </div>
+                        <motion.div 
+                            key={index} 
+                            variants={itemVariants}
+                            className="relative bg-korami-white border-4 border-korami-black p-8 shadow-neo hover:shadow-neo-hover hover:translate-x-1 hover:translate-y-1 transition-all overflow-hidden"
+                        >
+                            {/* Oversized Background Number */}
+                            <div className="absolute -top-10 -right-4 text-[12rem] font-black text-korami-black opacity-5 pointer-events-none select-none">
+                                {step.number}
                             </div>
-                            <h3 className="text-korami-black font-black text-3xl mb-4">
-                                {step.title}
-                            </h3>
-                            <p className="text-korami-black/80 text-lg leading-relaxed font-medium">
-                                {step.description}
-                            </p>
-                        </div>
+                            
+                            <div className="relative z-10">
+                                <h3 className="text-korami-black font-black text-3xl mb-4 uppercase">
+                                    <span className="text-korami-accent mr-2">{step.number}.</span>
+                                    {step.title}
+                                </h3>
+                                <p className="text-korami-black/80 text-lg leading-relaxed font-bold">
+                                    {step.description}
+                                </p>
+                            </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Setup instruction */}
-                <div className="text-center pt-12 border-t-2 border-korami-black/10">
-                    <p className="text-korami-black/80 text-xl font-bold">
+                <div className="text-center pt-12 border-t-4 border-korami-black">
+                    <p className="text-korami-black text-xl font-black uppercase">
                         Setup is fast: forward your phone line → choose delivery → go live.
                     </p>
                 </div>

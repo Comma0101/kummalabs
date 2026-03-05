@@ -20,6 +20,10 @@ export default {
           accentHover: "#E63E00",
         },
       },
+      boxShadow: {
+        neo: "8px 8px 0px 0px rgba(0,0,0,1)",
+        "neo-hover": "4px 4px 0px 0px rgba(0,0,0,1)",
+      },
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],
       },
@@ -32,10 +36,15 @@ export default {
           "0%": { transform: "translateY(-100%)" },
           "100%": { transform: "translateY(100%)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         "fade-in-up": "fadeInUp 0.8s ease-out forwards",
         "flow-down": "flowDown 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite",
+        "marquee": "marquee 20s linear infinite",
       },
     },
   },
