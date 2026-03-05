@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
         // Send email notification using Resend
         const { data, error } = await resend.emails.send({
             from: "KOTA Contact Form <onboarding@resend.dev>",
-            to: process.env.NOTIFICATION_EMAIL || "your@email.com",
+            to: process.env.NOTIFICATION_EMAIL || "wuyang1010@gmail.com",
             subject: `New Demo Request from ${restaurant}`,
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
