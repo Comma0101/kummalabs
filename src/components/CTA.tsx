@@ -1,5 +1,3 @@
-import ContactForm from "./ContactForm";
-
 export default function CTA() {
     return (
         <section className="bg-korami-black py-24 md:py-32 border-t-4 border-korami-white/20">

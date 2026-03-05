@@ -140,7 +140,7 @@ export default function ContactForm() {
 
             {status === "success" && (
                 <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-sm">
-                    <p className="text-green-400 text-sm">We'll reach out within 24 hours.</p>
+                    <p className="text-green-400 text-sm">We&apos;ll reach out within 24 hours.</p>
                 </div>
             )}
 
