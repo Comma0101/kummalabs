@@ -3,7 +3,8 @@
     "howItWorks": "运作原理",
     "useCases": "应用场景",
     "contact": "联系我们",
-    "getDemo": "预约演示"
+    "getDemo": "预约演示",
+    "systemStatus": "系统运行正常"
   },
   "hero": {
     "answer": "极速响应",
@@ -148,7 +149,7 @@
     "errorGeneric": "请求提交失败，请稍后重试"
   },
   "footer": {
-    "copyright": "© 2025 Kummalabs 版权所有",
-    "builtWith": "基于 Twilio, Deepgram 及 OpenAI 构建"
+    "copyright": "2025 Kummalabs. 提供全天候稳定服务。",
+    "builtWith": "以信任与责任为基石"
   }
 }

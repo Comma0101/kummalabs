@@ -44,10 +44,15 @@ export default function Hero({ dict }: { dict: any }) {
                         >
                             {dict.hero.getDemo}
                         </Link>
-                        <button className="px-10 py-5 bg-korami-white text-korami-black font-black text-xl border-2 border-korami-black shadow-neo hover:shadow-neo-hover hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 active:shadow-neo transition-all duration-150 w-full sm:w-auto text-center flex items-center justify-center gap-2">
-                            <svg className="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" fillRule="evenodd" />
-                            </svg>
+                        <button className="group px-10 py-5 bg-korami-white text-korami-black font-black text-xl border-2 border-korami-black shadow-neo hover:shadow-neo-hover hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 active:shadow-neo transition-all duration-150 w-full sm:w-auto text-center flex items-center justify-center gap-3">
+                            {/* Animated Audio Wave Icon */}
+                            <div className="flex items-center gap-[2px] h-5">
+                                <span className="w-1 bg-korami-black h-2 group-hover:h-full transition-all duration-300 group-hover:animate-[wave_1s_ease-in-out_infinite]"></span>
+                                <span className="w-1 bg-korami-black h-4 group-hover:h-3 transition-all duration-300 group-hover:animate-[wave_1s_ease-in-out_0.2s_infinite]"></span>
+                                <span className="w-1 bg-korami-black h-3 group-hover:h-full transition-all duration-300 group-hover:animate-[wave_1s_ease-in-out_0.4s_infinite]"></span>
+                                <span className="w-1 bg-korami-black h-5 group-hover:h-2 transition-all duration-300 group-hover:animate-[wave_1s_ease-in-out_0.6s_infinite]"></span>
+                                <span className="w-1 bg-korami-black h-2 group-hover:h-full transition-all duration-300 group-hover:animate-[wave_1s_ease-in-out_0.8s_infinite]"></span>
+                            </div>
                             {dict.hero.listenCall}
                         </button>
                     </motion.div>

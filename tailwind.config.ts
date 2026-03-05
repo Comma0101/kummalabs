@@ -45,6 +45,10 @@ export default {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" },
         },
+        wave: {
+          "0%, 100%": { transform: "scaleY(1)" },
+          "50%": { transform: "scaleY(0.4)" },
+        },
       },
       animation: {
         "fade-in-up": "fadeInUp 0.8s ease-out forwards",

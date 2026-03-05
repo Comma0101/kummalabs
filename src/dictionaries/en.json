@@ -3,7 +3,8 @@
     "howItWorks": "How it Works",
     "useCases": "Use Cases",
     "contact": "Contact",
-    "getDemo": "Get a Demo"
+    "getDemo": "Get a Demo",
+    "systemStatus": "System Operational"
   },
   "hero": {
     "answer": "Answer",
@@ -148,7 +149,7 @@
     "errorGeneric": "Failed to send message"
   },
   "footer": {
-    "copyright": "© 2025 Kummalabs",
-    "builtWith": "Built with Twilio, Deepgram, OpenAI"
+    "copyright": "2025 Kummalabs. All systems optimal.",
+    "builtWith": "Built with Trust & Responsibility"
   }
 }
