@@ -6,7 +6,7 @@ export default function Hero() {
             <div className="max-w-6xl mx-auto px-6 w-full py-24">
                 <div className="max-w-4xl">
                     <h1 className="text-korami-black font-black text-6xl md:text-8xl lg:text-[6.5rem] leading-[1.05] tracking-tight mb-8">
-                        Answer every call. <br />
+                        <span className="text-korami-accent">Answer</span> every call. <br />
                         Capture every order.
                     </h1>
 
@@ -17,7 +17,7 @@ export default function Hero() {
                     <div className="flex flex-col sm:flex-row items-start gap-4 mb-12">
                         <Link
                             href="#contact"
-                            className="px-10 py-5 bg-korami-black text-korami-white font-bold text-xl rounded-lg hover:bg-korami-gray transition-all hover:scale-105 w-full sm:w-auto text-center border-2 border-korami-black"
+                            className="px-10 py-5 bg-korami-accent text-korami-white font-bold text-xl rounded-lg hover:bg-korami-accentHover transition-all hover:scale-105 w-full sm:w-auto text-center border-2 border-korami-accent hover:border-korami-accentHover shadow-lg hover:shadow-xl"
                         >
                             Get a Demo
                         </Link>

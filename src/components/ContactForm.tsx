@@ -147,7 +147,7 @@ export default function ContactForm() {
             <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full px-10 py-5 bg-korami-white text-korami-black font-black text-xl rounded-lg hover:bg-gray-100 transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed border-4 border-korami-white"
+                className="w-full px-10 py-5 bg-korami-accent text-korami-white font-black text-xl rounded-lg hover:bg-korami-accentHover transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed border-4 border-korami-accent hover:border-korami-accentHover shadow-xl"
             >
                 {status === "loading" ? "Sending..." : "Request Demo"}
             </button>

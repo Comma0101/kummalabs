@@ -36,7 +36,7 @@ export default function HowItWorks() {
                     {steps.map((step, index) => (
                         <div key={index} className="text-center">
                             <div className="mb-8 flex justify-center">
-                                <div className="w-20 h-20 rounded-full bg-korami-black text-korami-white flex items-center justify-center text-3xl font-black border-4 border-korami-black">
+                                <div className="w-20 h-20 rounded-full bg-korami-accent text-korami-white flex items-center justify-center text-3xl font-black shadow-lg">
                                     {step.number}
                                 </div>
                             </div>

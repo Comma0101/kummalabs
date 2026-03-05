@@ -10,7 +10,8 @@ export default function Header() {
         <header className="sticky top-0 z-50 w-full bg-korami-white/90 backdrop-blur-md border-b-4 border-korami-black">
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                 <div className="flex items-center">
-                    <Link href="/" className="text-korami-black font-black text-2xl tracking-tight">
+                    <Link href="/" className="text-korami-black font-black text-2xl tracking-tight flex items-center gap-2">
+                        <span className="w-8 h-8 bg-korami-accent text-korami-white flex items-center justify-center rounded-lg text-lg">K</span>
                         KOTA
                     </Link>
                 </div>
@@ -25,7 +26,7 @@ export default function Header() {
                     <Link href="#contact" className="text-base font-bold text-korami-black hover:text-korami-gray transition-colors">
                         Contact
                     </Link>
-                    <Link href="#contact" className="px-6 py-3 bg-korami-black text-korami-white text-base font-black rounded-lg hover:bg-korami-gray transition-all hover:scale-105 border-2 border-korami-black">
+                    <Link href="#contact" className="px-6 py-3 bg-korami-accent text-korami-white text-base font-black rounded-lg hover:bg-korami-accentHover transition-all hover:scale-105 border-2 border-korami-accent hover:border-korami-accentHover shadow-md">
                         Get a Demo
                     </Link>
                 </nav>
@@ -75,7 +76,7 @@ export default function Header() {
                         </Link>
                         <Link
                             href="#contact"
-                            className="px-6 py-3 bg-korami-black text-korami-white text-base font-black rounded-lg hover:bg-korami-gray transition-all text-center border-2 border-korami-black"
+                            className="px-6 py-3 bg-korami-accent text-korami-white text-base font-black rounded-lg hover:bg-korami-accentHover transition-all text-center border-2 border-korami-accent hover:border-korami-accentHover shadow-md"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             Get a Demo

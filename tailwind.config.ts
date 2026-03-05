@@ -16,6 +16,8 @@ export default {
           gray: "#0D0D0D",
           white: "#FFFFFF",
           border: "#EDEDED",
+          accent: "#FF4500", // Vibrant orange for food/AI tech accents
+          accentHover: "#E63E00",
         },
       },
       fontFamily: {

@@ -19,7 +19,7 @@ export default function ProblemOutcome() {
 
                     {/* Right: Outcome - Bold, emphasized */}
                     <div>
-                        <h2 className="text-korami-black font-black text-4xl md:text-5xl mb-8 uppercase tracking-tight">
+                        <h2 className="text-korami-accent font-black text-4xl md:text-5xl mb-8 uppercase tracking-tight">
                             The Outcome
                         </h2>
                         <ul className="space-y-6 text-korami-black text-xl font-bold leading-relaxed">
