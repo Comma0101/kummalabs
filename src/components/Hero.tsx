@@ -15,8 +15,8 @@ export default function Hero({ dict }: { dict: any }) {
     };
 
     return (
-        <section className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-center bg-korami-white overflow-hidden pt-16 md:pt-24 pb-20 md:pb-24">
-            <div className="max-w-6xl mx-auto px-6 w-full">
+        <section className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-center bg-korami-white overflow-hidden pt-16 md:pt-24 pb-48 md:pb-32 lg:pb-24">
+            <div className="max-w-6xl mx-auto px-6 w-full relative z-20">
                 <div className="max-w-4xl">
                     <motion.div
                         initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
@@ -46,9 +46,9 @@ export default function Hero({ dict }: { dict: any }) {
                         initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
                         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const, delay: 0.2 }}
-                        className="flex flex-col sm:flex-row items-center gap-4 mb-20 md:mb-16 w-full"
+                        className="flex flex-col sm:flex-row items-center gap-4 mb-20 md:mb-16 w-full relative z-30"
                     >
-                        <div className="flex flex-col sm:flex-row items-center gap-4">
+                        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
                             <Link
                                 href="#contact"
                                 onClick={(e) => scrollToSection(e, "contact")}

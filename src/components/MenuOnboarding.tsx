@@ -47,7 +47,7 @@ export default function MenuOnboarding({ dict }: { dict: any }) {
                         {/* Input Stage */}
                         <div className="flex-1 flex flex-col justify-start group cursor-default h-full relative px-2 md:px-6 w-full text-center items-center">
                             <div className="flex flex-col items-center h-32 w-full">
-                                <span className="text-[10px] md:text-xs font-black text-korami-black uppercase tracking-widest mb-6">
+                                <span className="text-xs md:text-sm font-black text-korami-black uppercase tracking-[0.2em] mb-6">
                                     {dict.menuOnboarding.diagram.microLabel1}
                                 </span>
                                 <div className="w-16 h-16 bg-korami-white text-korami-black rounded-none flex items-center justify-center border-2 border-korami-black shadow-[4px_4px_0px_0px_#111216] relative z-10 transition-transform duration-300 group-hover:-translate-y-1">
@@ -55,7 +55,7 @@ export default function MenuOnboarding({ dict }: { dict: any }) {
                                 </div>
                             </div>
                             <div className="mt-8 flex flex-col justify-start flex-1 w-full">
-                                <p className="text-korami-black/70 font-bold text-sm md:text-[15px] leading-relaxed max-w-[220px] mx-auto">
+                                <p className="text-korami-black/80 font-bold text-[15px] md:text-base leading-relaxed max-w-[240px] mx-auto">
                                     {dict.menuOnboarding.diagram.input}
                                 </p>
                             </div>
@@ -67,7 +67,7 @@ export default function MenuOnboarding({ dict }: { dict: any }) {
                         {/* Processing Stage */}
                         <div className="flex-1 flex flex-col justify-start group cursor-default h-full relative px-2 md:px-6 w-full text-center items-center">
                             <div className="flex flex-col items-center h-32 w-full">
-                                <span className="text-[10px] md:text-xs font-black text-korami-black uppercase tracking-widest mb-6">
+                                <span className="text-xs md:text-sm font-black text-korami-black uppercase tracking-[0.2em] mb-6">
                                     {dict.menuOnboarding.diagram.microLabel2}
                                 </span>
                                 <div className="w-16 h-16 bg-korami-white text-korami-black rounded-none flex items-center justify-center border-2 border-korami-black shadow-[4px_4px_0px_0px_#111216] relative z-10 transition-transform duration-300 group-hover:-translate-y-1">
@@ -75,7 +75,7 @@ export default function MenuOnboarding({ dict }: { dict: any }) {
                                 </div>
                             </div>
                             <div className="mt-8 flex flex-col justify-start flex-1 w-full">
-                                <p className="text-korami-black/70 font-bold text-sm md:text-[15px] leading-relaxed max-w-[220px] mx-auto">
+                                <p className="text-korami-black/80 font-bold text-[15px] md:text-base leading-relaxed max-w-[240px] mx-auto">
                                     {dict.menuOnboarding.diagram.processing1}
                                     <strong className="text-korami-black font-black block mt-1">{dict.menuOnboarding.diagram.processingBold}</strong>
                                     {dict.menuOnboarding.diagram.processing2}
@@ -89,7 +89,7 @@ export default function MenuOnboarding({ dict }: { dict: any }) {
                         {/* Output Stage */}
                         <div className="flex-1 flex flex-col justify-start group cursor-default h-full relative px-2 md:px-6 w-full text-center items-center">
                             <div className="flex flex-col items-center h-32 w-full">
-                                <span className="text-[10px] md:text-xs font-black text-korami-black uppercase tracking-widest mb-6">
+                                <span className="text-xs md:text-sm font-black text-korami-black uppercase tracking-[0.2em] mb-6">
                                     {dict.menuOnboarding.diagram.microLabel3}
                                 </span>
                                 <div className="w-16 h-16 bg-korami-white text-korami-black rounded-none flex items-center justify-center border-2 border-korami-black shadow-[4px_4px_0px_0px_#111216] relative z-10 transition-transform duration-300 group-hover:-translate-y-1">
@@ -97,7 +97,7 @@ export default function MenuOnboarding({ dict }: { dict: any }) {
                                 </div>
                             </div>
                             <div className="mt-8 flex flex-col justify-start flex-1 w-full">
-                                <p className="text-korami-black/70 font-bold text-sm md:text-[15px] leading-relaxed max-w-[220px] mx-auto">
+                                <p className="text-korami-black/80 font-bold text-[15px] md:text-base leading-relaxed max-w-[240px] mx-auto">
                                     {dict.menuOnboarding.diagram.output}
                                 </p>
                             </div>
@@ -119,7 +119,7 @@ export default function MenuOnboarding({ dict }: { dict: any }) {
                                 className="flex items-center gap-3 text-korami-black/90 group"
                             >
                                 <Icon className="w-5 h-5 text-korami-black/60 group-hover:text-korami-black transition-colors" />
-                                <span className="text-[15px] font-black tracking-wide">{feature.title}</span>
+                                <span className="text-base md:text-lg font-black tracking-wide">{feature.title}</span>
                             </motion.div>
                         );
                     })}
