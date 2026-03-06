@@ -10,10 +10,10 @@
     "answer": "极速响应",
     "everyCall": "每一通来电。",
     "capture": "锁定每一笔订单。",
-    "description": "KOTA 在营业高峰期为您智能接听来电——高效处理点餐与订座诉求，并随后通过云打印机或短信将确认详情无缝发送给您的团队。",
-    "getDemo": "预约演示",
-    "listenCall": "收听真实沟通录音",
-    "roiMetric": "普通餐厅在高峰期会流失近 30% 的来电，每周因此直接损失超 $1,200。KOTA 帮您自动挽回这笔潜在收入。",
+    "description": "KOTA是专为餐厅打造的AI语音助手。我们帮您应对高峰期溢出的来电，解答菜单疑问，并将结构化的订单直接发送到您的后厨。",
+    "roiMetric": "别让漏接的电话和占线声成为您流失的收入。",
+    "getDemo": "预约实机演示",
+    "listenCall": "观看 KOTA 实际演示",
     "marquee": {
       "noPos": "无需对接 POS 系统",
       "cloudPrinters": "完美兼容云打印机",
@@ -22,46 +22,195 @@
     }
   },
   "socialProof": {
-    "title": "深受繁忙餐厅信赖，轻松应对晚餐高峰"
+    "title": "深受繁忙餐厅信赖，轻松应对晚餐高峰",
+    "stats": [
+      "每月 3,200+ 笔订单",
+      "每周节省 40 小时",
+      "0 漏接来电",
+      "1,500+ 座位预订",
+      "7x24 小时稳定运行"
+    ]
+  },
+  "sampleCall": {
+    "title": "收听真实录音",
+    "description": "聆听 KOTA 在真实午餐高峰期处理复杂订单的表现。",
+    "play": "播放录音",
+    "pause": "暂停"
+  },
+  "signatureDemo": {
+    "title": "从通话到后厨工单",
+    "description": "观看 KOTA 实时转录客户订单，并将其结构化为后厨标准工单的模拟过程。",
+    "phone": {
+      "incomingCall": "新来电",
+      "statusReady": "就绪",
+      "statusRinging": "响铃中...",
+      "statusConnected": "已接通",
+      "statusEnded": "通话结束",
+      "playAudio": "模拟来电",
+      "liveAudio": "实时音频",
+      "instruction": "点击“模拟来电”以启动实时文字与语音模拟演示。",
+      "agent": "KOTA",
+      "caller": "客户"
+    },
+    "receipt": {
+      "title": "后厨出票",
+      "orderNumber": "订单 #K-8924",
+      "item": "菜品",
+      "qty": "数量",
+      "waiting": "等待订单详情...",
+      "empty": "无订单记录",
+      "customer": "客户:",
+      "type": "订单类型:",
+      "phonePickup": "电话外卖自取",
+      "readyForKitchen": "订单确认，准备出餐",
+      "drafting": "草拟中...",
+      "pendingCustomer": "等待确认..."
+    },
+    "conversation": [
+      {
+        "role": "agent",
+        "text": "您好，感谢您致电 Korami Sushi。请问您是要点餐还是预订座位？",
+        "delay": 1000
+      },
+      {
+        "role": "user",
+        "text": "你好，我想点一份外卖自取。",
+        "delay": 3000
+      },
+      {
+        "role": "agent",
+        "text": "好的，没问题。请问您需要点些什么？",
+        "delay": 2000
+      },
+      {
+        "role": "user",
+        "text": "我要两份辣金枪鱼脆米饼（Spicy Tuna Crispy Rice），再加一份龙卷（Dragon Roll）。",
+        "delay": 4000
+      },
+      {
+        "role": "agent",
+        "text": "两份辣金枪鱼脆米饼和一份龙卷。记下了，还需要别的吗？",
+        "delay": 2500
+      },
+      {
+        "role": "user",
+        "text": "对了，龙卷能用大豆纸代替海苔做吗？我对海苔过敏。",
+        "delay": 5000
+      },
+      {
+        "role": "agent",
+        "text": "好的，我已经备注了海苔过敏，并把龙卷换成了大豆纸。请问还有其他需要补充的吗？",
+        "delay": 3500
+      },
+      {
+        "role": "user",
+        "text": "没有了，就这些。大概要多久能做好？",
+        "delay": 2500
+      },
+      {
+        "role": "agent",
+        "text": "您的总金额是 $42.50。大约 20 分钟后可以取餐。请问怎么称呼您？",
+        "delay": 3000
+      },
+      {
+        "role": "user",
+        "text": "Alex。",
+        "delay": 1500
+      },
+      {
+        "role": "agent",
+        "text": "好的，Alex。20 分钟后在 Korami Sushi 见。再见！",
+        "delay": 2000
+      }
+    ],
+    "items": [
+      {
+        "name": "辣金枪鱼脆米饼 (Spicy Tuna Crispy Rice)",
+        "notes": []
+      },
+      {
+        "name": "龙卷 (Dragon Roll)",
+        "notes": [
+          "修改: 换大豆纸",
+          "过敏: 海苔"
+        ]
+      }
+    ]
   },
   "problemOutcome": {
     "theProblem": "行业痛点",
     "theOutcome": "核心优势",
     "problems": [
-      "营业高峰期漏接来电，流失潜在客户",
-      "员工疲于接听电话，严重影响堂食服务质量",
-      "订单频发错漏，导致退单、经济损失及负评",
-      "单线接听模式，高峰期服务效率低下",
-      "语言沟通障碍造成误解与运营效率损耗"
+      "高峰期漏接来电，直接导致营业额流失。",
+      "员工为了接电话，让店内的顾客苦苦等待。",
+      "由于语言障碍引发的错单和沟通成本。",
+      "回答重复的菜单问题浪费了大量宝贵时间。"
     ],
     "outcomes": [
-      "全天候自动接听，确保零漏接率",
-      "精准识别订单信息并实现自动确认",
-      "释放员工精力，专注提升堂食顾客体验",
-      "支持多线程并发接听，高效无忧",
-      "全面支持英语与普通话智能双语服务"
+      "无论任何语言，每一通电话都能被瞬间接听。",
+      "订单自动结构化，并直接发送至后厨系统。",
+      "员工将 100% 的精力重新聚焦于堂食服务。",
+      "菜单疑问与套餐搭配均由 AI 自动妥善处理。"
     ],
-    "bottomText": "无需对接 POS 系统。您的订单将直接通过云打印机或短信准确送达。"
+    "bottomText": "停止将客户来电视为一种业务打断。"
   },
   "howItWorks": {
-    "title": "运作原理",
-    "subtitle": "极简的来电处理流程，完美融入您现有的运营模式。",
-    "description": "无需对接 POS 系统。您的订单将直接通过云打印机或短信准确送达。",
+    "title": "专为餐厅流程序列打造",
+    "subtitle": "KOTA 全盘接管电话，让您的员工安心照顾堂食。",
+    "description": "从顾客开口到后厨出票，无缝衔接的 4 步极简流程。",
     "steps": [
       {
-        "title": "极速响应",
-        "description": "在员工繁忙时，KOTA 会瞬间接管并响应您的业务来电"
+        "title": "顾客来电",
+        "description": "KOTA 瞬间接听。即使是在周五晚上的绝对高峰期，也没有等待音，绝不漏接。"
       },
       {
-        "title": "智能确认",
-        "description": "准确核对订单数据与各项细节，实现零差错级沟通"
+        "title": "KOTA 接管订单",
+        "description": "以自然对话引导顾客点单、处理复杂配菜选项，并用各种语言解答菜品疑问。"
       },
       {
-        "title": "高效送达",
-        "description": "订单详情直接传输至后厨云打印机（或通过短信发送给团队）"
+        "title": "订单确认",
+        "description": "KOTA 准确无误地收集送餐或取餐细节，并将最终订单核对给顾客。"
+      },
+      {
+        "title": "后厨自动出票",
+        "description": "订单被结构化整理后，瞬间发送至您后厨的云打印机或通过短信通知。您的员工只需专注出餐。"
       }
     ],
-    "setupInstruction": "极简部署：设置电话转接 → 配置信息送达方式 → 即刻上线运行。"
+    "setupInstruction": "无需对接 POS 系统，无需平板电脑设备。我们只需要您的菜单。"
+  },
+  "menuOnboarding": {
+    "title1": "无需 POS 系统。",
+    "title2": "我们为您构建可接单菜单。",
+    "subtitle": "将您的网站、Yelp/DoorDash 链接、PDF 或菜单照片发送给我们。我们将您的菜品和选项结构化，以便 KOTA 开始接听真实的电话订单。",
+    "diagram": {
+      "microLabel1": "1. 导入菜单",
+      "input": "从您的网站、第三方平台、PDF 或照片中提取数据。",
+      "microLabel2": "2. 人工审核",
+      "processing1": "KOTA 智能梳理菜品和复杂选项，由",
+      "processingBold": "人工把关",
+      "processing2": "确保无误。",
+      "microLabel3": "3. 即刻上线",
+      "output": "您的专属 AI 已准备就绪，开始接单并自动出票。"
+    },
+    "features": [
+      {
+        "title": "AI 智能抓取",
+        "description": "直接从现有平台或照片中构建点餐模型。告别繁琐的手动录入。"
+      },
+      {
+        "title": "严格审核把关",
+        "description": "专业团队复核 AI 模型，确保复杂选项准确无误。KOTA 从不靠猜。"
+      },
+      {
+        "title": "短信极速更新",
+        "description": "需要售罄某道菜？发送短信至专属号码，菜单即可迅速同步更新。"
+      }
+    ],
+    "guarantee": {
+      "big": "24h",
+      "title": "极速上线",
+      "subtitle": "从提供菜单数据，到接听第一通真实的外卖订单。"
+    }
   },
   "useCases": {
     "title1": "专为",
@@ -71,7 +220,7 @@
     "features": [
       {
         "title": "外卖与外带订餐",
-        "description": "精准捕捉菜品、定制化要求与客户信息，确保订单 100% 准确无误。"
+        "description": "精准捕捉菜品、定制化要求与客户信息，并在提交前通过语音复述进行确认。"
       },
       {
         "title": "订座与等位管理",
@@ -110,42 +259,74 @@
       },
       {
         "title": "定制化运营引擎",
-        "description": "严格遵守菜品售罄、特殊营业时间以及必推销项目等高度定制化的业务规则。"
+        "description": "严格遵守业务规则。例如：当某菜品售罄时，AI 必须主动向顾客推荐其他可用菜品。"
       }
     ],
     "languages": {
       "title1": "使用您客户的",
-      "title2": "偏好语言进行对话",
-      "description": "彻底告别因语言沟通障碍造成的客户流失。KOTA 能够无缝识别并根据客户需求即刻切换双语服务模式。",
-      "english": "English",
-      "mandarin": "Mandarin",
-      "chinese": "(中文)",
-      "spanish": "Spanish",
-      "espanol": "(Español)",
+      "title2": "偏好语言",
+      "description": "KOTA 提供多语言支持，确保您再也不会因语言沟通障碍而流失任何订单。",
+      "english": "英语 (English)",
+      "mandarin": "中文 (Mandarin)",
+      "spanish": "西班牙语 (Español)",
+      "custom": "定制语言服务",
+      "customDesc": "我们可以根据您的区域需求，随时为您定制专属的语言模型。",
+      "live": "已上线",
       "comingSoon": "敬请期待"
     }
   },
+  "faq": {
+    "title": "KOTA 实际应用场景",
+    "subtitle": "我们不兜售魔法，只提供切实可靠的效率工具。以下是 KOTA 在实际业务中的具体表现：",
+    "items": [
+      {
+        "question": "KOTA 能直接兼容我现在的菜单吗？",
+        "answer": "可以。KOTA 不需要复杂冗长的 POS 系统对接。我们可以直接从您现有的在线外卖菜单、官网甚至纸质菜单的照片中构建专属 AI。如果您的菜品有复杂的定制选项或套餐搭配，我们的运营团队会在上线前人工复核所有的逻辑树。"
+      },
+      {
+        "question": "自动接单后，后厨如何收到订单？",
+        "answer": "生成的结构化订单会瞬间推送到您后厨的 Wi-Fi 云打印机自动出票。或者，我们也可以将订单直接通过短信发送到餐厅经理的手机或平板设备上。您的员工再也不需要花时间去听写电话语音订单了。"
+      },
+      {
+        "question": "KOTA 能解答关于餐厅的常见问题吗？",
+        "answer": "完全没问题。在入驻配置阶段，我们会录入您的营业时间、停车指引、过敏原声明等常见问题 (FAQ)。KOTA 会自动接管这些重复性极高的问询，让您的员工专注提供核心服务。"
+      },
+      {
+        "question": "如果顾客问了 KOTA 不知道的问题怎么办？",
+        "answer": "KOTA 内置了最严格的业务安全边界。如果顾客问了过于复杂的问题、提出了严重的食物过敏顾虑，或者点了一些菜单上根本没有的菜外选项，KOTA 会非常礼貌地说明自己无法处理，并立刻将电话无缝转接给您的人工员工。"
+      },
+      {
+        "question": "什么样的餐饮品类或餐厅类型最适合使用 KOTA？",
+        "answer": "目前，我们的试点合作主要聚焦于单量巨大、高并发的外卖/自取业务场景，“漏接电话就是直接损失营业额”——特别适合披萨店、寿司店、泰餐、中餐以及各种繁忙的快餐休闲 (Fast-casual) 餐厅。"
+      }
+    ]
+  },
   "cta": {
-    "title1": "想要体验如何高效处理您的",
-    "title2": "餐厅",
-    "title3": "业务来电？",
-    "subtitle": "立即预约演示—见证 KOTA 如何在营业高峰期为您从容锁定每一个订单",
-    "pricingHint": "每月起步价 $149 —— 成本甚至低于一笔错失的 VIP 团餐订单。"
+    "title": "评估 KOTA 是否契合您的业务",
+    "subtitle": "停止漏接电话。开始捕获每一个订单。",
+    "bullets": [
+      "专属入驻配置指导",
+      "菜单逻辑人工复核",
+      "真实业务流在线演示"
+    ],
+    "button": "申请实机演示",
+    "contact": "或直接联系我们"
   },
   "contact": {
-    "name": "姓名 *",
+    "name": "姓名",
     "namePlaceholder": "例如：张三",
-    "restaurant": "餐厅名称 *",
-    "restaurantPlaceholder": "您所在的餐厅名称",
-    "phone": "联系电话 *",
+    "restaurant": "餐厅名称",
+    "restaurantPlaceholder": "您的餐厅名称",
+    "phone": "联系电话",
     "phonePlaceholder": "(626)-000-0000",
-    "city": "所在城市 (选填)",
+    "city": "所在城市",
     "cityPlaceholder": "例如：纽约 (New York)",
     "message": "留言信息 (选填)",
-    "messagePlaceholder": "请向我们简单介绍您的餐厅及具体业务需求...",
-    "success": "感谢您的提交，我们将在 24 小时内与您取得联系。",
-    "button": "预约演示",
+    "messagePlaceholder": "请向我们简单介绍您的订单量或具体需求...",
+    "success": "申请已收到。我们将在 24 小时内与您联系。",
+    "button": "提交申请",
     "buttonLoading": "正在提交请求...",
+    "microcopy": "我们将在 1 个工作日内通过短信与您联系，安排一场 5 分钟的真实演示。",
     "errorGeneric": "请求提交失败，请稍后重试"
   },
   "footer": {

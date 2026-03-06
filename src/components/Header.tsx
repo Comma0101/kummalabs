@@ -7,6 +7,16 @@ import { motion } from "framer-motion";
 export default function Header({ dict, currentLang }: { dict: any, currentLang: 'en' | 'zh' }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+    const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        e.preventDefault();
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+            window.history.pushState(null, "", `#${id}`);
+            if (mobileMenuOpen) setMobileMenuOpen(false);
+        }
+    };
+
     return (
         <header className="sticky top-0 z-50 w-full bg-korami-white border-b-4 border-korami-black transition-all duration-300">
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -52,21 +62,21 @@ export default function Header({ dict, currentLang }: { dict: any, currentLang: 
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </div>
-                        <span className="text-xs font-bold text-korami-black/60 uppercase tracking-widest">{dict.header.systemStatus}</span>
+                        <span className="text-xs font-black text-korami-black/80 uppercase tracking-widest">{dict.header.systemStatus}</span>
                     </div>
                 </div>
 
                 <nav className="hidden md:flex items-center space-x-8">
-                    <Link href="#how-it-works" className="text-base font-display font-bold text-korami-black/80 hover:text-korami-black transition-colors">
+                    <Link href="#how-it-works" onClick={(e) => scrollToSection(e, "how-it-works")} className="text-base font-display font-bold text-korami-black/80 hover:text-korami-black transition-colors">
                         {dict.header.howItWorks}
                     </Link>
-                    <Link href="#use-cases" className="text-base font-display font-bold text-korami-black/80 hover:text-korami-black transition-colors">
+                    <Link href="#use-cases" onClick={(e) => scrollToSection(e, "use-cases")} className="text-base font-display font-bold text-korami-black/80 hover:text-korami-black transition-colors">
                         {dict.header.useCases}
                     </Link>
-                    <Link href="#contact" className="text-base font-display font-bold text-korami-black/80 hover:text-korami-black transition-colors">
+                    <Link href="#contact" onClick={(e) => scrollToSection(e, "contact")} className="text-base font-display font-bold text-korami-black/80 hover:text-korami-black transition-colors">
                         {dict.header.contact}
                     </Link>
-                    <Link href="#contact" className="px-6 py-3 bg-korami-accent text-korami-white text-base font-display font-black border-2 border-korami-black hover:bg-korami-accentHover transition-all duration-150 hover:-translate-x-1 hover:-translate-y-1 shadow-neo hover:shadow-neo-hover active:translate-x-0 active:translate-y-0 active:shadow-neo">
+                    <Link href="#contact" onClick={(e) => scrollToSection(e, "contact")} className="px-6 py-3 bg-korami-accent text-korami-white text-base font-display font-black border-2 border-korami-black hover:bg-korami-accentHover transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1 shadow-neo hover:shadow-neo-hover active:translate-x-0 active:translate-y-0 active:shadow-neo">
                         {dict.header.getDemo}
                     </Link>
 
@@ -112,28 +122,28 @@ export default function Header({ dict, currentLang }: { dict: any, currentLang: 
                         <Link
                             href="#how-it-works"
                             className="text-lg font-display font-bold text-korami-black/80 hover:text-korami-black transition-colors"
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={(e) => scrollToSection(e, "how-it-works")}
                         >
                             {dict.header.howItWorks}
                         </Link>
                         <Link
                             href="#use-cases"
                             className="text-lg font-display font-bold text-korami-black/80 hover:text-korami-black transition-colors"
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={(e) => scrollToSection(e, "use-cases")}
                         >
                             {dict.header.useCases}
                         </Link>
                         <Link
                             href="#contact"
                             className="text-lg font-display font-bold text-korami-black/80 hover:text-korami-black transition-colors"
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={(e) => scrollToSection(e, "contact")}
                         >
                             {dict.header.contact}
                         </Link>
                         <Link
                             href="#contact"
-                            className="px-6 py-4 mt-2 bg-korami-accent text-korami-white font-display font-black text-lg border-2 border-korami-black shadow-neo text-center transition-all duration-150 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-neo-hover active:translate-x-0 active:translate-y-0 active:shadow-neo"
-                            onClick={() => setMobileMenuOpen(false)}
+                            className="px-6 py-4 mt-2 bg-korami-accent text-korami-white font-display font-black text-lg border-2 border-korami-black shadow-neo text-center transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-neo-hover active:translate-x-0 active:translate-y-0 active:shadow-neo"
+                            onClick={(e) => scrollToSection(e, "contact")}
                         >
                             {dict.header.getDemo}
                         </Link>

@@ -20,18 +20,18 @@ export default function ProblemOutcome({ dict }: { dict: any }) {
         hidden: { opacity: 0, x: -10, filter: 'blur(4px)' },
         visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
     };
-
     return (
-        <section className="bg-korami-white py-24">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <section className="bg-korami-white py-12 md:py-16">
+            <div className="max-w-5xl mx-auto px-6">
+                <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                     {/* Left: Pain */}
-                    <div className="border-4 border-korami-black p-8 md:p-12 bg-korami-white shadow-[0_0_0_0_rgba(17,18,22,0)] transition-all duration-300">
-                        <h2 className="text-korami-black font-display font-black text-4xl md:text-5xl mb-8 uppercase tracking-tight">
+                    <div className="border-2 border-korami-black p-6 md:p-8 bg-korami-white shadow-neo transition-all duration-300 relative">
+                        <div className="absolute top-0 right-0 w-8 h-8 md:w-12 md:h-12 border-l-2 border-b-2 border-korami-black bg-korami-gray/5 -mt-[2px] -mr-[2px]"></div>
+                        <h2 className="text-korami-black font-display font-black text-2xl md:text-4xl mb-6 uppercase tracking-tighter leading-none">
                             {dict.problemOutcome.theProblem}
                         </h2>
                         <motion.ul
-                            className="space-y-4 text-korami-black/60 text-lg font-bold leading-relaxed"
+                            className="space-y-4 text-korami-black/80 text-sm md:text-lg font-bold leading-[1.6]"
                             variants={containerVariants}
                             initial="hidden"
                             whileInView="visible"
@@ -39,7 +39,7 @@ export default function ProblemOutcome({ dict }: { dict: any }) {
                         >
                             {problems.map((problem: string, i: number) => (
                                 <motion.li key={i} variants={itemVariants} className="flex items-start">
-                                    <span className="text-red-500/70 mr-4 font-black mt-1">×</span>
+                                    <span className="text-red-500/70 mr-3 font-black mt-1">×</span>
                                     {problem}
                                 </motion.li>
                             ))}
@@ -47,12 +47,15 @@ export default function ProblemOutcome({ dict }: { dict: any }) {
                     </div>
 
                     {/* Right: Outcome */}
-                    <div className="border-4 border-korami-black/20 hover:border-korami-accent/50 p-8 md:p-12 bg-korami-black text-korami-white shadow-2xl hover:shadow-[0_20px_50px_rgba(225,55,37,0.15)] transition-all duration-500 transform hover:-translate-y-1 group">
-                        <h2 className="text-korami-white font-display font-black text-4xl md:text-5xl mb-10 uppercase tracking-tight group-hover:text-korami-accent transition-colors duration-500">
+                    <div className="border-2 border-korami-black hover:border-korami-accent/50 p-6 md:p-8 bg-korami-black text-korami-white shadow-neo hover:shadow-neo-hover hover:-translate-y-1 hover:-translate-x-1 active:translate-x-0 active:translate-y-0 active:shadow-neo transition-all duration-300 group relative">
+                        <div className="absolute top-0 right-0 w-8 h-8 md:w-12 md:h-12 border-l-2 border-b-2 border-korami-accent bg-korami-white/5 flex items-center justify-center -mt-[2px] -mr-[2px]">
+                            <div className="w-2 h-2 rounded-full bg-korami-accent animate-pulse"></div>
+                        </div>
+                        <h2 className="text-korami-white font-display font-black text-2xl md:text-4xl mb-6 uppercase tracking-tighter leading-none group-hover:text-korami-accent transition-colors duration-300">
                             {dict.problemOutcome.theOutcome}
                         </h2>
                         <motion.ul
-                            className="space-y-8 text-korami-white/90 text-xl font-bold leading-relaxed"
+                            className="space-y-4 text-korami-white/80 text-sm md:text-lg font-bold leading-[1.6]"
                             variants={containerVariants}
                             initial="hidden"
                             whileInView="visible"
@@ -60,7 +63,7 @@ export default function ProblemOutcome({ dict }: { dict: any }) {
                         >
                             {outcomes.map((outcome: string, i: number) => (
                                 <motion.li key={i} variants={itemVariants} className="flex items-start">
-                                    <span className="text-korami-accent mr-5 font-black mt-1 text-2xl">✓</span>
+                                    <span className="text-korami-accent mr-3 font-black mt-1">✓</span>
                                     {outcome}
                                 </motion.li>
                             ))}
@@ -68,9 +71,8 @@ export default function ProblemOutcome({ dict }: { dict: any }) {
                     </div>
                 </div>
 
-                {/* Bottom line - conversion message */}
-                <div className="mt-16 pt-8 border-t border-korami-black/10 flex justify-center text-center">
-                    <p className="text-korami-black/60 text-xl font-bold tracking-wide">
+                <div className="mt-12 pt-8 border-t-2 border-korami-black/10 flex justify-center text-center">
+                    <p className="text-korami-black/80 text-lg font-bold tracking-wide">
                         {dict.problemOutcome.bottomText}
                     </p>
                 </div>

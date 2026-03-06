@@ -55,7 +55,7 @@ export default function ContactForm({ dict }: { dict: any }) {
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label htmlFor="name" className="block text-base font-display font-bold text-korami-white/90 mb-3">
+                    <label htmlFor="name" className="block text-sm font-display font-black text-korami-white uppercase tracking-widest mb-2">
                         {dict.contact.name}
                     </label>
                     <input
@@ -64,13 +64,13 @@ export default function ContactForm({ dict }: { dict: any }) {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-5 py-4 bg-korami-gray border-2 border-korami-white/20 text-korami-white text-lg font-medium placeholder:text-korami-white/40 focus:outline-none focus:border-korami-white/50 focus:ring-0 transition-all"
+                        className="w-full px-5 py-4 bg-transparent border-[3px] border-korami-white/20 text-korami-white text-base font-medium placeholder:text-korami-white/30 focus:outline-none focus:border-korami-white/70 focus:bg-korami-white/5 transition-all"
                         placeholder={dict.contact.namePlaceholder}
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="restaurant" className="block text-base font-display font-bold text-korami-white/90 mb-3">
+                    <label htmlFor="restaurant" className="block text-sm font-display font-black text-korami-white uppercase tracking-widest mb-2">
                         {dict.contact.restaurant}
                     </label>
                     <input
@@ -79,7 +79,7 @@ export default function ContactForm({ dict }: { dict: any }) {
                         required
                         value={formData.restaurant}
                         onChange={(e) => setFormData({ ...formData, restaurant: e.target.value })}
-                        className="w-full px-5 py-4 bg-korami-gray border-2 border-korami-white/20 text-korami-white text-lg font-medium placeholder:text-korami-white/40 focus:outline-none focus:border-korami-white/50 focus:ring-0 transition-all"
+                        className="w-full px-5 py-4 bg-transparent border-[3px] border-korami-white/20 text-korami-white text-base font-medium placeholder:text-korami-white/30 focus:outline-none focus:border-korami-white/70 focus:bg-korami-white/5 transition-all"
                         placeholder={dict.contact.restaurantPlaceholder}
                     />
                 </div>
@@ -87,7 +87,7 @@ export default function ContactForm({ dict }: { dict: any }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label htmlFor="phone" className="block text-base font-display font-bold text-korami-white/90 mb-3">
+                    <label htmlFor="phone" className="block text-sm font-display font-black text-korami-white uppercase tracking-widest mb-2">
                         {dict.contact.phone}
                     </label>
                     <input
@@ -96,13 +96,13 @@ export default function ContactForm({ dict }: { dict: any }) {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-5 py-4 bg-korami-gray border-2 border-korami-white/20 text-korami-white text-lg font-medium placeholder:text-korami-white/40 focus:outline-none focus:border-korami-white/50 focus:ring-0 transition-all"
+                        className="w-full px-5 py-4 bg-transparent border-[3px] border-korami-white/20 text-korami-white text-base font-medium placeholder:text-korami-white/30 focus:outline-none focus:border-korami-white/70 focus:bg-korami-white/5 transition-all"
                         placeholder={dict.contact.phonePlaceholder}
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="city" className="block text-base font-display font-bold text-korami-white/90 mb-3">
+                    <label htmlFor="city" className="block text-sm font-display font-black text-korami-white uppercase tracking-widest mb-2">
                         {dict.contact.city}
                     </label>
                     <input
@@ -110,22 +110,22 @@ export default function ContactForm({ dict }: { dict: any }) {
                         id="city"
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="w-full px-5 py-4 bg-korami-gray border-2 border-korami-white/20 text-korami-white text-lg font-medium placeholder:text-korami-white/40 focus:outline-none focus:border-korami-white/50 focus:ring-0 transition-all"
+                        className="w-full px-5 py-4 bg-transparent border-[3px] border-korami-white/20 text-korami-white text-base font-medium placeholder:text-korami-white/30 focus:outline-none focus:border-korami-white/70 focus:bg-korami-white/5 transition-all"
                         placeholder={dict.contact.cityPlaceholder}
                     />
                 </div>
             </div>
 
             <div>
-                <label htmlFor="message" className="block text-base font-display font-bold text-korami-white/90 mb-3">
+                <label htmlFor="message" className="block text-sm font-display font-black text-korami-white uppercase tracking-widest mb-2">
                     {dict.contact.message}
                 </label>
                 <textarea
                     id="message"
-                    rows={5}
+                    rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-5 py-4 bg-korami-gray border-2 border-korami-white/20 text-korami-white text-lg font-medium placeholder:text-korami-white/40 focus:outline-none focus:border-korami-white/50 focus:ring-0 transition-all resize-none"
+                    className="w-full px-5 py-4 bg-transparent border-[3px] border-korami-white/20 text-korami-white text-base font-medium placeholder:text-korami-white/30 focus:outline-none focus:border-korami-white/70 focus:bg-korami-white/5 transition-all resize-none"
                     placeholder={dict.contact.messagePlaceholder}
                 />
             </div>
@@ -142,13 +142,21 @@ export default function ContactForm({ dict }: { dict: any }) {
                 </div>
             )}
 
-            <button
-                type="submit"
-                disabled={status === "loading"}
-                className="w-full px-10 py-5 bg-korami-accent text-korami-white font-display font-black text-xl border-2 border-korami-black transition-all duration-150 hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed shadow-[4px_4px_0px_0px_rgba(250,250,250,1)] hover:shadow-[8px_8px_0px_0px_rgba(250,250,250,1)] active:shadow-[4px_4px_0px_0px_rgba(250,250,250,1)]"
-            >
-                {status === "loading" ? dict.contact.buttonLoading : dict.contact.button}
-            </button>
+            <div className="pt-6 border-t border-korami-white/10 mt-8">
+                <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="w-full px-10 py-5 bg-korami-white text-korami-black font-display font-black text-xl hover:bg-korami-accent hover:text-korami-white transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    {status === "loading" ? dict.contact.buttonLoading : dict.contact.button}
+                </button>
+                <div className="mt-4 flex items-start gap-3 p-4 bg-korami-black/50 border border-korami-white/10">
+                    <div className="w-1.5 h-1.5 bg-korami-accent rounded-full mt-1.5 flex-shrink-0"></div>
+                    <p className="text-korami-white/60 text-sm font-semibold leading-snug">
+                        {dict.contact.microcopy}
+                    </p>
+                </div>
+            </div>
         </form>
     );
 }

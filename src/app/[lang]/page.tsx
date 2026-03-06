@@ -1,11 +1,13 @@
 import Hero from "@/components/Hero";
+import SignatureDemo from "@/components/SignatureDemo";
 import ProblemOutcome from "@/components/ProblemOutcome";
 import HowItWorks from "@/components/HowItWorks";
+import MenuOnboarding from "@/components/MenuOnboarding";
 import UseCases from "@/components/UseCases";
 import SafetyHandoff from "@/components/SafetyHandoff";
+import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import ContactForm from "@/components/ContactForm";
-import SocialProof from "@/components/SocialProof";
 import { getDictionary, Locale } from "@/dictionaries";
 
 export default async function Home({
@@ -20,17 +22,14 @@ export default async function Home({
   return (
     <div className="flex flex-col w-full">
       <Hero dict={dict} />
-      <SocialProof dict={dict} />
       <ProblemOutcome dict={dict} />
       <HowItWorks dict={dict} />
+      <SignatureDemo dict={dict} />
+      <MenuOnboarding dict={dict} />
       <UseCases dict={dict} />
       <SafetyHandoff dict={dict} />
+      <FAQ dict={dict} />
       <CTA dict={dict} />
-      <section id="contact" className="bg-korami-black py-16">
-        <div className="max-w-4xl mx-auto px-6">
-          <ContactForm dict={dict} />
-        </div>
-      </section>
     </div>
   );
 }
