@@ -33,6 +33,9 @@ export default function PrivacyPolicy() {
             <p>
               We do not sell your personal information. We may share information with service providers that help us operate messaging and ordering (e.g., SMS/telephony providers) only as needed to provide the service.
             </p>
+            <p className="mt-4">
+              Mobile opt-in information is not shared with third parties for marketing or promotional purposes.
+            </p>
           </section>
 
           <section>

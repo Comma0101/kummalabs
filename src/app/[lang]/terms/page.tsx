@@ -50,6 +50,13 @@ export default function TermsConditions() {
           </section>
 
           <section>
+            <h2 className="text-2xl font-bold text-korami-black mb-4">Mobile information sharing</h2>
+            <p>
+              Mobile information is not shared with third parties for marketing or promotional purposes.
+            </p>
+          </section>
+
+          <section>
             <h2 className="text-2xl font-bold text-korami-black mb-4">Support contact</h2>
             <p>
               Email: <a href="mailto:support@kummalabs.com" className="underline hover:text-korami-black">support@kummalabs.com</a>
