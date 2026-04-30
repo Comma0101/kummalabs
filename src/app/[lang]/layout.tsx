@@ -49,7 +49,7 @@ export default async function RootLayout({
       >
         <Header dict={dict} currentLang={locale} />
         <main>{children}</main>
-        <Footer dict={dict} />
+        <Footer dict={dict} currentLang={locale} />
       </body>
     </html>
   );

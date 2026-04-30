@@ -7,6 +7,8 @@ const root = process.cwd();
 const disclosurePath = join(root, "src/app/[lang]/sms-disclosure/page.tsx");
 const privacyPath = join(root, "src/app/[lang]/privacy-policy/page.tsx");
 const termsPath = join(root, "src/app/[lang]/terms/page.tsx");
+const footerPath = join(root, "src/components/Footer.tsx");
+const layoutPath = join(root, "src/app/[lang]/layout.tsx");
 
 test("sms disclosure page contains carrier proof-of-consent content", () => {
   assert.equal(existsSync(disclosurePath), true, "sms disclosure route is missing");
@@ -34,4 +36,15 @@ test("linked policy pages include mobile marketing non-sharing language", () => 
 
   assert.match(privacy, requiredPhrase);
   assert.match(terms, requiredPhrase);
+});
+
+test("site footer exposes compliance pages for the active locale", () => {
+  const footer = readFileSync(footerPath, "utf8");
+  const layout = readFileSync(layoutPath, "utf8");
+
+  assert.match(footer, /currentLang/);
+  assert.match(footer, /privacy-policy/);
+  assert.match(footer, /terms/);
+  assert.match(footer, /sms-disclosure/);
+  assert.match(layout, /<Footer dict=\{dict\} currentLang=\{locale\} \/>/);
 });
