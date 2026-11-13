@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { INQUIRY_MAILTO } from "@/lib/studio-site";
 import { work } from "@/lib/studio-work";
 
 export const metadata: Metadata = {
@@ -69,9 +68,9 @@ export default function WorkPage() {
               Tell us what happens today and what a good result looks like.
             </p>
           </div>
-          <a href={INQUIRY_MAILTO} className="self-start rounded-full bg-paper px-5 py-3 font-semibold text-ink hover:bg-paper/90 lg:self-auto">
+          <Link href="/#brief" className="self-start rounded-full bg-paper px-5 py-3 font-semibold text-ink hover:bg-paper/90 lg:self-auto">
             Describe your project
-          </a>
+          </Link>
         </div>
       </section>
     </>

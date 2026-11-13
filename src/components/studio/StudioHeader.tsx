@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { INQUIRY_MAILTO } from "@/lib/studio-site";
 
 const nav = [
   { href: "/#agents", label: "Agents" },
@@ -26,12 +25,12 @@ export function StudioHeader() {
             ))}
           </ul>
         </nav>
-        <a
-          href={INQUIRY_MAILTO}
+        <Link
+          href="/#brief"
           className="ml-auto rounded-full bg-ink px-4 py-2 text-[15px] font-semibold text-paper hover:bg-ink/90"
         >
           Describe your project
-        </a>
+        </Link>
       </div>
     </header>
   );

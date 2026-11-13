@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FileText, Database, Printer, Brain, ShieldCheck, MessageSquare, Zap } from "lucide-react";
+import { FileText, Database, Brain, ShieldCheck, MessageSquare, Zap } from "lucide-react";
 
 export default function MenuOnboarding({ dict }: { dict: any }) {
     const features = dict.menuOnboarding.features;
@@ -93,7 +93,7 @@ export default function MenuOnboarding({ dict }: { dict: any }) {
                                     {dict.menuOnboarding.diagram.microLabel3}
                                 </span>
                                 <div className="w-16 h-16 bg-korami-white text-korami-black rounded-none flex items-center justify-center border-2 border-korami-black shadow-[4px_4px_0px_0px_#111216] relative z-10 transition-transform duration-300 group-hover:-translate-y-1">
-                                    <Printer className="w-7 h-7" strokeWidth={2.5} />
+                                    <Zap className="w-7 h-7" strokeWidth={2.5} />
                                 </div>
                             </div>
                             <div className="mt-8 flex flex-col justify-start flex-1 w-full">

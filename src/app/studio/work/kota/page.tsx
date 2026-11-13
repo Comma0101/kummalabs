@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { INQUIRY_MAILTO, KOTA_URL } from "@/lib/studio-site";
+import Link from "next/link";
+import { KOTA_URL } from "@/lib/studio-site";
 
 export const metadata: Metadata = {
   title: "KOTA case study: bilingual AI phone ordering",
@@ -159,9 +160,9 @@ export default function KotaCaseStudy() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <a href={INQUIRY_MAILTO} className="rounded-full bg-paper px-5 py-3 font-semibold text-ink hover:bg-paper/90">
-              Describe your project
-            </a>
+            <Link href="/#brief" className="rounded-full bg-paper px-5 py-3 font-semibold text-ink hover:bg-paper/90">
+            Describe your project
+          </Link>
             <a href="/KummaLabs-KOTA-case-study.pdf" className="link text-paper">
               Download the one-page PDF
             </a>

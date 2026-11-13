@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { escapeHtml } from "@/lib/brief";
 
 export async function POST(request: NextRequest) {
     try {
@@ -37,17 +38,17 @@ export async function POST(request: NextRequest) {
         const { data, error } = await resend.emails.send({
             from: "KOTA Contact Form <onboarding@resend.dev>",
             to: process.env.NOTIFICATION_EMAIL || "wuyang1010@gmail.com",
-            subject: `New Demo Request from ${restaurant}`,
+            subject: `New Demo Request from ${String(restaurant).slice(0, 120)}`,
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #000;">New Demo Request</h2>
           <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Restaurant:</strong> ${restaurant}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>City:</strong> ${city}</p>
+            <p><strong>Name:</strong> ${escapeHtml(String(name))}</p>
+            <p><strong>Restaurant:</strong> ${escapeHtml(String(restaurant))}</p>
+            <p><strong>Phone:</strong> ${escapeHtml(String(phone))}</p>
+            <p><strong>City:</strong> ${escapeHtml(String(city))}</p>
             <p><strong>Message:</strong></p>
-            <p style="white-space: pre-wrap;">${message}</p>
+            <p style="white-space: pre-wrap;">${escapeHtml(String(message))}</p>
           </div>
           <p style="color: #666; font-size: 12px;">This email was sent from the KOTA contact form.</p>
         </div>

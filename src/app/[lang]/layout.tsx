@@ -27,7 +27,7 @@ const noto = Noto_Sans_SC({
 
 export const metadata: Metadata = {
   title: "KOTA by Kummalabs - Never Miss a Phone Order Again",
-  description: "KOTA handles phone orders and reservations when your staff is busy—then sends confirmed details to your kitchen.",
+  description: "KOTA is an AI phone agent for restaurants, now in pilot. It takes phone orders in English or Mandarin from your menu data and texts the caller a confirmation.",
 };
 
 export default async function RootLayout({

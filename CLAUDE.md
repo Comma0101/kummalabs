@@ -39,6 +39,15 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
   font); they never load KOTA's `globals.css`. Studio color tokens (`paper`, `ink`, `graphite`, `rule`,
   `pass`, `hold`, `sheet`) live in `tailwind.config.ts` next to the `korami` namespace.
 - `src/app/robots.ts` and `src/app/sitemap.ts` describe the studio site only.
+- Studio pages: `/` (home + project-brief form at `#brief`), `/work`, `/work/kota`,
+  `/work/menu-validation` (recorded run), `/services/integration`.
+- Project brief: `src/components/studio/BriefForm.tsx` → `POST /api/brief` → email via Resend.
+  Validation and spam rules are in `src/lib/brief.ts` (tested in `tests/brief.test.mjs`). The route
+  returns success only when the provider accepts the email; otherwise the form shows an error with
+  the email fallback. Env: `RESEND_API_KEY`, `BRIEF_NOTIFICATION_EMAIL` (falls back to
+  `NOTIFICATION_EMAIL`), optional `BRIEF_FROM_EMAIL`. No rate limiting yet beyond honeypot + timing.
+- `/work/menu-validation` shows verbatim output of `scripts/menu_grounding.py` from the KOTA repo
+  (commit d15e5d7, synthetic input). Re-run and paste; never hand-edit the reported messages.
 - `/studio/*` URLs are not reachable on the KOTA host (the locale redirect sends them to `/en/...`).
 
 ### KOTA site
@@ -71,11 +80,12 @@ demonstrated / implemented but unverified / documented only / planned / commerci
 Never add invented customers, testimonials, metrics (accuracy, uptime, latency, conversion,
 volume), certifications, compliance claims, or integrations.
 
-Currently in copy and **unverified** — check against the KOTA backend before reusing or expanding:
-- Kitchen cloud-printer delivery (`cloudPrinters`, HowItWorks/FAQ copy). Printing is not established as shipped.
-- "Verified Accuracy" wording.
-- `socialProof` stats in both dictionaries ("3,200+ orders/mo", "0 missed calls", "24/7
-  reliability", …): unsubstantiated. Never render them; candidates for removal.
+KOTA copy was reconciled with the backend on 2026-11-12 (both locales): KOTA is described as a
+tested prototype in pilot; verified = EN/Mandarin calls, menu Q&A from menu data, order capture,
+caller SMS confirmation, press-0 handoff, call transcripts. Marked "coming soon"/not built: kitchen
+delivery (printer, tablet, staff text), reservations, hours/location Q&A, catering, order status,
+Spanish. Don't reintroduce printing, "any language", capacity, uptime, or go-live-time claims.
+Still unverified:
 - `support@kummalabs.com` on the privacy/terms pages; the confirmed business address is
   `info@kummalabs.com`. Confirm support@ is a working mailbox before relying on it.
 
@@ -97,7 +107,6 @@ comes from; only illustrative examples may describe systems we haven't built, an
 ## Known issues (not yet fixed)
 
 `src/app/api/contact/route.ts`:
-- Form fields are interpolated unescaped into the notification email HTML.
 - No rate limiting or bot protection.
 - Sender is Resend's sandbox `onboarding@resend.dev`, which only delivers to the Resend account
   owner until a domain is verified.

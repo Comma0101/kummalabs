@@ -6,13 +6,14 @@ export default function UseCases({ dict }: { dict: any }) {
     const activeFeatures = [
         { ...dict.useCases.features[0], colSpan: "col-span-1 md:col-span-2 lg:col-span-2", isPrimary: true },
         { ...dict.useCases.features[2], colSpan: "col-span-1", isPrimary: false },
-        { ...dict.useCases.features[3], colSpan: "col-span-1", isPrimary: false },
-        { ...dict.useCases.features[4], colSpan: "col-span-1", isPrimary: false },
-        { ...dict.useCases.features[5], colSpan: "col-span-1 md:col-span-2 lg:col-span-1", isPrimary: false }
     ];
 
+    // Not built yet: reservations, hours/location Q&A, catering, order status.
     const roadmapFeatures = [
-        dict.useCases.features[1]
+        dict.useCases.features[1],
+        dict.useCases.features[3],
+        dict.useCases.features[4],
+        dict.useCases.features[5]
     ];
 
     const containerVariants = {

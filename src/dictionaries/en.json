@@ -3,33 +3,23 @@
     "howItWorks": "How it Works",
     "useCases": "Use Cases",
     "contact": "Contact",
-    "getDemo": "Get a Demo",
-    "systemStatus": "System Operational"
+    "getDemo": "Join the pilot",
+    "systemStatus": "Pilot program"
   },
   "hero": {
     "answer": "Answer",
     "everyCall": "every missed call.",
     "capture": "Capture every phone order.",
-    "description": "KOTA is an AI voice agent built specifically for restaurants. We handle rush-hour overflow, answer menu questions, and send structured orders to your kitchen.",
+    "description": "KOTA is an AI voice agent built for restaurants. It answers the phone in English or Mandarin, answers menu questions from your menu data, takes the order, and texts the caller a confirmation. Now in pilot.",
     "roiMetric": "Stop losing revenue to missed calls and busy signals.",
-    "getDemo": "Book a live demo",
+    "getDemo": "Ask about the pilot",
     "listenCall": "See KOTA in action",
     "marquee": {
       "noPos": "No POS required",
-      "cloudPrinters": "Prints to your kitchen",
-      "multipleCalls": "Handles infinite calls",
-      "fallback": "SMS confirmation fallback"
+      "cloudPrinters": "English and Mandarin",
+      "multipleCalls": "Answers from your menu data",
+      "fallback": "SMS order confirmation"
     }
-  },
-  "socialProof": {
-    "title": "Trusted by busy restaurants to handle the dinner rush",
-    "stats": [
-      "3,200+ orders/mo",
-      "Saved 40h/week",
-      "0 missed calls",
-      "1,500+ reservations",
-      "24/7 reliability"
-    ]
   },
   "sampleCall": {
     "title": "Hear KOTA in Action",
@@ -39,7 +29,7 @@
   },
   "signatureDemo": {
     "title": "From Call to Ticket",
-    "description": "Watch a live simulation of KOTA transcribing a customer order and structuring it into a kitchen-ready receipt.",
+    "description": "Watch a simulation of KOTA taking a phone order and structuring it into an order ticket.",
     "phone": {
       "incomingCall": "Incoming Call",
       "statusReady": "Ready",
@@ -48,12 +38,12 @@
       "statusEnded": "Call Ended",
       "playAudio": "Simulate Call",
       "liveAudio": "Live Audio",
-      "instruction": "Click 'Simulate Call' to start the live transcript simulation.",
+      "instruction": "Click 'Simulate Call' to start the transcript simulation.",
       "agent": "KOTA",
       "caller": "Caller"
     },
     "receipt": {
-      "title": "Kitchen Ticket",
+      "title": "Order Ticket",
       "orderNumber": "Order #K-8924",
       "item": "Item",
       "qty": "Qty",
@@ -62,14 +52,14 @@
       "customer": "Customer:",
       "type": "Type:",
       "phonePickup": "Phone Pickup",
-      "readyForKitchen": "Ready for Kitchen",
+      "readyForKitchen": "Order Confirmed",
       "drafting": "Drafting...",
       "pendingCustomer": "Pending..."
     },
     "conversation": [
       {
         "role": "agent",
-        "text": "Hi, thanks for calling Korami Sushi. Would you like to place an order or make a reservation?",
+        "text": "Hi, thanks for calling Korami Sushi. What would you like to order?",
         "delay": 1000
       },
       {
@@ -104,12 +94,12 @@
       },
       {
         "role": "user",
-        "text": "No, that's everything. How long will it take?",
+        "text": "No, that's everything.",
         "delay": 2500
       },
       {
         "role": "agent",
-        "text": "Your total is $42.50. It will be ready for pickup in about 20 minutes under what name?",
+        "text": "Your total is $42.50. Can I get a name for the order?",
         "delay": 3000
       },
       {
@@ -119,7 +109,7 @@
       },
       {
         "role": "agent",
-        "text": "Thanks Alex. We'll see you in 20 minutes at Korami Sushi. Goodbye!",
+        "text": "Thanks Alex. Your order is confirmed, and I've texted you the details. Goodbye!",
         "delay": 2000
       }
     ],
@@ -147,8 +137,8 @@
       "Answering basic menu questions wastes valuable time."
     ],
     "outcomes": [
-      "Every call in any language is answered instantly.",
-      "Orders are structured and sent straight to the kitchen.",
+      "Calls are answered in English or Mandarin, even during the rush.",
+      "Orders are captured as structured records, and the caller gets a text confirmation.",
       "Staff stay focused entirely on in-house service.",
       "Menu questions and combos are handled automatically."
     ],
@@ -157,23 +147,23 @@
   "howItWorks": {
     "title": "Built for Restaurant Workflows",
     "subtitle": "KOTA handles the phone so your staff can handle the floor.",
-    "description": "A seamless 4-step process from the customer's voice to your kitchen printer.",
+    "description": "A 4-step flow from the customer's voice to a confirmed, structured order.",
     "steps": [
       {
         "title": "Customer Calls",
-        "description": "KOTA answers instantly. No holds, no missed calls, even during Friday night rush."
+        "description": "KOTA answers the call and lets the caller choose English or Chinese."
       },
       {
         "title": "KOTA Handles the Order",
-        "description": "It naturally guides the customer through your menu, handles modifiers, and answers questions in any language."
+        "description": "It guides the customer through your menu, handles modifiers, and answers questions in English or Mandarin."
       },
       {
         "title": "Order is Confirmed",
-        "description": "KOTA securely collects details and confirms the final order back to the customer."
+        "description": "KOTA reads each item back and confirms the order with the customer."
       },
       {
-        "title": "Ticket Sent to Kitchen",
-        "description": "The order is structured and instantly sent to your kitchen printer or SMS. Your staff stays focused on service."
+        "title": "Order Is Recorded",
+        "description": "The order is saved as a structured record and the caller gets a confirmation text. Delivery to your kitchen (printer, tablet, or a text to staff) is not built yet; we set it up with each pilot restaurant."
       }
     ],
     "setupInstruction": "No POS integration. No tablets. We just need your menu."
@@ -181,35 +171,35 @@
   "menuOnboarding": {
     "title1": "No POS Needed.",
     "title2": "We Build Your Orderable Menu.",
-    "subtitle": "Send us your website, Yelp/DoorDash links, PDFs, or menu photos. We structure your items and modifiers so KOTA can start taking live phone orders.",
+    "subtitle": "Send us your menu as PDFs, text, or photos. We structure your items and modifiers so KOTA can take phone orders.",
     "diagram": {
       "microLabel1": "1. Ingest Menu",
-      "input": "We extract from your website links, DoorDash/Yelp, PDFs, or photos.",
+      "input": "We extract from your menu photos, PDFs, or text.",
       "microLabel2": "2. Verify Structure",
       "processing1": "KOTA maps your items and modifiers. ",
-      "processingBold": "Human-verified",
+      "processingBold": "Reviewed by a person",
       "processing2": " for accuracy.",
       "microLabel3": "3. Launch Agent",
-      "output": "Your AI is ready to take orders and send tickets to your kitchen."
+      "output": "Your agent is ready to take orders in a pilot."
     },
     "features": [
       {
         "title": "AI-Powered Extraction",
-        "description": "We build your menu model directly from platforms or images. No manual entry needed."
+        "description": "We build your menu model from photos or text. No manual entry needed."
       },
       {
-        "title": "Verified Accuracy",
-        "description": "Our team reviews the AI model to validate complex modifiers. KOTA never guesses."
+        "title": "Checked Before Launch",
+        "description": "Automated checks remove anything that isn't on your menu, and a person reviews complex modifiers. KOTA answers from your menu data, not guesses."
       },
       {
-        "title": "Fast Text Updates",
-        "description": "Need to 86 an item? Text our support number and your menu updates fast."
+        "title": "Menu Updates",
+        "description": "Need to 86 an item? Tell us and we update your menu data."
       }
     ],
     "guarantee": {
-      "big": "24h",
-      "title": "Go live fast",
-      "subtitle": "From menu handoff to first live call."
+      "big": "Pilot",
+      "title": "onboarding",
+      "subtitle": "We set up your menu and run test calls with you before any live call."
     }
   },
   "useCases": {
@@ -220,57 +210,57 @@
     "features": [
       {
         "title": "Phone Orders",
-        "description": "Captures items, modifiers, and customer info—confirmed via read-back before submission."
+        "description": "Captures items, modifiers, and options. Each item is confirmed by read-back before it's added."
       },
       {
         "title": "Reservations & Waitlist",
-        "description": "Books reservations and manages waitlist requests dynamically."
+        "description": "Booking reservations and managing waitlist requests."
       },
       {
-        "title": "Menu & Allergens Q&A",
-        "description": "Answers complex allergen and ingredient questions instantly based on your custom menu data."
+        "title": "Menu Q&A",
+        "description": "Answers menu and ingredient questions from your own menu data."
       },
       {
         "title": "Hours, Location & Parking",
-        "description": "Stops repetitive logistical calls during rush hour."
+        "description": "Answering repetitive logistical questions during rush hour."
       },
       {
         "title": "Catering Inquiries",
-        "description": "Collects group sizes, dietary restrictions, and dates, routing them directly to your event manager."
+        "description": "Collecting group sizes, dietary needs, and dates for your event manager."
       },
       {
         "title": "Order Status & Timing",
-        "description": "Eliminates 'is it ready yet?' calls. Gives real-time status updates based on your prep times."
+        "description": "Answering 'is it ready yet?' calls."
       }
     ]
   },
   "safety": {
     "title1": "Built for",
     "title2": "Reliability",
-    "description": "KOTA doesn't guess. Smart guardrails ensure orders are perfectly captured, or instantly escalated to your team.",
+    "description": "KOTA doesn't guess. Menu answers and prices come from your menu data, and callers can reach your staff at any time.",
     "features": [
       {
         "title": "Human Fallback",
-        "description": "Handoffs to staff when confidence is low or complex questions arise."
+        "description": "Callers can press 0 at any time to be transferred to your staff."
       },
       {
         "title": "Full Transparency",
         "description": "Every call is transcribed and logged. Review exactly what was said."
       },
       {
-        "title": "Custom Guardrails",
-        "description": "Enforce strict rules. E.g., If an item is 86'd, the agent must offer alternatives from the active menu."
+        "title": "Rules in Code",
+        "description": "Required options and combos are enforced in code. If an item isn't on your active menu, the agent offers real alternatives from it."
       }
     ],
     "languages": {
       "title1": "Speaks Your",
       "title2": "Customers' Language",
-      "description": "KOTA supports multiple languages out of the box, ensuring you never lose an order to a language barrier.",
+      "description": "KOTA takes calls in English and Mandarin today.",
       "english": "English",
       "mandarin": "Mandarin (中文)",
       "spanish": "Spanish (Español)",
       "custom": "Custom Languages",
-      "customDesc": "We can build support for specific languages upon request.",
+      "customDesc": "Other languages can be scoped on request.",
       "live": "Live",
       "comingSoon": "Coming Soon"
     }
@@ -281,23 +271,23 @@
     "items": [
       {
         "question": "Does KOTA work with my current menu?",
-        "answer": "Yes. KOTA does not require a complex POS integration. We build your AI directly from your existing online menu, website, or even photos of your printed menu. If you have complex modifiers or combos, our team manually verifies the logic before you go live."
+        "answer": "Yes. KOTA does not require a POS integration. We build your menu data from your menu PDFs, text, or photos. If you have complex modifiers or combos, we review the logic by hand before any live call."
       },
       {
         "question": "How do orders get sent to my staff?",
-        "answer": "Orders are instantly structured and pushed to a Wi-Fi enabled Cloud Printer in your kitchen. Alternatively, we can route orders directly to a manager's phone via SMS or a tablet. Your staff never has to transcribe a voice order again."
+        "answer": "Today, each order is saved as a structured record and the caller receives a text confirmation. Getting orders to your kitchen (by printer, tablet, or a text to staff) is not built yet; we set that up with each pilot restaurant."
       },
       {
         "question": "Can it answer common questions about our restaurant?",
-        "answer": "Absolutely. During onboarding, we ingest your operating hours, parking situation, allergy protocols, and common FAQs. KOTA handles the repetitive questions so your staff doesn't have to."
+        "answer": "KOTA answers menu questions from the menu data we onboard. Hours, parking, and other general questions are on the roadmap."
       },
       {
         "question": "What happens if a customer asks something KOTA doesn't know?",
-        "answer": "KOTA is built with strict boundary rails. If a customer asks an overly complex question, has a severe allergy concern, or requests something off-menu, KOTA will politely state it cannot help and can immediately transfer the call to your human staff."
+        "answer": "KOTA answers only from your menu data. If it can't find a match, it offers real menu items instead of guessing, and the caller can press 0 at any time to reach your staff."
       },
       {
         "question": "What cuisines or restaurant types are a good fit?",
-        "answer": "Our current pilot focus is on high-volume takeout/delivery businesses where missed calls equal lost revenue—especially Pizza, Sushi, Thai, Chinese, and busy fast-casual concepts."
+        "answer": "KOTA is a tested prototype and we are looking for our first pilot restaurants: high-volume takeout businesses where missed calls mean lost revenue, especially Pizza, Sushi, Thai, Chinese, and busy fast-casual concepts."
       }
     ]
   },
@@ -305,11 +295,11 @@
     "title": "See If KOTA Fits Your Workflow",
     "subtitle": "Stop missing calls. Start capturing every order.",
     "bullets": [
-      "Custom pilot onboarding",
-      "Menu logic verification",
-      "Live workflow walkthrough"
+      "Pilot onboarding",
+      "Menu logic review",
+      "Test calls on your menu"
     ],
-    "button": "Request a Live Demo",
+    "button": "Ask About the Pilot",
     "contact": "Or contact us directly"
   },
   "contact": {
@@ -323,14 +313,14 @@
     "cityPlaceholder": "e.g., San Francisco",
     "message": "Message (Optional)",
     "messagePlaceholder": "Tell us about your volume or specific needs...",
-    "success": "Received. We'll reach out within 24 hours.",
-    "button": "Request Demo",
+    "success": "Received. We'll reach out within 1 business day.",
+    "button": "Send Request",
     "buttonLoading": "Sending Request...",
-    "microcopy": "We will text you within 1 business day to schedule a 5-minute live demonstration.",
+    "microcopy": "We'll reply within 1 business day to talk through a pilot.",
     "errorGeneric": "Failed to send message"
   },
   "footer": {
-    "copyright": "2025 Kummalabs. All systems optimal.",
+    "copyright": "2026 Kummalabs. KOTA is in pilot.",
     "builtWith": "Built with Trust & Responsibility"
   }
 }

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Unplug, Printer, Headset, Zap } from "lucide-react";
+import { Unplug, Languages, Headset, Zap } from "lucide-react";
 
 export default function Hero({ dict }: { dict: any }) {
     const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -57,8 +57,8 @@ export default function Hero({ dict }: { dict: any }) {
                                 {dict.hero.getDemo}
                             </Link>
                             <Link
-                                href="#signature-demo"
-                                onClick={(e) => scrollToSection(e, "signature-demo")}
+                                href="#demo"
+                                onClick={(e) => scrollToSection(e, "demo")}
                                 className="group px-10 py-5 bg-korami-white text-korami-black font-black text-xl border-2 border-korami-black shadow-neo hover:shadow-neo-hover hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 active:shadow-neo transition-all duration-300 w-full sm:w-auto text-center flex items-center justify-center gap-3">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="group-hover:scale-110 transition-transform">
                                     <path d="M5 3l14 9-14 9V3z" />
@@ -79,7 +79,7 @@ export default function Hero({ dict }: { dict: any }) {
                             <span className="text-korami-white/80 font-black text-[10px] md:text-xs tracking-[0.25em] uppercase transition-colors duration-300 group-hover:text-korami-white">{dict.hero.marquee.noPos}</span>
                         </div>
                         <div className="flex flex-col items-center justify-center group cursor-default">
-                            <Printer className="w-6 h-6 text-korami-white/30 group-hover:text-korami-white transition-colors duration-300 mb-3" />
+                            <Languages className="w-6 h-6 text-korami-white/30 group-hover:text-korami-white transition-colors duration-300 mb-3" />
                             <span className="text-korami-white/80 font-black text-[10px] md:text-xs tracking-[0.25em] uppercase transition-colors duration-300 group-hover:text-korami-white">{dict.hero.marquee.cloudPrinters}</span>
                         </div>
                         <div className="flex flex-col items-center justify-center group cursor-default">

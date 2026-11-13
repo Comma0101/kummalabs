@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AgentRuns } from "@/components/studio/AgentRuns";
-import { INQUIRY_MAILTO, STUDIO_EMAIL } from "@/lib/studio-site";
+import { BriefForm } from "@/components/studio/BriefForm";
+import { STUDIO_EMAIL } from "@/lib/studio-site";
 import { work } from "@/lib/studio-work";
 
 const agents = [
@@ -41,7 +42,7 @@ const agents = [
   {
     name: "Research and monitoring",
     reads: "Websites, search results, feeds",
-    does: "Collects and grades sources, and rejects citations it didn’t actually read",
+    does: "Collects sources, logs every page it opened, and flags citations that aren’t in that log",
     writes: "Reports, database, alerts",
     proof: { id: "research-agent", label: "Research agent" },
   },
@@ -71,6 +72,7 @@ const services = [
       "Approval screens and dashboards",
     ],
     first: "One integration, with duplicate and failure handling, tested on your edge cases.",
+    link: { href: "/services/integration", label: "What an integration project includes" },
   },
   {
     verb: "Improve",
@@ -136,9 +138,9 @@ export default function StudioHome() {
             it worked, and hands off to a person when it should.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <a href={INQUIRY_MAILTO} className="rounded-full bg-ink px-5 py-3 font-semibold text-paper hover:bg-ink/90">
+            <Link href="/#brief" className="rounded-full bg-ink px-5 py-3 font-semibold text-paper hover:bg-ink/90">
               Describe your project
-            </a>
+            </Link>
             <Link href="/work" className="link font-semibold">
               See the work
             </Link>
@@ -215,8 +217,27 @@ export default function StudioHome() {
                   <span className="font-semibold">Typical first project: </span>
                   {s.first}
                 </p>
+                {"link" in s && s.link && (
+                  <Link href={s.link.href} className="link mt-3 text-[15px] font-semibold">
+                    {s.link.label}
+                  </Link>
+                )}
               </article>
             ))}
+          </div>
+          <div id="agencies" className="mt-16 grid gap-6 border-t border-ink pt-8 md:grid-cols-[1fr_2fr]">
+            <h3 className="text-xl font-bold">For agencies</h3>
+            <div className="max-w-prose">
+              <p className="leading-relaxed">
+                If you sell AI agents or automations to your own clients, we take on project-based
+                engineering delivery: the functions, webhooks, and integrations behind an agent,
+                failure-case testing, and Mandarin conversation flows.
+              </p>
+              <p className="mt-3 leading-relaxed text-graphite">
+                Same terms as direct projects: an agreed scope and acceptance tests in writing,
+                documentation, and a handover to your team. You keep the client relationship.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -299,31 +320,23 @@ export default function StudioHome() {
         </div>
       </section>
 
-      <section id="contact" className="border-t border-rule bg-ink text-paper">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.2fr_1fr]">
+      <section id="brief" className="scroll-mt-4 border-t border-rule bg-ink text-paper">
+        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <h2 className="display text-3xl sm:text-5xl">Describe your project</h2>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-paper/80">
-              Email a few lines about the process you want to automate, connect, or fix. You’ll get
-              back questions or a proposed scope. Agencies that need delivery help are welcome too.
+              Tell us about the process you want to automate, connect, or fix. You’ll get back
+              questions or a proposed scope by email.
             </p>
-            <a
-              href={INQUIRY_MAILTO}
-              className="mt-8 inline-block rounded-full bg-paper px-5 py-3 font-semibold text-ink hover:bg-paper/90"
-            >
-              Email {STUDIO_EMAIL}
-            </a>
+            <p className="mt-6 leading-relaxed text-paper/80">
+              Prefer email? Write to{" "}
+              <a href={`mailto:${STUDIO_EMAIL}`} className="link text-paper">
+                {STUDIO_EMAIL}
+              </a>
+              .
+            </p>
           </div>
-          <div>
-            <h3 className="font-semibold">Helpful to include</h3>
-            <ul className="mt-4 space-y-2 text-paper/80">
-              <li>What happens today, step by step</li>
-              <li>Which tools and systems are involved</li>
-              <li>Rough volume: calls, emails, or documents per week</li>
-              <li>What a good result looks like</li>
-              <li>Timeline and budget range, if you have one</li>
-            </ul>
-          </div>
+          <BriefForm />
         </div>
       </section>
     </>

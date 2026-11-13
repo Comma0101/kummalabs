@@ -38,16 +38,17 @@ export const work: Work[] = [
     does:
       "Reads menu photos or text, extracts sections, items, prices, and required options, then checks the result against the menu’s own catalog. Pairings, recommendations, or aliases that point at items not on the menu are removed and flagged before anything reaches the database.",
     built: "LLM extraction, a grounding checker, structure-preserving refinement, and schema and coverage validation. Part of KOTA.",
-    evidence: "Covered by KOTA’s menu grounding, schema, and ingest tests.",
+    evidence: "Covered by KOTA’s menu grounding, schema, and ingest tests. The linked page shows a recorded run with its real output.",
+    link: { href: "/work/menu-validation", label: "See a recorded validation run" },
   },
   {
     id: "research-agent",
     name: "Research agent with source checks",
     kind: "Research and monitoring",
     status: "Internal tool",
-    shows: "An agent whose citations can be trusted: it only counts sources it actually read.",
+    shows: "An agent whose citations can be traced: every source it cites is checked against the log of pages it actually opened.",
     does:
-      "Runs web research, records every source it consulted, and grades each one. A citation counts as verified only if the agent consulted that exact URL during the run, and a finding needs at least three independent, credible sources. A person must approve before anything is spent, sent, or published.",
+      "Runs web research and logs every URL it opens. Each citation is then matched against that log: a URL the agent cited but never opened is marked unverified and discounted. That catches invented or misremembered links; it does not prove a source is right, so sources are also graded for credibility and a finding needs at least three independent ones. A person must approve before anything is spent, sent, or published.",
     built: "Node.js, OpenAI web search with structured outputs, SQLite for runs, sources, evidence, and approvals.",
     evidence: "208 automated tests pass.",
   },

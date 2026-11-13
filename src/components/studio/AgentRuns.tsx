@@ -15,29 +15,26 @@ type Run = {
   result: { title: string; rows: [string, string][] };
 };
 
-// Every run is labeled with where it comes from. Only "Inbox" is illustrative; the others
+// Every run is labeled with where it comes from. Only "Inbox" is illustrative (shown last); the others
 // describe behavior verified in our own code (KOTA, the outreach pipeline) with synthetic data.
 const runs: Run[] = [
   {
-    id: "inbox",
-    tab: "Inbox",
-    provenance: "Illustrative example of an agent we’d build. Synthetic email, not client work.",
-    input: {
-      label: "Customer email",
-      text: "“Can you quote 40 branded mugs for an event on the 18th? Same logo as last time.”",
-    },
+    id: "documents",
+    tab: "Documents",
+    provenance: "From KOTA’s menu onboarding pipeline. Synthetic menu.",
+    input: { label: "Input", text: "Three photos of a printed menu with English and Chinese item names." },
     steps: [
-      { status: "done", title: "Read the request", detail: "40 mugs, branded, needed by the 18th, repeat customer." },
-      { status: "done", title: "Found the customer in the CRM", detail: "Previous order and logo file on record." },
-      { status: "done", title: "Priced it from your price list", detail: "Quantity pricing came from the product table, not the model." },
-      { status: "asked", title: "A detail was missing", detail: "No delivery address on file, so the reply asks for one." },
-      { status: "approval", title: "Reply drafted for approval", detail: "A person reviews it and clicks send." },
+      { status: "done", title: "Extracted the menu", detail: "Sections, items, prices, and required options as structured data." },
+      { status: "asked", title: "Removed an unsupported claim", detail: "A suggested pairing named a dish that isn’t on the menu. It was removed and flagged." },
+      { status: "done", title: "Refined the descriptions", detail: "Items, options, and prices were not allowed to change." },
+      { status: "done", title: "Validated the result", detail: "Schema and coverage checks passed." },
+      { status: "done", title: "Loaded into the menu database", detail: "Ready for the phone agent to answer from." },
     ],
     result: {
-      title: "Result in the CRM",
+      title: "Result in the menu database",
       rows: [
-        ["Deal", "40 branded mugs, quote drafted"],
-        ["Status", "Waiting for approval"],
+        ["Menu", "Sections, items, options, and prices"],
+        ["Review", "Flagged issues listed for a person to check"],
       ],
     },
   },
@@ -62,26 +59,6 @@ const runs: Run[] = [
     },
   },
   {
-    id: "documents",
-    tab: "Documents",
-    provenance: "From KOTA’s menu onboarding pipeline. Synthetic menu.",
-    input: { label: "Input", text: "Three photos of a printed menu with English and Chinese item names." },
-    steps: [
-      { status: "done", title: "Extracted the menu", detail: "Sections, items, prices, and required options as structured data." },
-      { status: "asked", title: "Removed an unsupported claim", detail: "A suggested pairing named a dish that isn’t on the menu. It was removed and flagged." },
-      { status: "done", title: "Refined the descriptions", detail: "Items, options, and prices were not allowed to change." },
-      { status: "done", title: "Validated the result", detail: "Schema and coverage checks passed." },
-      { status: "done", title: "Loaded into the menu database", detail: "Ready for the phone agent to answer from." },
-    ],
-    result: {
-      title: "Result in the menu database",
-      rows: [
-        ["Menu", "Sections, items, options, and prices"],
-        ["Review", "Flagged issues listed for a person to check"],
-      ],
-    },
-  },
-  {
     id: "phone",
     tab: "Phone",
     provenance: "From KOTA, our bilingual phone-ordering prototype. Synthetic call.",
@@ -98,6 +75,29 @@ const runs: Run[] = [
       rows: [
         ["Items", "2 × beef noodle soup (wide), 1 × jasmine tea"],
         ["Status", "Placed, confirmation sent"],
+      ],
+    },
+  },
+  {
+    id: "inbox",
+    tab: "Inbox",
+    provenance: "Illustrative example of an agent we’d build. Synthetic email, not client work.",
+    input: {
+      label: "Customer email",
+      text: "“Can you quote 40 branded mugs for an event on the 18th? Same logo as last time.”",
+    },
+    steps: [
+      { status: "done", title: "Read the request", detail: "40 mugs, branded, needed by the 18th, repeat customer." },
+      { status: "done", title: "Found the customer in the CRM", detail: "Previous order and logo file on record." },
+      { status: "done", title: "Priced it from your price list", detail: "Quantity pricing came from the product table, not the model." },
+      { status: "asked", title: "A detail was missing", detail: "No delivery address on file, so the reply asks for one." },
+      { status: "approval", title: "Reply drafted for approval", detail: "A person reviews it and clicks send." },
+    ],
+    result: {
+      title: "Result in the CRM",
+      rows: [
+        ["Deal", "40 branded mugs, quote drafted"],
+        ["Status", "Waiting for approval"],
       ],
     },
   },
