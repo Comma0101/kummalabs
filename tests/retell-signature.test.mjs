@@ -25,6 +25,16 @@ test("rejects a tampered body", () => {
   assert.equal(verifyRetellSignature(body.replace("view_cart", "place_order"), sign(body, now), key, now), false);
 });
 
+test("a body that was parsed and serialized again is not the body that was signed", () => {
+  // The same JSON value in different bytes: a space after a colon, and 2.0 for 2.
+  const raw = '{"name":"add_item","args":{"item":"Spring Rolls","quantity": 2.0},"call":{"call_id":"c1"}}';
+  const header = sign(raw, now);
+  assert.equal(verifyRetellSignature(raw, header, key, now), true);
+  const again = JSON.stringify(JSON.parse(raw));
+  assert.notEqual(again, raw);
+  assert.equal(verifyRetellSignature(again, header, key, now), false);
+});
+
 test("rejects a replayed request outside the 5-minute window", () => {
   assert.equal(verifyRetellSignature(body, sign(body, now - 6 * 60_000), key, now), false);
   assert.equal(verifyRetellSignature(body, sign(body, now + 6 * 60_000), key, now), false);

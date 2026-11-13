@@ -32,9 +32,13 @@ test("code quoted in notes matches the repository", () => {
   let checked = 0;
   for (const n of notes) {
     const page = readFileSync(pagePath(n.slug), "utf8");
+    // Every <Code file=...> on the page must be in the form the pattern reads, or it would go unchecked.
+    const withFile = (page.match(/<Code\b[^>]*\bfile=/g) ?? []).length;
+    assert.equal([...page.matchAll(block)].length, withFile, `${n.slug}: a <Code file> block is not written as <Code file="…">{\`…\`}</Code>`);
     for (const [, file, raw] of page.matchAll(block)) {
       const source = readFileSync(file, "utf8").split("\n").map((l) => l.trim());
-      const quoted = raw.replace(/\\`/g, "`").replace(/\\\$/g, "$").split("\n").map((l) => l.trim());
+      // Undo the template-literal escapes the page needs: \\ for a backslash, \` for a backtick, \$ for a dollar.
+      const quoted = raw.replace(/\\([\\`$])/g, "$1").split("\n").map((l) => l.trim());
       let at = 0;
       let gapAllowed = true; // the excerpt may start anywhere in the file
       for (const line of quoted) {
@@ -55,5 +59,5 @@ test("code quoted in notes matches the repository", () => {
       checked++;
     }
   }
-  assert.ok(checked >= 5, `expected to check the notes' code blocks, checked ${checked}`);
+  assert.ok(checked >= 14, `expected to check the notes' code blocks, checked ${checked}`);
 });

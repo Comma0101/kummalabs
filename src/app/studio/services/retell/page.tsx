@@ -19,13 +19,13 @@ const built: { term: string; detail: string; link?: { href: string; label: strin
     term: "Signed function calls",
     detail:
       "Every request from Retell is checked against its signature over the raw body, inside a five-minute window. Unsigned, altered, and replayed requests are rejected.",
-    link: { href: `${REPO}src/lib/retell/signature.ts`, label: "The check" },
+    link: { href: notePath("verify-retell-signature-nextjs"), label: "The check, with tests" },
   },
   {
     term: "Facts come from tools",
     detail:
       "The agent’s prompt holds no menu and no prices. It can only say what a lookup returned, and when nothing matches, the tool tells it not to improvise.",
-    link: { href: `${REPO}src/lib/demo-order/tools.ts`, label: "The tools" },
+    link: { href: notePath("keep-the-menu-out-of-the-prompt"), label: "What we learned" },
   },
   {
     term: "Rules live in code",
@@ -67,8 +67,8 @@ const notDone = [
 const fits: { text: string; href?: string }[] = [
   { text: "The agent tells callers something is confirmed, and the record isn’t there.", href: notePath("agent-said-confirmed-nothing-saved") },
   { text: "One call creates several bookings or orders.", href: notePath("duplicate-tool-calls") },
-  { text: "The prompt has grown to hold prices, hours, or policies that should be looked up." },
-  { text: "A signature check that never passes, or a function endpoint anyone can call." },
+  { text: "The prompt has grown to hold prices, hours, or policies that should be looked up.", href: notePath("keep-the-menu-out-of-the-prompt") },
+  { text: "A signature check that never passes, or a function endpoint anyone can call.", href: notePath("verify-retell-signature-nextjs") },
   { text: "The same webhook arrives twice and is processed twice." },
   { text: "A custom function has to read from or write to your own database or API during the call." },
 ];

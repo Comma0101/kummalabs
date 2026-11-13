@@ -17,6 +17,24 @@ export type Note = {
 
 export const notes: Note[] = [
   {
+    slug: "keep-the-menu-out-of-the-prompt",
+    title: "The agent offered desserts that don’t exist: keeping facts out of the prompt",
+    searchTitle: "Voice agent making up menu items or prices? Keep the menu behind tools, not in the prompt",
+    summary:
+      "Our ordering agent’s prompt has no menu and no prices. Every fact comes from a tool. It still offered a dessert list that doesn’t exist, because one tool answered with an empty list. Here is the design, what went wrong, and the fix.",
+    date: "2026-11-13",
+    basis: "Typed conversations with a Retell agent in English and Mandarin, and tests of the ordering rules",
+  },
+  {
+    slug: "verify-retell-signature-nextjs",
+    title: "The tool URL is public: checking Retell’s signature in a Next.js route",
+    searchTitle: "Verify X-Retell-Signature in a Next.js route handler: raw body, replay window, and tests",
+    summary:
+      "A custom function is a URL on the public internet. If it places orders or books appointments, so can anyone who finds it, unless every request is checked. Here is the check we run in a Next.js route, the mistakes that make it fail, and a script to test your own endpoint.",
+    date: "2026-11-13",
+    basis: "Unit tests, forged requests sent to the route, and Retell’s own calls to our deployed endpoint",
+  },
+  {
     slug: "agent-said-confirmed-nothing-saved",
     title: "The agent said “confirmed”. The database had nothing.",
     searchTitle: "When an AI agent confirms an order that was never saved: causes and a fix",

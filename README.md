@@ -21,11 +21,14 @@ contains no menu and no prices; everything it can say about the order comes back
 | Tool results | [`src/lib/demo-order/tools.ts`](src/lib/demo-order/tools.ts) | "placed" is returned only with the row the database gave back; a failed write returns `failed` with the sentence the agent should say |
 | Storage | [`src/lib/demo-order/store-postgres.ts`](src/lib/demo-order/store-postgres.ts) | One order per call, enforced by a unique constraint and `insert … on conflict do nothing returning *` |
 | Agent definition | [`scripts/retell/agent-config.mjs`](scripts/retell/agent-config.mjs) | The prompt and tool schemas as code, applied with `scripts/retell/setup.mjs` |
+| Endpoint check | [`scripts/retell/check-endpoint.mjs`](scripts/retell/check-endpoint.mjs) | Sends one request six ways (five forged, one signed) and prints what the endpoint did with each |
 
-Two write-ups explain the reasoning, with test output:
+Four write-ups explain the reasoning, with test output:
 
 - [The agent said "confirmed". The database had nothing.](https://www.kummalabs.com/notes/agent-said-confirmed-nothing-saved)
 - [One request, five bookings: making agent tool calls safe to repeat](https://www.kummalabs.com/notes/duplicate-tool-calls)
+- [The tool URL is public: checking Retell's signature in a Next.js route](https://www.kummalabs.com/notes/verify-retell-signature-nextjs)
+- [The agent offered desserts that don't exist: keeping facts out of the prompt](https://www.kummalabs.com/notes/keep-the-menu-out-of-the-prompt)
 
 **Status.** This is demo code with a fictional restaurant. It is tested by the suite below and in typed conversations in
 Retell's playground. It has not been tested on live phone calls, and it is not a client deployment.

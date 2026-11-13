@@ -75,6 +75,8 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
   `store-postgres.ts`). `GET /api/demo/orders` is the public feed (no caller data). The agent's
   prompt and tools are code: `scripts/retell/agent-config.mjs`, applied with
   `RETELL_API_KEY=... node scripts/retell/setup.mjs <https tool url>` (creates/updates; buys nothing).
+  `RETELL_API_KEY=... node scripts/retell/check-endpoint.mjs <url>` sends five forged requests and one
+  signed one to a tool endpoint and prints each status (the signed one really runs; default body is `view_cart`).
   Env: `RETELL_API_KEY`, `DATABASE_URL` (or `DEMO_DATABASE_URL`), `NEXT_PUBLIC_DEMO_PHONE`. In
   production there is no in-memory fallback: without a database the endpoints return 503.
   Rules: the prompt never contains menu items or prices; "placed" is returned only with the row the
