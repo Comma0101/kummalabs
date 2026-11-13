@@ -63,7 +63,7 @@ const tokens: Token[] = [
     rule: "An alias can’t be another item’s name. A caller asking for wonton soup would get the wrong dish.",
     code: "alias_collides_item_name",
     message: "Alias 'wonton soup' collides with item 'Wonton Soup'.",
-    result: "Removed from the accepted record.",
+    result: "Removed from the validated output.",
   },
   {
     id: "tag-ok",
@@ -81,7 +81,7 @@ const tokens: Token[] = [
     rule: "Dietary tags must come from a fixed list of 20, so the agent can’t repeat a claim nobody checked.",
     code: "dietary_tag_unknown",
     message: "Unknown dietary tag 'keto_friendly' removed.",
-    result: "Removed from the accepted record.",
+    result: "Removed from the validated output.",
   },
   {
     id: "upsell",
@@ -152,8 +152,8 @@ export function Inspector() {
       <div className="mx-auto max-w-[88rem] px-4 sm:px-6">
         <p className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-rule py-3 text-[14px] text-graphite">
           <span>
-            A recorded run of our document validation step. The menu is synthetic; the checks and their
-            output are real.
+            A recorded run of our document validation step. The input is synthetic; the checks and their
+            output are real. Photo extraction and the database load were not part of this run.
           </span>
           <Link href="/work/menu-validation" className="link text-ink">
             Read the full run
@@ -163,8 +163,10 @@ export function Inspector() {
         <div className="grid lg:grid-cols-[1.15fr_1fr_1fr] lg:divide-x lg:divide-rule">
           {/* 1. Extracted draft */}
           <div className="py-6 lg:pr-8">
-            <h2 className="text-[15px] font-bold">1. What the model extracted</h2>
-            <p className="mt-1 text-[14px] text-graphite">Select any value to follow it.</p>
+            <h2 className="text-[15px] font-bold">1. Synthetic extraction input</h2>
+            <p className="mt-1 text-[14px] text-graphite">
+              Hand-written to stand in for a model’s output. Select any value to follow it.
+            </p>
             <dl className="mt-5 space-y-4">
               {Object.entries(byField).map(([field, items]) => (
                 <div key={field} className="grid grid-cols-[8.5rem_1fr] gap-x-4">
@@ -208,7 +210,7 @@ export function Inspector() {
 
           {/* 3. Result */}
           <div className="border-t border-rule py-6 lg:border-t-0 lg:pl-8">
-            <h2 className="text-[15px] font-bold">3. What reached the database</h2>
+            <h2 className="text-[15px] font-bold">3. Validated output</h2>
             <ul className="mt-5 space-y-1.5 text-[15px]">
               {accepted.map((t) => (
                 <li key={t.id} className="grid grid-cols-[1rem_1fr] gap-x-2">
@@ -220,7 +222,7 @@ export function Inspector() {
               ))}
             </ul>
             <h3 className="mt-7 text-[15px] font-bold">Exception record</h3>
-            <p className="mt-1 text-[14px] text-graphite">Kept for a person to review. Nothing is silently dropped.</p>
+            <p className="mt-1 text-[14px] text-graphite">Every reported issue is kept for a person to review.</p>
             <ul className="mt-3 space-y-1.5">
               {exceptions.map((t) => (
                 <li key={t.id}>

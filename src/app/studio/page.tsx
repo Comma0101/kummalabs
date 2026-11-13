@@ -50,8 +50,8 @@ const reliability = [
     mono: ["BLOCKED: echo alpha > /tmp/subagent-smoke.txt", "Cannot confirm in non-interactive mode."],
   },
   {
-    principle: "Nothing unsupported gets through",
-    body: "What the model produces is checked against your own records before it is saved or said aloud.",
+    principle: "Unsupported claims are caught before they’re saved",
+    body: "Names, tags, and suggestions a model produces are checked against your own records. What can’t be checked that way, like a misread price, goes to a person.",
     source: "KOTA’s menu validation step",
     mono: ["Upsell note references unknown item(s): \"Mango Pudding\"."],
   },
@@ -101,13 +101,14 @@ export default function StudioHome() {
             <p className="text-[15px] text-graphite">Prototype. Documents and data.</p>
             <h3 className="display mt-2 text-3xl sm:text-4xl">Document extraction that checks itself</h3>
             <p className="mt-5 max-w-prose text-lg leading-relaxed">
-              Menu photos become structured data. Before anything is saved, every extracted value
-              is checked against the menu’s own catalog, and whatever the menu doesn’t support is
-              removed and kept on an exception list.
+              Our menu pipeline turns photos into structured data. Before anything is saved, item
+              names, aliases, dietary tags, and serving suggestions are checked against the menu’s
+              own catalog. What the menu doesn’t support is removed and reported.
             </p>
             <p className="mt-4 max-w-prose leading-relaxed text-graphite">
-              The surface above is this step’s real output. The same pattern fits invoices and
-              intake forms; we have built it for menus so far.
+              The surface above is the validation step’s real output on a synthetic input. It
+              can’t catch a misread price, so a person reviews those. The same pattern fits invoices
+              and intake forms; we have built it for menus so far.
             </p>
             <Link href="/work/menu-validation" className="link mt-6 inline-block font-semibold">
               Read the recorded run
@@ -119,7 +120,7 @@ export default function StudioHome() {
             </figcaption>
             <div className="grid sm:grid-cols-2 sm:divide-x sm:divide-rule">
               <div className="px-5 py-5">
-                <p className="text-[14px] text-graphite">Extracted</p>
+                <p className="text-[14px] text-graphite">Synthetic input</p>
                 <p className="mt-2 font-mono text-[14px] leading-relaxed">
                   aliases: beef noodles, Beef Noodle Soup, <span className="annot bg-mark-soft">wonton soup</span>
                 </p>
@@ -129,7 +130,7 @@ export default function StudioHome() {
                 <p className="mt-3 font-mono text-[14px] leading-relaxed">price: 13.95</p>
               </div>
               <div className="border-t border-rule px-5 py-5 sm:border-t-0">
-                <p className="text-[14px] text-graphite">Saved</p>
+                <p className="text-[14px] text-graphite">After validation</p>
                 <p className="mt-2 font-mono text-[14px] leading-relaxed">aliases: beef noodles</p>
                 <p className="mt-3 font-mono text-[14px] leading-relaxed">dietary_tags: contains_beef, contains_wheat</p>
                 <p className="mt-3 font-mono text-[14px] leading-relaxed">price: 13.95</p>

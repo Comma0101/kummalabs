@@ -159,8 +159,9 @@ export default function MenuValidationRun() {
             ))}
           </ol>
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-graphite">
-            The run also normalized one tag without raising an issue: Wonton Soup’s
-            “contains_shrimp” became the standard “contains_shellfish”.
+            The run also made two changes without reporting an issue. It dropped the alias “Beef
+            Noodle Soup” because it only repeated the item’s own name, and it normalized Wonton
+            Soup’s “contains_shrimp” to the standard “contains_shellfish”.
           </p>
         </div>
       </section>
