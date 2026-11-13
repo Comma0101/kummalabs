@@ -21,7 +21,7 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
 |---|---|---|
 | Dev server | `npm run dev` → KOTA at http://localhost:3000, studio at http://studio.localhost:3000 | — |
 | Type check | `npx tsc --noEmit` | passes |
-| Tests | `node --test tests/*.test.mjs` | passes. `node --test tests/` fails on Node 22 (treats the dir as a file) |
+| Tests | `node --test tests/*.test.mjs` (set `TEST_DATABASE_URL` to a scratch Postgres to include the store tests; skipped otherwise) | passes. `node --test tests/` fails on Node 22 (treats the dir as a file) |
 | Build | `npm run build` | passes; warns `middleware` → `proxy` rename |
 | Lint | `npm run lint` | **broken** — `next lint` was removed in Next 16, and ESLint 8 + legacy `.eslintrc.json` can't load `eslint-config-next@16`. Not a gate; a fix needs ESLint 9 + flat config |
 
@@ -50,6 +50,18 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
   each one recorded or illustrative, keep everything readable without animation and usable by keyboard.
 - Home hero: `src/components/studio/Inspector.tsx`, an inspectable view of the recorded validation
   run (same data as `/work/menu-validation`; `message` strings are verbatim code output).
+- Phone demo (Retell): `/demo` page + `src/components/studio/DemoFeed.tsx`. Retell's agent calls
+  `POST /api/retell/tool` (signature verified in `src/lib/retell/signature.ts`); ordering rules,
+  menu, and storage are in `src/lib/demo-order/` (pure `engine.ts`, `tools.ts`, memory store,
+  `store-postgres.ts`). `GET /api/demo/orders` is the public feed (no caller data). The agent's
+  prompt and tools are code: `scripts/retell/agent-config.mjs`, applied with
+  `RETELL_API_KEY=... node scripts/retell/setup.mjs <https tool url>` (creates/updates; buys nothing).
+  Env: `RETELL_API_KEY`, `DATABASE_URL` (or `DEMO_DATABASE_URL`), `NEXT_PUBLIC_DEMO_PHONE`. In
+  production there is no in-memory fallback: without a database the endpoints return 503.
+  Rules: the prompt never contains menu items or prices; "placed" is returned only with the row the
+  database gave back; event summaries never contain caller- or model-supplied text.
+- Files under `src/lib/demo-order/` and `src/lib/retell/` import each other with explicit `.ts`
+  extensions so `node --test` can load them (`allowImportingTsExtensions` is on).
 - Project brief: `src/components/studio/BriefForm.tsx` → `POST /api/brief` → email via Resend.
   Validation and spam rules are in `src/lib/brief.ts` (tested in `tests/brief.test.mjs`). The route
   returns success only when the provider accepts the email; otherwise the form shows an error with
