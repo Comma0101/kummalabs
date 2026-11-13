@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Locale } from "@/dictionaries";
+import { STUDIO_URL } from "@/lib/studio-site";
 
 export default function Footer({
     dict,
@@ -17,6 +18,11 @@ export default function Footer({
                     </div>
                     <div className="text-xs">
                         {dict.footer.builtWith}
+                    </div>
+                    <div className="mt-2 text-xs">
+                        <a href={STUDIO_URL} className="underline underline-offset-2 hover:text-korami-white transition-colors">
+                            {dict.footer.studioLink}
+                        </a>
                     </div>
                 </div>
                 <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-bold">

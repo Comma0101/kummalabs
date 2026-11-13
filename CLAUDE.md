@@ -45,11 +45,14 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
 - Share cards: the studio layout's `openGraph` deliberately has no title, description, or url, so Next
   fills each card from the page's own `title`/`description`. A page that defines its own `openGraph`
   replaces the layout's whole object (image and site name included), so don't.
+- IndexNow: `public/<key>.txt` proves host ownership (the key is public by design, not a secret);
+  `node scripts/seo/indexnow.mjs` submits every sitemap URL after a deploy that adds or changes pages.
 - Analytics: `@vercel/analytics` in the studio layout only. The middleware matcher excludes `_vercel` so
   the script and beacon are neither rewritten nor locale-redirected.
 - Studio pages: `/` (home + project-brief form at `#brief`), `/work`, `/work/kota`,
   `/work/menu-validation` (recorded run), `/work/sample-diagnostic` (real diagnostic of KOTA's order
-  path; evidence strings are verbatim test output), `/services/integration`, `/agencies`, `/notes` and
+  path; evidence strings are verbatim test output), `/services/integration`, `/services/retell` (search landing page: what we have and have
+  not built on Retell; every row maps to code in this repo), `/agencies`, `/notes` and
   `/notes/<slug>`, `/demo` (unlinked and `noindex` until the phone line is on).
 - Notes (`/notes`): a note is one entry in `src/lib/studio-notes.ts` plus a page at
   `src/app/studio/notes/<slug>/page.tsx` built from `src/components/studio/Note.tsx` (`NoteShell`, `Code`,
@@ -102,6 +105,7 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
 - Components not rendered anywhere: Architecture, DemoPreview, FeaturesGrid, Integrations,
   ProblemOpportunity, SampleCall, Showcase, SocialProof, Solution. Don't revive one without
   checking its claims (see below).
+- The KOTA footer carries one link to the studio site (`dict.footer.studioLink`, both locales).
 - `src/app/api/contact/route.ts` — demo-request form → email via Resend. Env: `RESEND_API_KEY`,
   `NOTIFICATION_EMAIL` (template: `env.local.example`). With no key it returns success and logs the submission.
 - `README.md` was rewritten on 2026-11-12 (public-facing: what the code shows, how to run it). `analysis_summary.md` is stale (Next 15, old component list). Trust the code.

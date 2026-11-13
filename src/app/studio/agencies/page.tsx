@@ -19,7 +19,7 @@ const handOver = [
 const questions = [
   {
     q: "Which platforms do you work on?",
-    a: "We write the code your platform calls, so the work fits any platform that can call a webhook or an API. We have not shipped agents on Retell, Vapi, Make, n8n, or GoHighLevel ourselves. If a project needs configuration inside one of them, you keep that part, or we scope the time to learn it and say so in writing.",
+    a: "We write the code your platform calls, so the work fits any platform that can call a webhook or an API. On Retell we have built and tested the backend for one agent of our own, and it has not yet run on live calls. We have not delivered client agents on Retell, Vapi, Make, n8n, or GoHighLevel. If a project needs configuration inside one of them, you keep that part, or we scope the time to learn it and say so in writing.",
   },
   {
     q: "How is the work scoped and reviewed?",
@@ -95,6 +95,13 @@ export default function Agencies() {
                 A recorded validation run
               </Link>
               : the real output of a document validation step on a synthetic input.
+            </li>
+            <li>
+              <Link href="/services/retell" className="link font-semibold">
+                The backend for a Retell agent
+              </Link>
+              : signed function calls, ordering rules in code, and writes that stay correct when a call is repeated.
+              Public source, with what has and has not been tested.
             </li>
             <li>
               <Link href="/work/kota" className="link font-semibold">

@@ -213,6 +213,13 @@ export default function IntegrationService() {
               refuses duplicate sends and enforces a daily limit in the send step itself.
             </p>
             <p>
+              The{" "}
+              <Link href="/services/retell" className="link font-semibold">
+                backend for a Retell voice agent
+              </Link>{" "}
+              verifies every request’s signature and stores one order per call, however many times the call is repeated.
+            </p>
+            <p>
               <Link href="/work#archon" className="link font-semibold">
                 ARCHON
               </Link>{" "}
