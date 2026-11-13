@@ -4,6 +4,7 @@ const nav = [
   { href: "/#services", label: "Services" },
   { href: "/work", label: "Work" },
   { href: "/agencies", label: "For agencies" },
+  { href: "/notes", label: "Notes" },
 ];
 
 export function StudioHeader() {
@@ -14,7 +15,7 @@ export function StudioHeader() {
           KummaLabs
         </Link>
         <nav aria-label="Main" className="order-3 w-full sm:order-none sm:w-auto">
-          <ul className="flex gap-6 text-[15px] text-graphite">
+          <ul className="flex flex-wrap gap-x-6 gap-y-1 text-[15px] text-graphite">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="hover:text-ink">

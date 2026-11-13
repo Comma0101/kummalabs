@@ -21,6 +21,11 @@ export function StudioFooter() {
             </Link>
           </li>
           <li>
+            <Link className="link" href="/notes">
+              Notes
+            </Link>
+          </li>
+          <li>
             <a className="link" href={KOTA_URL}>
               KOTA product site
             </a>

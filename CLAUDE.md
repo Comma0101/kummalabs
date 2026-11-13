@@ -1,7 +1,7 @@
 # CLAUDE.md — kummalabs (local folder: korami-site)
 
 One Next.js app serving **two sites**, routed by host in `src/middleware.ts`:
-- **kummalabs.com** (+ `www`) → KummaLabs studio site: AI agent engineering services.
+- **www.kummalabs.com** (canonical; the apex redirects to it) → KummaLabs studio site: AI agent engineering services.
   Code: `src/app/studio/`, `src/components/studio/`, `src/lib/studio-*.ts`.
 - **kota.kummalabs.com** and every other host (incl. `localhost`, Vercel previews) → KOTA product
   site (AI phone ordering for restaurants). Code: `src/app/[lang]/`, `src/components/`, `src/dictionaries/`.
@@ -39,9 +39,25 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
   font); they never load KOTA's `globals.css`. Studio color tokens (`paper`, `ink`, `graphite`, `rule`,
   `pass`, `hold`, `sheet`) live in `tailwind.config.ts` next to the `korami` namespace.
 - `src/app/robots.ts` and `src/app/sitemap.ts` describe the studio site only.
+- The canonical host is `www.kummalabs.com` (`STUDIO_URL` in `src/lib/studio-site.ts`); Vercel redirects the
+  apex to it. Canonical tags, sitemap, and robots must agree with the host that actually serves. Don't make
+  the apex primary without also changing `STUDIO_URL` and the Retell agent's tool URL (it posts to `www`).
+- Share cards: the studio layout's `openGraph` deliberately has no title, description, or url, so Next
+  fills each card from the page's own `title`/`description`. A page that defines its own `openGraph`
+  replaces the layout's whole object (image and site name included), so don't.
+- Analytics: `@vercel/analytics` in the studio layout only. The middleware matcher excludes `_vercel` so
+  the script and beacon are neither rewritten nor locale-redirected.
 - Studio pages: `/` (home + project-brief form at `#brief`), `/work`, `/work/kota`,
   `/work/menu-validation` (recorded run), `/work/sample-diagnostic` (real diagnostic of KOTA's order
-  path; evidence strings are verbatim test output), `/services/integration`, `/agencies`.
+  path; evidence strings are verbatim test output), `/services/integration`, `/agencies`, `/notes` and
+  `/notes/<slug>`, `/demo` (unlinked and `noindex` until the phone line is on).
+- Notes (`/notes`): a note is one entry in `src/lib/studio-notes.ts` plus a page at
+  `src/app/studio/notes/<slug>/page.tsx` built from `src/components/studio/Note.tsx` (`NoteShell`, `Code`,
+  `Recorded`); the sitemap and index read the registry. Rules: a `<Code file="…">` block must match the
+  named file line for line (`tests/studio-notes.test.mjs` enforces it; a line of just `// …` marks an
+  omission); `<Recorded>` text is verbatim output, re-run and paste, never hand-edit; every note states
+  where its evidence comes from and what was not tested; other people's reports are linked and labeled
+  unverified.
 - Public commercial terms (diagnostic price, delivery days, credit window, reply time) live only in
   `src/lib/studio-offer.ts`. They are commitments: never change them without the owner's approval.
 - Studio design language ("inspect the engineering"): mineral-white paper, deep ink, wide Archivo
@@ -67,6 +83,9 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
   returns success only when the provider accepts the email; otherwise the form shows an error with
   the email fallback. Env: `RESEND_API_KEY`, `BRIEF_NOTIFICATION_EMAIL` (falls back to
   `NOTIFICATION_EMAIL`), optional `BRIEF_FROM_EMAIL`. No rate limiting yet beyond honeypot + timing.
+  Each brief's Source line carries the visitor's first page in that tab (`landing`), utm tags, and outside
+  referrer: `src/lib/first-touch.ts` keeps them in sessionStorage (`FirstTouch` in the studio layout records
+  them on every page). This is how we tell which note or post produced a brief.
 - `/work/menu-validation` shows verbatim output of `scripts/menu_grounding.py` from the KOTA repo
   (commit d15e5d7, synthetic input). Re-run and paste; never hand-edit the reported messages.
 - `/studio/*` URLs are not reachable on the KOTA host (the locale redirect sends them to `/en/...`).
@@ -85,7 +104,7 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
   checking its claims (see below).
 - `src/app/api/contact/route.ts` — demo-request form → email via Resend. Env: `RESEND_API_KEY`,
   `NOTIFICATION_EMAIL` (template: `env.local.example`). With no key it returns success and logs the submission.
-- `README.md` and `analysis_summary.md` are stale (Next 15, old component list). Trust the code.
+- `README.md` was rewritten on 2026-11-12 (public-facing: what the code shows, how to run it). `analysis_summary.md` is stale (Next 15, old component list). Trust the code.
 
 ## Compliance pages — handle with care
 
