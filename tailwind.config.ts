@@ -11,6 +11,14 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        // KummaLabs studio pages (src/app/studio)
+        paper: "#f4f5f0",
+        sheet: "#fbfbf8",
+        ink: "#18233a",
+        graphite: "#5a6273",
+        rule: "#d5d8d0",
+        pass: { DEFAULT: "#1e7a4f", soft: "#e3efe7" },
+        hold: { DEFAULT: "#8a5a12", soft: "#f6ead3" },
         korami: {
           black: "#111216", // Deep charcoal instead of pure black
           gray: "#1C1E24", // Softer dark gray

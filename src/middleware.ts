@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { isStaticFile, isStudioHost, studioPath } from "@/lib/studio-host";
 
 let locales = ["en", "zh"];
 
@@ -17,7 +18,17 @@ function getLocale(request: NextRequest) {
 export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
-  
+
+  // kummalabs.com → KummaLabs studio pages (src/app/studio). KOTA hosts fall through unchanged.
+  if (isStudioHost(request.headers.get("host"))) {
+    if (pathname.startsWith("/_next/") || pathname.startsWith("/api/") || isStaticFile(pathname)) {
+      return;
+    }
+    const url = request.nextUrl.clone();
+    url.pathname = studioPath(pathname);
+    return NextResponse.rewrite(url);
+  }
+
   // Exclude static files, api routes, and icons
   if (
     pathname.startsWith("/_next/") ||

@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* KummaLabs studio pages only. KOTA pages use src/app/globals.css. */
+:root {
+  color-scheme: light;
+  --studio-paper: #f4f5f0;
+  --studio-ink: #18233a;
+  --studio-rule: #d5d8d0;
+}
+
+html {
+  background: var(--studio-paper);
+  color: var(--studio-ink);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-archivo), "PingFang SC", "Noto Sans SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "tnum" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headlines use Archivo's expanded width so the type carries the identity. */
+.display {
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+.wide {
+  font-stretch: 112%;
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--studio-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Run record: one orchestrated reveal on load. Each step appears in order. */
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.run-step {
+  animation: step-in 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--i) * 520ms + 300ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .run-step {
+    animation: none;
+  }
+}
