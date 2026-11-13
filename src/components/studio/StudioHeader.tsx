@@ -1,10 +1,9 @@
 import Link from "next/link";
 
 const nav = [
-  { href: "/#agents", label: "Agents" },
   { href: "/#services", label: "Services" },
   { href: "/work", label: "Work" },
-  { href: "/#process", label: "How we work" },
+  { href: "/agencies", label: "For agencies" },
 ];
 
 export function StudioHeader() {

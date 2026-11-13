@@ -1,7 +1,7 @@
 // Work shown on kummalabs.com. Every claim here was checked against the project's code on
 // 2026-11-12. Test counts are only quoted where the full suite passed in that check.
 
-export type WorkStatus = "Prototype" | "Internal tool" | "Open source";
+export type WorkStatus = "Prototype" | "Internal tool" | "Open source" | "Internal audit";
 
 export type Work = {
   id: string;
@@ -40,6 +40,18 @@ export const work: Work[] = [
     built: "LLM extraction, a grounding checker, structure-preserving refinement, and schema and coverage validation. Part of KOTA.",
     evidence: "Covered by KOTA’s menu grounding, schema, and ingest tests. The linked page shows a recorded run with its real output.",
     link: { href: "/work/menu-validation", label: "See a recorded validation run" },
+  },
+  {
+    id: "order-flow-diagnostic",
+    name: "Order-flow diagnostic",
+    kind: "Failure-case testing of an existing agent",
+    status: "Internal audit",
+    shows: "What an Improve project produces: defects found by forcing failures on purpose, each with evidence, a fix, and an acceptance test.",
+    does:
+      "We audited KOTA’s order path by replacing the database and the messaging provider with controlled fakes and triggering each failure deliberately. It found five issues we hadn’t known about, including a failed save being announced to the caller as a confirmed order, and confirmed two behaviours that hold up.",
+    built: "Seven targeted tests against the real code, using the project’s own test harness.",
+    evidence: "All five findings are open and published as a sample report, written the way a client receives it.",
+    link: { href: "/work/sample-diagnostic", label: "Read the sample diagnostic report" },
   },
   {
     id: "research-agent",

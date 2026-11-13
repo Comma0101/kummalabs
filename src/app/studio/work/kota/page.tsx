@@ -32,7 +32,7 @@ const stack = [
 export default function KotaCaseStudy() {
   return (
     <article>
-      <header className="mx-auto max-w-6xl px-4 pb-14 pt-14 sm:px-6 lg:pt-20">
+      <header className="mx-auto max-w-[88rem] px-4 pb-14 pt-14 sm:px-6 lg:pt-20">
         <p className="text-[15px] text-graphite">Case study</p>
         <h1 className="display mt-3 max-w-4xl text-[2.4rem] sm:text-6xl">
           KOTA: restaurant phone calls in, confirmed orders out. In English and 中文.
@@ -50,7 +50,7 @@ export default function KotaCaseStudy() {
       </header>
 
       <section className="border-t border-rule">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_2fr]">
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_2fr]">
           <h2 className="display text-3xl">The problem</h2>
           <p className="max-w-prose text-lg leading-relaxed">
             Restaurants take phone orders at the moments staff are busiest. Many serve
@@ -61,7 +61,7 @@ export default function KotaCaseStudy() {
       </section>
 
       <section className="border-t border-rule">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_2fr]">
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_2fr]">
           <h2 className="display text-3xl">What it does</h2>
           <p className="max-w-prose text-lg leading-relaxed">
             The caller presses 1 for English or 2 for Chinese. The agent answers menu questions
@@ -74,7 +74,7 @@ export default function KotaCaseStudy() {
       </section>
 
       <section className="border-t border-rule bg-sheet">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-[88rem] px-4 py-16 sm:px-6">
           <h2 className="display text-3xl">How a call becomes an order</h2>
           <ol className="mt-10 divide-y divide-rule border-y border-rule">
             {flow.map(([step, how], i) => (
@@ -91,7 +91,7 @@ export default function KotaCaseStudy() {
       </section>
 
       <section className="border-t border-rule">
-        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-[88rem] gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2">
           <div>
             <h2 className="display text-3xl">Engineering decisions</h2>
             <div className="mt-8 space-y-7">
@@ -146,12 +146,24 @@ export default function KotaCaseStudy() {
                 clients.
               </p>
             </div>
+            <div>
+              <h2 className="display text-3xl">Known defects</h2>
+              <p className="mt-6 leading-relaxed text-graphite">
+                Our own diagnostic of the order flow found five issues, including that a failed
+                database write is still announced to the caller as a confirmed order. They are open
+                and will be fixed before KOTA is deployed.{" "}
+                <Link href="/work/sample-diagnostic" className="link text-ink">
+                  Read the report
+                </Link>
+                .
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="border-t border-rule bg-ink text-paper">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mx-auto flex max-w-[88rem] flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
             <h2 className="display text-3xl">Have a process like this?</h2>
             <p className="mt-4 text-lg leading-relaxed text-paper/80">

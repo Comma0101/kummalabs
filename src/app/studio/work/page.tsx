@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <>
-      <header className="mx-auto max-w-6xl px-4 pb-12 pt-14 sm:px-6 lg:pt-20">
+      <header className="mx-auto max-w-[88rem] px-4 pb-12 pt-14 sm:px-6 lg:pt-20">
         <h1 className="display max-w-4xl text-[2.4rem] sm:text-6xl">Agents we’ve built</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
           Prototypes, internal tools, and open source. Each is labeled for what it is, and none is
@@ -24,7 +24,7 @@ export default function WorkPage() {
       <div className="border-t border-ink">
         {work.map((w) => (
           <section key={w.id} id={w.id} className="scroll-mt-6 border-b border-rule">
-            <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1fr_2fr]">
+            <div className="mx-auto grid max-w-[88rem] gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1fr_2fr]">
               <div>
                 <p className="text-[15px] text-graphite">{w.status}</p>
                 <h2 className="display mt-2 text-3xl sm:text-4xl">{w.name}</h2>
@@ -61,7 +61,7 @@ export default function WorkPage() {
       </div>
 
       <section className="bg-ink text-paper">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mx-auto flex max-w-[88rem] flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
             <h2 className="display text-3xl">Need an agent like one of these?</h2>
             <p className="mt-4 text-lg leading-relaxed text-paper/80">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BriefForm } from "@/components/studio/BriefForm";
 import { Inspector } from "@/components/studio/Inspector";
+import { DIAGNOSTIC, REPLY_DAYS } from "@/lib/studio-offer";
 import { STUDIO_EMAIL } from "@/lib/studio-site";
 import { work } from "@/lib/studio-work";
 
@@ -21,8 +22,9 @@ const hire = [
   {
     verb: "Improve",
     situation: "“We have something running, but it behaves unreliably.”",
-    first: "A fixed-scope audit against scripted failure cases.",
-    get: "A written list of what failed, why, and what each fix involves.",
+    first: `${DIAGNOSTIC.name}: a fixed-fee audit against scripted failure cases.`,
+    get: "A written report: what failed, the evidence, and what each fix involves.",
+    link: { href: "/work/sample-diagnostic", label: "Read a sample report" },
   },
 ];
 
@@ -257,7 +259,10 @@ export default function StudioHome() {
               If you sell agents or automations to your own clients, we take on project-based
               delivery: the functions, webhooks, and integrations behind an agent, failure-case
               testing, and Mandarin conversation flows. Same written scope and handover. You keep
-              the client relationship.
+              the client relationship.{" "}
+              <Link href="/agencies" className="link text-paper">
+                How we work with agencies
+              </Link>
             </p>
           </div>
         </div>
@@ -335,7 +340,7 @@ export default function StudioHome() {
             <h2 className="display text-4xl sm:text-6xl">Describe your project</h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper/80">
               Tell us about the process you want to automate, connect, or fix. You’ll get back
-              questions or a proposed scope by email.
+              questions or a proposed scope by email within {REPLY_DAYS} business days.
             </p>
             <p className="mt-6 leading-relaxed text-paper/80">
               Prefer email? Write to{" "}

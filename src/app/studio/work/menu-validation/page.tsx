@@ -64,7 +64,7 @@ const unchanged = [
 export default function MenuValidationRun() {
   return (
     <article>
-      <header className="mx-auto max-w-6xl px-4 pb-12 pt-14 sm:px-6 lg:pt-20">
+      <header className="mx-auto max-w-[88rem] px-4 pb-12 pt-14 sm:px-6 lg:pt-20">
         <p className="text-[15px] text-graphite">Recorded run</p>
         <h1 className="display mt-3 max-w-4xl text-[2.2rem] sm:text-5xl">
           Catching what a document extraction got wrong, before it reaches the database
@@ -77,7 +77,7 @@ export default function MenuValidationRun() {
       </header>
 
       <section className="border-t border-rule bg-sheet">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
+        <div className="mx-auto grid max-w-[88rem] gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
           <div>
             <h2 className="font-bold">Real</h2>
             <p className="mt-2 leading-relaxed text-graphite">
@@ -104,7 +104,7 @@ export default function MenuValidationRun() {
       </section>
 
       <section className="border-t border-rule">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_2fr]">
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_2fr]">
           <h2 className="display text-3xl">The input</h2>
           <div className="max-w-prose">
             <p className="text-lg leading-relaxed">
@@ -130,7 +130,7 @@ export default function MenuValidationRun() {
       </section>
 
       <section className="border-t border-rule bg-sheet">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-[88rem] px-4 py-16 sm:px-6">
           <h2 className="display text-3xl">What the validation step reported</h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-graphite">
             Five issues. Four were fixed automatically because the menu itself proves them wrong.
@@ -167,7 +167,7 @@ export default function MenuValidationRun() {
       </section>
 
       <section className="border-t border-rule">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_2fr]">
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_2fr]">
           <h2 className="display text-3xl">What it did not touch</h2>
           <div className="max-w-prose">
             <ul className="space-y-3">
@@ -189,7 +189,7 @@ export default function MenuValidationRun() {
       </section>
 
       <section className="border-t border-rule bg-sheet">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_2fr]">
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_2fr]">
           <h2 className="display text-3xl">Limits</h2>
           <div className="max-w-prose space-y-4 leading-relaxed text-graphite">
             <p>
@@ -208,7 +208,7 @@ export default function MenuValidationRun() {
       </section>
 
       <section className="border-t border-rule bg-ink text-paper">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mx-auto flex max-w-[88rem] flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
             <h2 className="display text-3xl">Have documents that need this?</h2>
             <p className="mt-4 text-lg leading-relaxed text-paper/80">

@@ -40,7 +40,10 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
   `pass`, `hold`, `sheet`) live in `tailwind.config.ts` next to the `korami` namespace.
 - `src/app/robots.ts` and `src/app/sitemap.ts` describe the studio site only.
 - Studio pages: `/` (home + project-brief form at `#brief`), `/work`, `/work/kota`,
-  `/work/menu-validation` (recorded run), `/services/integration`.
+  `/work/menu-validation` (recorded run), `/work/sample-diagnostic` (real diagnostic of KOTA's order
+  path; evidence strings are verbatim test output), `/services/integration`, `/agencies`.
+- Public commercial terms (diagnostic price, delivery days, credit window, reply time) live only in
+  `src/lib/studio-offer.ts`. They are commitments: never change them without the owner's approval.
 - Studio design language ("inspect the engineering"): mineral-white paper, deep ink, wide Archivo
   headlines; vermilion (`mark`) is the annotation colour only (selected value and its path);
   green/amber are status only; IBM Plex Mono only for code output. Show artifacts over prose, label

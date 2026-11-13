@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { REPLY_DAYS } from "@/lib/studio-offer";
 import { INQUIRY_MAILTO, STUDIO_EMAIL } from "@/lib/studio-site";
 
 type State = "idle" | "sending" | "sent" | "error";
@@ -65,7 +66,9 @@ export function BriefForm() {
       <div ref={statusRef} tabIndex={-1} role="status" className="rounded-lg border border-paper/30 bg-paper/5 p-6 outline-none">
         <h3 className="text-xl font-bold">Brief sent</h3>
         <p className="mt-2 leading-relaxed text-paper/80">
-          It’s in our inbox. You’ll get a reply by email with questions or a proposed scope.
+          It’s in our inbox. You’ll get a reply by email with questions or a proposed scope within
+          {" "}
+          {REPLY_DAYS} business days.
         </p>
       </div>
     );
