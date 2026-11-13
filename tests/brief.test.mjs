@@ -47,6 +47,9 @@ test("source fields are optional, trimmed, and length-limited", () => {
   assert.equal(r.ok, true);
   assert.equal(r.brief.source.utm_source.length, 200);
   assert.equal("bogus" in r.brief.source, false);
+  const landed = validateBrief({ ...good, source: { landing: "/notes/duplicate-tool-calls", path: "/" } }, now);
+  assert.equal(landed.brief.source.landing, "/notes/duplicate-tool-calls");
+  assert.equal(landed.brief.source.path, "/");
   assert.equal(validateBrief({ ...good, source: undefined }, now).ok, true);
 });
 

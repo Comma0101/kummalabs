@@ -16,7 +16,7 @@ export type BriefResult =
   | { ok: true; spam: boolean; brief: Brief }
   | { ok: false; spam: false; errors: Record<string, string> };
 
-const SOURCE_KEYS = ["utm_source", "utm_medium", "utm_campaign", "referrer", "path"] as const;
+const SOURCE_KEYS = ["utm_source", "utm_medium", "utm_campaign", "referrer", "landing", "path"] as const;
 const MAX_LONG = 5000;
 const MAX_SHORT = 500;
 const MIN_FILL_MS = 3000;

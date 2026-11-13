@@ -4,6 +4,8 @@ import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./studio.css";
 import { StudioHeader } from "@/components/studio/StudioHeader";
 import { StudioFooter } from "@/components/studio/StudioFooter";
+import { FirstTouch } from "@/components/studio/FirstTouch";
+import { Analytics } from "@vercel/analytics/next";
 import { STUDIO_EMAIL, STUDIO_URL } from "@/lib/studio-site";
 
 // Root layout for the KummaLabs studio site, served on kummalabs.com via src/middleware.ts.
@@ -32,12 +34,11 @@ export const metadata: Metadata = {
   },
   description,
   alternates: { canonical: "/" },
+  // No title, description, or url here: Next fills the card from each page's own metadata.
+  // A fixed og:url would make every shared link resolve to the home page's card.
   openGraph: {
     type: "website",
-    url: STUDIO_URL,
     siteName: "KummaLabs",
-    title: "KummaLabs — AI agent engineering",
-    description,
     images: [
       { url: "/og.png", width: 1200, height: 630, alt: "KummaLabs: AI agents that do real work inside your business systems" },
     ],
@@ -74,6 +75,8 @@ export default function StudioLayout({ children }: { children: ReactNode }) {
         <StudioHeader />
         <main id="main">{children}</main>
         <StudioFooter />
+        <FirstTouch />
+        <Analytics />
         <script
           type="application/ld+json"
           // Static constant, no user input; `<` escaped so the JSON can't close the script tag.

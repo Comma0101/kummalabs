@@ -58,7 +58,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // Skip internal paths (_next) and Vercel's own endpoints (_vercel: analytics script and beacon)
+    '/((?!api|_next/static|_next/image|_vercel|favicon.ico).*)',
   ],
 };

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { REPLY_DAYS } from "@/lib/studio-offer";
 import { INQUIRY_MAILTO, STUDIO_EMAIL } from "@/lib/studio-site";
+import { readFirstTouch } from "@/lib/first-touch";
 
 type State = "idle" | "sending" | "sent" | "error";
 
@@ -18,14 +19,8 @@ export function BriefForm() {
 
   useEffect(() => {
     startedAt.current = Date.now();
-    const params = new URLSearchParams(window.location.search);
-    const s: Record<string, string> = { path: window.location.pathname };
-    for (const key of ["utm_source", "utm_medium", "utm_campaign"]) {
-      const value = params.get(key);
-      if (value) s[key] = value;
-    }
-    if (document.referrer) s.referrer = document.referrer;
-    source.current = s;
+    // Where the visitor first arrived (landing page, utm tags, outside referrer) plus the page the form is on.
+    source.current = { ...readFirstTouch(), path: window.location.pathname };
   }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {

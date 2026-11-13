@@ -1,4 +1,5 @@
-export const STUDIO_URL = "https://kummalabs.com";
+// The canonical host. kummalabs.com redirects here, and the Retell agent's tool URL uses it.
+export const STUDIO_URL = "https://www.kummalabs.com";
 export const STUDIO_EMAIL = "info@kummalabs.com";
 export const KOTA_URL = "https://kota.kummalabs.com";
 

@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description:
     "Call KummaLabs’ demo line and order from a fictional restaurant in English or Mandarin. A Retell voice agent calls signed tools on our backend, and your order appears on this page from the database.",
   alternates: { canonical: "/demo" },
+  // Out of search results until the phone line is switched on (see NEXT_PUBLIC_DEMO_PHONE).
+  robots: { index: false, follow: true },
 };
 
 // Set NEXT_PUBLIC_DEMO_PHONE (display form, e.g. "+1 (555) 010-0000") once the line is live.
