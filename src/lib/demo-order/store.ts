@@ -29,6 +29,8 @@ export interface DemoStore {
   recentOrders(limit: number): Promise<StoredOrder[]>;
   logEvent(callId: string, tool: string, ok: boolean, summary: string): Promise<void>;
   recentEvents(limit: number): Promise<StoredEvent[]>;
+  /** Test support: forget one call's cart and order so it can be reused. */
+  resetCall(callId: string): Promise<void>;
 }
 
 /** Five digits, easy to read aloud. Uniqueness is enforced by the store, not by this function. */
@@ -75,6 +77,10 @@ export function createMemoryStore(): DemoStore {
     },
     async recentEvents(limit) {
       return [...events].reverse().slice(0, limit);
+    },
+    async resetCall(callId) {
+      carts.delete(callId);
+      orders.delete(callId);
     },
   };
 }

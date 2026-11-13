@@ -172,3 +172,16 @@ test("tools: events contain server-derived text only, never caller text or the p
   assert.ok(events.every((e) => !e.summary.includes("123-45-6789") && !e.summary.includes("Zebediah")));
   assert.match(events.find((e) => e.tool === "add_item").summary, /1 × Spring Rolls/);
 });
+
+test("tools: only the playground call can be reset; real calls keep their orders", async () => {
+  const store = createMemoryStore();
+  for (const call of ["playground", "call_real"]) {
+    await handleTool(store, call, "add_item", { item: "Spring Rolls", quantity: 1 });
+    await handleTool(store, call, "place_order", {});
+  }
+  assert.equal((await handleTool(store, "call_real", "reset_test_call", {})).status, "refused");
+  assert.ok(await store.getOrder("call_real"));
+  assert.equal((await handleTool(store, "playground", "reset_test_call", {})).status, "reset");
+  assert.equal(await store.getOrder("playground"), null);
+  assert.equal((await handleTool(store, "playground", "view_cart", {})).status, "empty_cart");
+});

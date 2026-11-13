@@ -118,6 +118,12 @@ export function createPostgresStore(pool: Pool): DemoStore {
       await pool.query("insert into demo_events (call_id, tool, ok, summary) values ($1, $2, $3, $4)", [callId, tool, ok, summary.slice(0, 300)]);
     },
 
+    async resetCall(callId) {
+      await ready();
+      await pool.query("delete from demo_carts where call_id = $1", [callId]);
+      await pool.query("delete from demo_orders where call_id = $1", [callId]);
+    },
+
     async recentEvents(limit) {
       await ready();
       const { rows } = await pool.query<{ call_id: string; tool: string; ok: boolean; summary: string; created_at: Date }>(

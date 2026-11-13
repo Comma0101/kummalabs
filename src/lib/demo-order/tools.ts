@@ -11,6 +11,10 @@ export type ToolResult = Record<string, unknown> & { status: string };
 
 export const TOOL_NAMES = ["search_menu", "add_item", "change_quantity", "view_cart", "place_order"] as const;
 
+// Retell's text playground sends every conversation with this one call id, so its cart and order
+// would otherwise carry over between test conversations.
+export const PLAYGROUND_CALL_ID = "playground";
+
 export async function handleTool(store: DemoStore, callId: string, name: string, args: Args): Promise<ToolResult> {
   const log = (ok: boolean, summary: string) => store.logEvent(callId, name, ok, summary).catch(() => undefined);
 
@@ -117,6 +121,17 @@ export async function handleTool(store: DemoStore, callId: string, name: string,
         instruction: "The order was NOT saved. Tell the caller it could not be placed, nothing was ordered, and they can try again.",
       };
     }
+  }
+
+  // Not offered to the model. Lets us clear the shared playground call between test conversations.
+  if (name === "reset_test_call") {
+    if (callId !== PLAYGROUND_CALL_ID) {
+      await log(false, "refused: reset is only for the playground call");
+      return { status: "refused" };
+    }
+    await store.resetCall(callId);
+    await log(true, "test call reset");
+    return { status: "reset" };
   }
 
   await log(false, "refused: unknown tool");
