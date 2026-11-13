@@ -19,6 +19,7 @@ export default {
         rule: "#d5d8d0",
         pass: { DEFAULT: "#1e7a4f", soft: "#e3efe7" },
         hold: { DEFAULT: "#8a5a12", soft: "#f6ead3" },
+        mark: { DEFAULT: "#c9371f", soft: "#fbe7e1" }, // vermilion: annotation / selection only
         korami: {
           black: "#111216", // Deep charcoal instead of pure black
           gray: "#1C1E24", // Softer dark gray
@@ -39,6 +40,7 @@ export default {
         sans: ["var(--font-inter)", "sans-serif"],
         display: ["var(--font-space)", "sans-serif"], // Grotesk for headers
         zh: ["var(--font-noto-sc)", "var(--font-inter)", "sans-serif"],
+        mono: ["var(--font-plex-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       keyframes: {
         fadeInUp: {

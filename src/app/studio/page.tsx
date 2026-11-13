@@ -1,143 +1,85 @@
 import Link from "next/link";
-import { AgentRuns } from "@/components/studio/AgentRuns";
 import { BriefForm } from "@/components/studio/BriefForm";
+import { Inspector } from "@/components/studio/Inspector";
 import { STUDIO_EMAIL } from "@/lib/studio-site";
 import { work } from "@/lib/studio-work";
 
-const agents = [
-  {
-    name: "Inbox and email",
-    reads: "Customer emails and attachments",
-    does: "Sorts them, looks up the customer, drafts replies for a person to approve",
-    writes: "Email, CRM, help desk",
-  },
-  {
-    name: "Leads and CRM",
-    reads: "Form fills, inquiries, lead lists",
-    does: "Researches, qualifies, drafts follow-ups, routes to the right person",
-    writes: "CRM, calendar, Slack",
-    proof: { id: "outreach-pipeline", label: "Outreach pipeline" },
-  },
-  {
-    name: "Documents and data",
-    reads: "PDFs, photos, spreadsheets",
-    does: "Extracts the fields, checks them against your records, flags what doesn’t match",
-    writes: "Database, spreadsheet, review queue",
-    proof: { id: "menu-onboarding", label: "Menu onboarding" },
-  },
-  {
-    name: "Phone and messaging",
-    reads: "Calls, SMS, WhatsApp",
-    does: "Answers, takes orders or requests, confirms by text, transfers to staff",
-    writes: "Order system, database, SMS",
-    proof: { id: "kota", label: "KOTA" },
-  },
-  {
-    name: "Internal tools and MCP",
-    reads: "Your APIs, databases, and MCP servers",
-    does: "Runs tasks through scoped tools and asks before risky actions",
-    writes: "Your internal systems",
-    proof: { id: "archon", label: "ARCHON" },
-  },
-  {
-    name: "Research and monitoring",
-    reads: "Websites, search results, feeds",
-    does: "Collects sources, logs every page it opened, and flags citations that aren’t in that log",
-    writes: "Reports, database, alerts",
-    proof: { id: "research-agent", label: "Research agent" },
-  },
-];
-
-const services = [
+const hire = [
   {
     verb: "Build",
-    summary: "A new AI agent for one business process.",
-    examples: [
-      "Inbox sorting and reply drafts",
-      "Lead intake and qualification",
-      "Pulling data out of documents, with review",
-      "Phone reception and ordering",
-      "Research and monitoring with sources",
-    ],
+    situation: "“We have a defined process and need a system for it.”",
     first: "One process, end to end, with a person approving anything that matters.",
+    get: "A working agent in your accounts, its tests, and a handover.",
   },
   {
     verb: "Integrate",
-    summary: "Connect an agent you already have to the tools you already use.",
-    examples: [
-      "CRM and calendar",
-      "Databases and internal APIs",
-      "Email, SMS, and notifications",
-      "MCP tools with scoped permissions",
-      "Approval screens and dashboards",
-    ],
-    first: "One integration, with duplicate and failure handling, tested on your edge cases.",
+    situation: "“We have an agent, but it isn’t connected to our tools.”",
+    first: "One agent or workflow connected to one business system.",
+    get: "The integration, duplicate and failure handling, a readable log, acceptance tests.",
     link: { href: "/services/integration", label: "What an integration project includes" },
   },
   {
     verb: "Improve",
-    summary: "Find out why an agent or automation misbehaves, and fix it.",
-    examples: [
-      "Webhooks that fail or fire twice",
-      "Duplicate records or actions",
-      "Wrong tool arguments and failed API calls",
-      "Unreliable data extraction",
-      "Missing logs, alerts, or hand-offs",
-    ],
-    first: "A fixed-scope audit: we run scripted failure cases and give you a written fix list.",
+    situation: "“We have something running, but it behaves unreliably.”",
+    first: "A fixed-scope audit against scripted failure cases.",
+    get: "A written list of what failed, why, and what each fix involves.",
   },
 ];
 
-const process = [
+const agents = [
+  { name: "Inbox and email", writes: "Email, CRM, help desk" },
+  { name: "Leads and CRM", writes: "CRM, calendar, Slack", proof: { id: "outreach-pipeline", label: "Outreach pipeline" } },
+  { name: "Documents and data", writes: "Database, spreadsheet, review queue", proof: { id: "menu-onboarding", label: "Menu onboarding" } },
+  { name: "Phone and messaging", writes: "Order system, database, SMS", proof: { id: "kota", label: "KOTA" } },
+  { name: "Internal tools and MCP", writes: "Your internal systems", proof: { id: "archon", label: "ARCHON" } },
+  { name: "Research and monitoring", writes: "Reports, database, alerts", proof: { id: "research-agent", label: "Research agent" } },
+];
+
+// Each principle sits next to output from something we built. `mono` lines are verbatim.
+const reliability = [
   {
-    title: "You describe the process",
-    body: "What happens today, which systems are involved, and what a good result looks like. A few lines by email is enough to start.",
+    principle: "The same event twice is handled once",
+    body: "A retried webhook or a double click must not create a second record or a second message.",
+    source: "Raised by our outreach pipeline when a send is repeated",
+    mono: ["AlreadySentError: lead 14 already sent"],
   },
   {
-    title: "We send a fixed scope",
-    body: "Deliverables, exclusions, acceptance tests, milestones, and price, agreed in writing before any work starts.",
+    principle: "A person approves what matters",
+    body: "Payments, deletions, and anything sent to a customer wait for a person. If nobody can confirm, the action doesn’t run.",
+    source: "ARCHON refusing a shell write it couldn’t get confirmed",
+    mono: ["BLOCKED: echo alpha > /tmp/subagent-smoke.txt", "Cannot confirm in non-interactive mode."],
   },
   {
-    title: "We build in milestones",
-    body: "You see working pieces in your own systems and pay milestone by milestone.",
+    principle: "Nothing unsupported gets through",
+    body: "What the model produces is checked against your own records before it is saved or said aloud.",
+    source: "KOTA’s menu validation step",
+    mono: ["Upsell note references unknown item(s): \"Mango Pudding\"."],
   },
   {
-    title: "We hand it over",
-    body: "Documentation, tests, and everything running in your accounts. Support terms are agreed up front, not open-ended.",
+    principle: "You can run it without us",
+    body: "Every project ends with a handover, and everything runs in your own accounts.",
+    source: "What a handover contains",
+    list: ["Setup notes", "The acceptance tests and how to run them", "A sample of the action log", "Support terms from the scope"],
   },
 ];
 
-const builtIn = [
-  "A person approves actions that matter: payments, deletions, anything sent to customers.",
-  "The same event arriving twice is handled once.",
-  "Every action leaves a log you can read.",
-  "Failures are caught, named, and retried within limits instead of silently dropped.",
-  "Access is limited to what the job needs.",
-  "Instructions hidden in emails, documents, or tool output can’t grant new permissions.",
-  "API, phone, and hosting usage runs on your own vendor accounts, so costs stay visible.",
-];
-
-const notAFit = [
-  "Guaranteed revenue, booking rates, or accuracy percentages. We test and report what we measure.",
-  "Outbound calls or texts to people who haven’t agreed to receive them.",
-  "Fully automatic financial, medical, or legal decisions.",
-  "Open-ended “automate everything” projects. We start with one process.",
-];
+const otherWork = work.filter((w) => !["kota", "menu-onboarding"].includes(w.id));
 
 export default function StudioHome() {
   return (
     <>
-      <section className="mx-auto grid max-w-6xl gap-12 px-4 pb-20 pt-14 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:pt-20">
-        <div className="max-w-xl">
-          <h1 className="display text-[2.6rem] sm:text-6xl">
-            AI agents that do real work inside your business systems.
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-graphite">
-            KummaLabs builds, connects, and fixes AI agents for email, leads, documents, phone, and
-            internal tools. Each one reads the request, uses your data, takes the action, checks that
-            it worked, and hands off to a person when it should.
+      <section className="mx-auto grid max-w-[88rem] gap-x-16 gap-y-8 px-4 pb-12 pt-14 sm:px-6 lg:grid-cols-[1.5fr_1fr] lg:items-end lg:pb-16 lg:pt-24">
+        <h1 className="display text-[2.9rem] sm:text-7xl lg:text-[5.6rem]">
+          AI agents.
+          <br />
+          Built into your business.
+        </h1>
+        <div className="max-w-md lg:pb-3">
+          <p className="text-lg leading-relaxed">
+            We build, connect, and improve agents that work inside your existing tools: email, CRM,
+            documents, phone, and internal systems.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link href="/#brief" className="rounded-full bg-ink px-5 py-3 font-semibold text-paper hover:bg-ink/90">
               Describe your project
             </Link>
@@ -145,186 +87,252 @@ export default function StudioHome() {
               See the work
             </Link>
           </div>
-          <p className="mt-8 text-[15px] text-graphite">We work in English and 中文.</p>
-        </div>
-        <AgentRuns />
-      </section>
-
-      <section id="agents" className="border-t border-rule">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <h2 className="display max-w-3xl text-3xl sm:text-4xl">Agents we build, and where their work lands</h2>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-graphite">
-            An agent is only useful if the result shows up in a system you already use. The last
-            column links to something we’ve built that does the same kind of work.
-          </p>
-          <div className="mt-10 border-t border-ink">
-            <div className="hidden gap-6 border-b border-rule py-3 text-[14px] text-graphite md:grid md:grid-cols-[11rem_1fr_1.4fr_1fr_9rem]">
-              <span>Agent</span>
-              <span>Reads</span>
-              <span>Does</span>
-              <span>Writes to</span>
-              <span>Built before</span>
-            </div>
-            <ul>
-              {agents.map((a) => (
-                <li
-                  key={a.name}
-                  className="grid gap-x-6 gap-y-2 border-b border-rule py-5 md:grid-cols-[11rem_1fr_1.4fr_1fr_9rem]"
-                >
-                  <h3 className="text-lg font-bold leading-snug">{a.name}</h3>
-                  <p className="text-[15px] leading-snug">
-                    <span className="text-graphite md:hidden">Reads: </span>
-                    {a.reads}
-                  </p>
-                  <p className="text-[15px] leading-snug">
-                    <span className="text-graphite md:hidden">Does: </span>
-                    {a.does}
-                  </p>
-                  <p className="text-[15px] leading-snug">
-                    <span className="text-graphite md:hidden">Writes to: </span>
-                    {a.writes}
-                  </p>
-                  <p className="text-[15px] leading-snug">
-                    {a.proof ? (
-                      <Link href={`/work#${a.proof.id}`} className="link">
-                        {a.proof.label}
-                      </Link>
-                    ) : (
-                      <span className="text-graphite">Not yet</span>
-                    )}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <p className="mt-5 text-[15px] text-graphite">An engineering studio. English and 中文.</p>
         </div>
       </section>
 
-      <section id="services" className="border-t border-rule">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <h2 className="display max-w-2xl text-3xl sm:text-4xl">Three kinds of work. Most first projects are small.</h2>
-          <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-10">
-            {services.map((s) => (
-              <article key={s.verb} className="flex flex-col">
-                <h3 className="display text-4xl sm:text-5xl">{s.verb}</h3>
-                <p className="mt-3 text-lg leading-snug">{s.summary}</p>
-                <ul className="mt-5 space-y-2 border-t border-rule pt-5 text-[15px] text-graphite">
-                  {s.examples.map((e) => (
-                    <li key={e}>{e}</li>
-                  ))}
-                </ul>
-                <p className="mt-6 text-[15px] leading-snug">
-                  <span className="font-semibold">Typical first project: </span>
-                  {s.first}
-                </p>
-                {"link" in s && s.link && (
-                  <Link href={s.link.href} className="link mt-3 text-[15px] font-semibold">
-                    {s.link.label}
-                  </Link>
-                )}
-              </article>
-            ))}
-          </div>
-          <div id="agencies" className="mt-16 grid gap-6 border-t border-ink pt-8 md:grid-cols-[1fr_2fr]">
-            <h3 className="text-xl font-bold">For agencies</h3>
-            <div className="max-w-prose">
-              <p className="leading-relaxed">
-                If you sell AI agents or automations to your own clients, we take on project-based
-                engineering delivery: the functions, webhooks, and integrations behind an agent,
-                failure-case testing, and Mandarin conversation flows.
-              </p>
-              <p className="mt-3 leading-relaxed text-graphite">
-                Same terms as direct projects: an agreed scope and acceptance tests in writing,
-                documentation, and a handover to your team. You keep the client relationship.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Inspector />
 
-      <section id="work" className="border-t border-rule bg-sheet">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="display text-3xl sm:text-4xl">Work</h2>
-            <Link href="/work" className="link font-semibold">
-              Details on every project
+      <section id="work" className="mx-auto max-w-[88rem] px-4 py-20 sm:px-6 lg:py-28">
+        <h2 className="display max-w-3xl text-3xl sm:text-5xl">Two pieces of work, in detail</h2>
+
+        <div className="mt-14 grid gap-10 border-t border-ink pt-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
+          <div>
+            <p className="text-[15px] text-graphite">Prototype. Documents and data.</p>
+            <h3 className="display mt-2 text-3xl sm:text-4xl">Document extraction that checks itself</h3>
+            <p className="mt-5 max-w-prose text-lg leading-relaxed">
+              Menu photos become structured data. Before anything is saved, every extracted value
+              is checked against the menu’s own catalog, and whatever the menu doesn’t support is
+              removed and kept on an exception list.
+            </p>
+            <p className="mt-4 max-w-prose leading-relaxed text-graphite">
+              The surface above is this step’s real output. The same pattern fits invoices and
+              intake forms; we have built it for menus so far.
+            </p>
+            <Link href="/work/menu-validation" className="link mt-6 inline-block font-semibold">
+              Read the recorded run
             </Link>
           </div>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-graphite">
-            Prototypes, internal tools, and open source we’ve built. Each one is labeled for what it
-            is. None is presented as a client deployment.
-          </p>
-          <ul className="mt-10 border-t border-ink">
-            {work.map((w) => (
-              <li key={w.id} className="grid gap-x-6 gap-y-2 border-b border-rule py-6 md:grid-cols-[14rem_1fr_8rem]">
-                <div>
-                  <h3 className="text-lg font-bold">
-                    <Link href={`/work#${w.id}`} className="hover:underline">
-                      {w.name}
-                    </Link>
-                  </h3>
-                  <p className="text-[15px] text-graphite">{w.kind}</p>
-                </div>
-                <p className="leading-relaxed">{w.shows}</p>
-                <p className="text-[15px] text-graphite md:text-right">{w.status}</p>
+          <figure className="border border-rule bg-sheet">
+            <figcaption className="border-b border-rule px-5 py-3 text-[14px] text-graphite">
+              From the recorded run: one field, before and after
+            </figcaption>
+            <div className="grid sm:grid-cols-2 sm:divide-x sm:divide-rule">
+              <div className="px-5 py-5">
+                <p className="text-[14px] text-graphite">Extracted</p>
+                <p className="mt-2 font-mono text-[14px] leading-relaxed">
+                  aliases: beef noodles, Beef Noodle Soup, <span className="annot bg-mark-soft">wonton soup</span>
+                </p>
+                <p className="mt-3 font-mono text-[14px] leading-relaxed">
+                  dietary_tags: contains_beef, contains_wheat, <span className="annot bg-mark-soft">keto_friendly</span>
+                </p>
+                <p className="mt-3 font-mono text-[14px] leading-relaxed">price: 13.95</p>
+              </div>
+              <div className="border-t border-rule px-5 py-5 sm:border-t-0">
+                <p className="text-[14px] text-graphite">Saved</p>
+                <p className="mt-2 font-mono text-[14px] leading-relaxed">aliases: beef noodles</p>
+                <p className="mt-3 font-mono text-[14px] leading-relaxed">dietary_tags: contains_beef, contains_wheat</p>
+                <p className="mt-3 font-mono text-[14px] leading-relaxed">price: 13.95</p>
+              </div>
+            </div>
+          </figure>
+        </div>
+
+        <div className="mt-16 grid gap-10 border-t border-ink pt-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+          <figure className="order-2 border border-rule bg-sheet lg:order-1">
+            <figcaption className="border-b border-rule px-5 py-3 text-[14px] text-graphite">
+              Illustration of one KOTA call and the record it leaves. Synthetic call; the steps are
+              the ones the code performs.
+            </figcaption>
+            <div className="grid sm:grid-cols-[1.1fr_1fr] sm:divide-x sm:divide-rule">
+              <ol className="space-y-3 px-5 py-5 text-[15px]">
+                <li>
+                  <span className="text-graphite">Caller</span>
+                  <br />
+                  “Two beef noodle soups and a jasmine tea.”
+                </li>
+                <li className="font-mono text-[14px] text-graphite">menu lookup: 2 items found</li>
+                <li>
+                  <span className="annot">Required choice missing.</span> Agent asks: thin or wide?
+                </li>
+                <li className="font-mono text-[14px] text-graphite">item confirmed by read-back</li>
+                <li className="font-mono text-[14px] text-graphite">order saved</li>
+                <li className="font-mono text-[14px] text-graphite">sms accepted by provider</li>
+                <li>Only now does the agent say “I texted you your order.”</li>
+              </ol>
+              <div className="border-t border-rule px-5 py-5 sm:border-t-0">
+                <p className="text-[14px] text-graphite">Order record</p>
+                <dl className="mt-3 space-y-2 text-[15px]">
+                  <div className="flex justify-between gap-4">
+                    <dt>2 × Beef Noodle Soup</dt>
+                    <dd className="text-graphite">wide</dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt>1 × Jasmine Tea</dt>
+                    <dd />
+                  </div>
+                  <div className="flex justify-between gap-4 border-t border-rule pt-2 font-semibold">
+                    <dt>Total</dt>
+                    <dd>30.40</dd>
+                  </div>
+                </dl>
+                <p className="mt-4 inline-block rounded-sm bg-pass-soft px-2 py-0.5 text-[14px] font-semibold text-pass">
+                  Placed, confirmation sent
+                </p>
+              </div>
+            </div>
+          </figure>
+          <div className="order-1 lg:order-2">
+            <p className="text-[15px] text-graphite">Prototype. Phone and messaging.</p>
+            <h3 className="display mt-2 text-3xl sm:text-4xl">KOTA: phone orders in English and 中文</h3>
+            <p className="mt-5 max-w-prose text-lg leading-relaxed">
+              A voice agent that takes restaurant orders against the restaurant’s own menu database,
+              saves each one as a structured record, and texts the caller a confirmation.
+            </p>
+            <p className="mt-4 max-w-prose leading-relaxed text-graphite">
+              111 automated tests pass. Built against real menus; not used in production, and we say
+              so.
+            </p>
+            <Link href="/work/kota" className="link mt-6 inline-block font-semibold">
+              Read the KOTA case study
+            </Link>
+          </div>
+        </div>
+
+        <div className="mt-16 border-t border-ink pt-8">
+          <div className="flex flex-wrap items-baseline justify-between gap-4">
+            <h3 className="text-xl font-bold">Also built</h3>
+            <Link href="/work" className="link font-semibold">
+              All work, with details
+            </Link>
+          </div>
+          <ul className="mt-4">
+            {otherWork.map((w) => (
+              <li key={w.id} className="grid gap-x-8 gap-y-1 border-b border-rule py-4 md:grid-cols-[18rem_1fr_8rem]">
+                <Link href={`/work#${w.id}`} className="font-semibold hover:underline">
+                  {w.name}
+                </Link>
+                <span className="text-graphite">{w.kind}</span>
+                <span className="text-[15px] text-graphite md:text-right">{w.status}</span>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section id="process" className="border-t border-rule">
-        <div className="mx-auto grid max-w-6xl gap-14 px-4 py-20 sm:px-6 lg:grid-cols-2">
-          <div>
-            <h2 className="display text-3xl sm:text-4xl">How a project runs</h2>
-            <ol className="mt-10 space-y-8">
-              {process.map((step, i) => (
-                <li key={step.title} className="grid grid-cols-[2.5rem_1fr] gap-x-4">
-                  <span className="display text-3xl text-graphite/60" aria-hidden>
-                    {i + 1}
-                  </span>
+      <section id="services" className="border-t border-rule bg-ink text-paper">
+        <div className="mx-auto max-w-[88rem] px-4 py-20 sm:px-6 lg:py-28">
+          <h2 className="display max-w-3xl text-3xl sm:text-5xl">Three ways to start. Most first projects are small.</h2>
+          <div className="mt-14 grid gap-12 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-paper/20">
+            {hire.map((h, i) => (
+              <article key={h.verb} className={`flex flex-col ${i === 0 ? "lg:pr-10" : i === 1 ? "lg:px-10" : "lg:pl-10"}`}>
+                <h3 className="display text-5xl sm:text-6xl">{h.verb}</h3>
+                <p className="mt-5 text-xl leading-snug">{h.situation}</p>
+                <dl className="mt-8 space-y-5 border-t border-paper/20 pt-6">
                   <div>
-                    <h3 className="text-lg font-semibold">{step.title}</h3>
-                    <p className="mt-1 leading-relaxed text-graphite">{step.body}</p>
+                    <dt className="text-[14px] text-paper/60">First project</dt>
+                    <dd className="mt-1 leading-relaxed">{h.first}</dd>
                   </div>
-                </li>
-              ))}
-            </ol>
+                  <div>
+                    <dt className="text-[14px] text-paper/60">You get</dt>
+                    <dd className="mt-1 leading-relaxed">{h.get}</dd>
+                  </div>
+                </dl>
+                {"link" in h && h.link && (
+                  <Link href={h.link.href} className="link mt-6 font-semibold">
+                    {h.link.label}
+                  </Link>
+                )}
+              </article>
+            ))}
           </div>
-          <div className="space-y-12">
-            <div>
-              <h2 className="text-xl font-bold">Built into every system</h2>
-              <ul className="mt-5 space-y-3">
-                {builtIn.map((item) => (
-                  <li key={item} className="grid grid-cols-[1.25rem_1fr] gap-x-3 leading-relaxed">
-                    <svg viewBox="0 0 16 16" className="mt-1.5 size-4 text-pass" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
-                      <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h2 className="text-xl font-bold">Not a good fit</h2>
-              <ul className="mt-5 space-y-3 text-graphite">
-                {notAFit.map((item) => (
-                  <li key={item} className="grid grid-cols-[1.25rem_1fr] gap-x-3 leading-relaxed">
-                    <span className="mt-[0.7rem] h-0.5 w-3 bg-graphite/60" aria-hidden />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <p className="mt-14 max-w-3xl border-t border-paper/20 pt-6 leading-relaxed text-paper/80">
+            Every project starts with a written scope: deliverables, exclusions, acceptance tests,
+            milestones, and a fixed price, agreed before any work begins. You pay by milestone.
+          </p>
+          <div id="agencies" className="mt-10 grid gap-4 md:grid-cols-[14rem_1fr]">
+            <h3 className="text-xl font-bold">For agencies</h3>
+            <p className="max-w-prose leading-relaxed text-paper/80">
+              If you sell agents or automations to your own clients, we take on project-based
+              delivery: the functions, webhooks, and integrations behind an agent, failure-case
+              testing, and Mandarin conversation flows. Same written scope and handover. You keep
+              the client relationship.
+            </p>
           </div>
         </div>
       </section>
 
-      <section id="brief" className="scroll-mt-4 border-t border-rule bg-ink text-paper">
-        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.1fr]">
+      <section id="agents" className="border-t border-rule">
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_2fr] lg:py-24">
           <div>
-            <h2 className="display text-3xl sm:text-5xl">Describe your project</h2>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-paper/80">
+            <h2 className="display text-3xl sm:text-4xl">Not only voice</h2>
+            <p className="mt-4 max-w-sm leading-relaxed text-graphite">
+              An agent is only useful if its result lands in a system you already use.
+            </p>
+          </div>
+          <ul className="border-t border-ink">
+            {agents.map((a) => (
+              <li key={a.name} className="grid gap-x-8 gap-y-1 border-b border-rule py-4 sm:grid-cols-[14rem_1fr_10rem]">
+                <span className="font-semibold">{a.name}</span>
+                <span className="text-graphite">
+                  <span className="sm:hidden">Writes to: </span>
+                  {a.writes}
+                </span>
+                <span className="text-[15px] sm:text-right">
+                  {a.proof ? (
+                    <Link href={`/work#${a.proof.id}`} className="link">
+                      {a.proof.label}
+                    </Link>
+                  ) : (
+                    <span className="text-graphite">Not built yet</span>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="process" className="border-t border-rule bg-sheet">
+        <div className="mx-auto max-w-[88rem] px-4 py-20 sm:px-6 lg:py-28">
+          <h2 className="display max-w-3xl text-3xl sm:text-5xl">Reliability, with the receipts</h2>
+          <div className="mt-14 border-t border-ink">
+            {reliability.map((r) => (
+              <div key={r.principle} className="grid gap-x-16 gap-y-4 border-b border-rule py-8 lg:grid-cols-[1fr_1.1fr]">
+                <div>
+                  <h3 className="text-xl font-bold">{r.principle}</h3>
+                  <p className="mt-2 max-w-prose leading-relaxed text-graphite">{r.body}</p>
+                </div>
+                <div className="border-l-2 border-mark pl-5">
+                  <p className="text-[14px] text-graphite">{r.source}</p>
+                  {r.mono?.map((line) => (
+                    <p key={line} className="mt-1.5 break-words font-mono text-[14px] leading-relaxed">
+                      {line}
+                    </p>
+                  ))}
+                  {r.list && (
+                    <ul className="mt-1.5 space-y-1 text-[15px]">
+                      {r.list.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 max-w-3xl leading-relaxed text-graphite">
+            We don’t take on guaranteed revenue or accuracy numbers, outbound calls or texts to people
+            who haven’t agreed to them, or fully automatic financial, medical, or legal decisions.
+          </p>
+        </div>
+      </section>
+
+      <section id="brief" className="scroll-mt-4 border-t border-rule bg-ink text-paper">
+        <div className="mx-auto grid max-w-[88rem] gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:py-28">
+          <div>
+            <h2 className="display text-4xl sm:text-6xl">Describe your project</h2>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper/80">
               Tell us about the process you want to automate, connect, or fix. You’ll get back
               questions or a proposed scope by email.
             </p>

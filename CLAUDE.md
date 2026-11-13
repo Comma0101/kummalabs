@@ -41,6 +41,12 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
 - `src/app/robots.ts` and `src/app/sitemap.ts` describe the studio site only.
 - Studio pages: `/` (home + project-brief form at `#brief`), `/work`, `/work/kota`,
   `/work/menu-validation` (recorded run), `/services/integration`.
+- Studio design language ("inspect the engineering"): mineral-white paper, deep ink, wide Archivo
+  headlines; vermilion (`mark`) is the annotation colour only (selected value and its path);
+  green/amber are status only; IBM Plex Mono only for code output. Show artifacts over prose, label
+  each one recorded or illustrative, keep everything readable without animation and usable by keyboard.
+- Home hero: `src/components/studio/Inspector.tsx`, an inspectable view of the recorded validation
+  run (same data as `/work/menu-validation`; `message` strings are verbatim code output).
 - Project brief: `src/components/studio/BriefForm.tsx` → `POST /api/brief` → email via Resend.
   Validation and spam rules are in `src/lib/brief.ts` (tested in `tests/brief.test.mjs`). The route
   returns success only when the provider accepts the email; otherwise the form shows an error with
@@ -91,8 +97,7 @@ Still unverified:
 
 KOTA's backend is a separate repo (`Comma0101/Servio`; local `../korami-voice-agent`). Verify feature claims there.
 
-Studio site claims: every entry in `src/lib/studio-work.ts` and every run in
-`src/components/studio/AgentRuns.tsx` was checked against the source repo on 2026-11-12
+Studio site claims: every entry in `src/lib/studio-work.ts` and every artifact on the studio home page was checked against the source repo on 2026-11-12
 (`korami-voice-agent`, `kumma-outreach`, `Product_Lab`, `archon`). Re-verify before changing a claim.
 Quote a test count only when that project's full suite passes. Label every example with where it
 comes from; only illustrative examples may describe systems we haven't built, and they must say so.

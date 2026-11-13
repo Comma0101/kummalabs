@@ -50,6 +50,31 @@ body {
   text-decoration-thickness: 2px;
 }
 
+::selection {
+  background: #c9371f;
+  color: #fbfbf8;
+}
+
+/* Inspector: the selected value is marked like a red-pen annotation. */
+.annot {
+  text-decoration: underline;
+  text-decoration-color: #c9371f;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+@keyframes trace-in {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.trace-in {
+  animation: trace-in 260ms ease-out both;
+}
+
 /* Run record: one orchestrated reveal on load. Each step appears in order. */
 @keyframes step-in {
   from {
@@ -71,7 +96,8 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .run-step {
+  .run-step,
+  .trace-in {
     animation: none;
   }
 }

@@ -4,7 +4,7 @@ import { KOTA_URL, STUDIO_EMAIL } from "@/lib/studio-site";
 export function StudioFooter() {
   return (
     <footer className="border-t border-rule">
-      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 text-[15px] text-graphite sm:grid-cols-[1fr_auto] sm:px-6">
+      <div className="mx-auto grid max-w-[88rem] gap-6 px-4 py-10 text-[15px] text-graphite sm:grid-cols-[1fr_auto] sm:px-6">
         <p className="max-w-prose">
           KummaLabs is an engineering studio run by Yang Wu (Kumma). We build, connect, and improve
           AI agents that do real work inside business systems. English and 中文.

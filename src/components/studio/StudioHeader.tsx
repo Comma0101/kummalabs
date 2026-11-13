@@ -10,7 +10,7 @@ const nav = [
 export function StudioHeader() {
   return (
     <header className="border-b border-rule">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-3 px-4 py-4 sm:px-6">
+      <div className="mx-auto flex max-w-[88rem] flex-wrap items-center gap-x-8 gap-y-3 px-4 py-4 sm:px-6">
         <Link href="/" className="wide text-lg font-extrabold tracking-tight">
           KummaLabs
         </Link>
