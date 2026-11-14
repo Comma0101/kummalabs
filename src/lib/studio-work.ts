@@ -1,7 +1,7 @@
 // Work shown on kummalabs.com. Every claim here was checked against the project's code on
 // 2026-11-12. Test counts are only quoted where the full suite passed in that check.
 
-export type WorkStatus = "Prototype" | "Internal tool" | "Open source" | "Internal audit";
+export type WorkStatus = "Began as a paid project" | "Prototype" | "Internal tool" | "Open source" | "Internal audit";
 
 export type Work = {
   id: string;
@@ -20,13 +20,14 @@ export const work: Work[] = [
     id: "kota",
     name: "KOTA",
     kind: "Phone ordering agent, English and Mandarin",
-    status: "Prototype",
+    status: "Began as a paid project",
     shows: "Voice, typed tool calls against a database, confirmations that are checked, and a hand-off to staff.",
     does:
       "Answers a restaurant’s phone, takes the order against the restaurant’s own menu database, saves it as a structured record, and texts the caller a confirmation. Pressing 0 transfers the call to a person.",
     built:
       "Twilio media streams; Deepgram for English; ByteDance speech with OpenAI tool calling for Mandarin; Python and FastAPI; PostgreSQL.",
-    evidence: "111 automated tests pass. Built against real restaurant menus; not used in production.",
+    evidence:
+      "The first working version was built as a paid project for a US restaurant point-of-sale company, which we don’t name. The code has been reworked since, and 111 automated tests pass on the current version.",
     link: { href: "/work/kota", label: "Read the KOTA case study" },
   },
   {
@@ -50,7 +51,8 @@ export const work: Work[] = [
     does:
       "We audited KOTA’s order path by replacing the database and the messaging provider with controlled fakes and triggering each failure deliberately. It found five issues we hadn’t known about, including a failed save being announced to the caller as a confirmed order, and confirmed two behaviours that hold up.",
     built: "Seven targeted tests against the real code, using the project’s own test harness.",
-    evidence: "All five findings are open and published as a sample report, written the way a client receives it.",
+    evidence:
+      "All five findings are open. Three are published in full as a sample report, written the way a client receives it. Two security findings are withheld from the public copy until they are fixed.",
     link: { href: "/work/sample-diagnostic", label: "Read the sample diagnostic report" },
   },
   {

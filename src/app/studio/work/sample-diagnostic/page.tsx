@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Sample diagnostic report: a phone-order flow",
   description:
-    "What you receive from a KummaLabs integration diagnostic. A real report on our own phone-ordering system: five findings with reproduced evidence, proposed fixes, and acceptance tests.",
+    "What you receive from a KummaLabs integration diagnostic. A real report on our own phone-ordering system: five findings, three published in full with reproduced evidence, proposed fixes, and acceptance tests.",
   alternates: { canonical: "/work/sample-diagnostic" },
 };
 
@@ -23,7 +23,11 @@ type Finding = {
   accept: string;
 };
 
-const findings: Finding[] = [
+// Findings 3 and 4 are security findings. Their details stay out of the public copy until the
+// owner confirms they are fixed. Do not restore them from git history before then.
+type Withheld = { id: string; withheld: true };
+
+const findings: (Finding | Withheld)[] = [
   {
     id: "1",
     title: "A failed save is announced as a confirmed order",
@@ -59,38 +63,7 @@ const findings: Finding[] = [
     fix: "Store each order as its own record, and return an order number only when exactly one record was written.",
     accept: "With no call row present, placing an order either creates a complete order record or fails as in finding 1. An order number is never returned without a stored record.",
   },
-  {
-    id: "3",
-    title: "Call transcripts and caller phone numbers are readable without a login",
-    severity: "High",
-    basis: "Reproduced",
-    what: "The routes that list calls and what was said on them have no authentication.",
-    evidence: [
-      {
-        label: "Request with no credentials (synthetic data)",
-        text: "GET /api/db/utterances (no credentials) -> 200 {'count': 1, 'data': [{'id': 1, 'call_sid': 'CA_SYNTHETIC_0001', 'speaker': 'caller', 'text': 'two beef noodle soups', 'caller_phone': '+15555550100'}]}",
-      },
-    ],
-    why: "Anyone who finds the address can read what callers said, along with their phone numbers.",
-    fix: "Require authentication on every data route, remove the debug route, and limit each restaurant to its own calls.",
-    accept: "Without valid credentials every data route answers 401. With one restaurant’s credentials, another restaurant’s calls are not returned.",
-  },
-  {
-    id: "4",
-    title: "The call webhook accepts requests that don’t come from the phone provider",
-    severity: "Medium",
-    basis: "Reproduced",
-    what: "The route the phone provider calls when a call starts does not verify the provider’s signature.",
-    evidence: [
-      {
-        label: "A forged request with no signature",
-        text: "POST /api/incoming-call (no X-Twilio-Signature) -> 200 application/xml <?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Say voice=\"Polly.Joanna-Neural\">Welcome to our restaurant.</Say><Gather …",
-      },
-    ],
-    why: "Anyone can start call flows with made-up caller details, which costs money and pollutes the call log.",
-    fix: "Verify the provider’s signature on every webhook and reject everything else.",
-    accept: "An unsigned or wrongly signed request gets 403. A correctly signed one behaves as it does today.",
-  },
+  { id: "3 and 4", withheld: true },
   {
     id: "5",
     title: "Every restaurant’s “press 0” transfers to the same phone number",
@@ -145,6 +118,7 @@ export default function SampleDiagnostic() {
           <div>
             <dt className="text-[14px] text-graphite">Findings</dt>
             <dd className="mt-1 text-lg font-semibold">5: three high, two medium</dd>
+            <dd className="mt-1 text-[14px] text-graphite">Two are withheld from this public copy</dd>
           </div>
           <div>
             <dt className="text-[14px] text-graphite">Checks that passed</dt>
@@ -160,7 +134,7 @@ export default function SampleDiagnostic() {
           <div>
             <dt className="text-[14px] text-graphite">Status</dt>
             <dd className="mt-1 leading-snug">
-              Open. KOTA is not deployed, and these are fixed before it is.
+              Open in our code. We don’t run a deployment of it, and these are fixed before we do.
             </dd>
           </div>
         </dl>
@@ -193,7 +167,28 @@ export default function SampleDiagnostic() {
         <div className="mx-auto max-w-[88rem] px-4 py-14 sm:px-6">
           <h2 className="display text-3xl">Findings</h2>
           <ol className="mt-10 border-t border-ink">
-            {findings.map((f) => (
+            {findings.map((f) =>
+              "withheld" in f ? (
+              <li key={f.id} className="grid gap-x-16 gap-y-6 border-b border-rule py-10 lg:grid-cols-[1fr_1.15fr]">
+                <div>
+                  <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px]">
+                    <span className="rounded-sm bg-mark-soft px-2 py-0.5 font-semibold text-mark">High</span>
+                    <span className="rounded-sm bg-hold-soft px-2 py-0.5 font-semibold text-hold">Medium</span>
+                    <span className="text-graphite">Reproduced</span>
+                  </p>
+                  <h3 className="mt-3 text-2xl font-bold leading-snug">
+                    {f.id}. Two security findings, withheld from this copy
+                  </h3>
+                  <p className="mt-4 max-w-prose leading-relaxed">
+                    Both are open, so their details stay out of the public copy until they are fixed.
+                  </p>
+                </div>
+                <p className="max-w-prose leading-relaxed text-graphite">
+                  A client report withholds nothing. Every finding comes with its evidence, a proposed
+                  fix, and an acceptance test, and the report goes only to the client.
+                </p>
+              </li>
+              ) : (
               <li key={f.id} className="grid gap-x-16 gap-y-6 border-b border-rule py-10 lg:grid-cols-[1fr_1.15fr]">
                 <div>
                   <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px]">
@@ -235,7 +230,8 @@ export default function SampleDiagnostic() {
                   </dl>
                 </div>
               </li>
-            ))}
+              ),
+            )}
           </ol>
         </div>
       </section>
@@ -261,7 +257,7 @@ export default function SampleDiagnostic() {
           <div className="max-w-prose space-y-4 leading-relaxed">
             <p>
               Fix findings 1 and 2 together, since they share one code path and decide whether a
-              confirmed order is real. Then 3, which exposes callers’ data. Then 4 and 5.
+              confirmed order is real. Then the two security findings, 3 and 4. Then 5.
             </p>
             <p className="text-graphite">
               Separately, and not a defect: nothing in the system tells the restaurant that an order

@@ -53,11 +53,6 @@ export default function Note() {
         function places an order or books an appointment, a request made up by a stranger does the same.
       </p>
       <p>
-        We have made this mistake ourselves. In <Link href="/work/sample-diagnostic">a diagnostic of our earlier prototype</Link>,
-        the route that answers a new call accepted a forged request with no signature at all. That was another
-        provider’s webhook, and the same omission.
-      </p>
-      <p>
         Retell signs every request so that you can tell the difference. Its{" "}
         <a href={DOCS_WEBHOOK}>documentation</a> describes an <code>X-Retell-Signature</code> header of the form{" "}
         <code>{"v={timestamp},d={digest}"}</code>. The digest is an HMAC-SHA256, keyed with your API key, of the raw

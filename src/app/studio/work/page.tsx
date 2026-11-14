@@ -15,8 +15,8 @@ export default function WorkPage() {
       <header className="mx-auto max-w-[88rem] px-4 pb-12 pt-14 sm:px-6 lg:pt-20">
         <h1 className="display max-w-4xl text-[2.4rem] sm:text-6xl">Agents we’ve built</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
-          Prototypes, internal tools, and open source. Each is labeled for what it is, and none is
-          presented as a client deployment. Test counts are from our own runs of each project’s
+          One began as a paid project. The rest are prototypes, internal tools, and open source.
+          Each is labeled for what it is. Test counts are from our own runs of each project’s
           suite.
         </p>
       </header>

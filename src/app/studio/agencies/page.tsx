@@ -87,8 +87,8 @@ export default function Agencies() {
               <Link href="/work/sample-diagnostic" className="link font-semibold">
                 A sample diagnostic report
               </Link>
-              : five findings in a phone-order flow, each with reproduced evidence, a proposed fix,
-              and an acceptance test.
+              : five findings in a phone-order flow. Three are published in full, each with
+              reproduced evidence, a proposed fix, and an acceptance test.
             </li>
             <li>
               <Link href="/work/menu-validation" className="link font-semibold">
@@ -107,8 +107,8 @@ export default function Agencies() {
               <Link href="/work/kota" className="link font-semibold">
                 KOTA
               </Link>
-              : a bilingual phone-ordering prototype, with typed tool calls against a database and
-              111 passing tests.
+              : a bilingual phone-ordering agent that began as a paid project, with typed tool calls
+              against a database and 111 passing tests.
             </li>
           </ul>
         </div>

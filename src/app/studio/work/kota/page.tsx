@@ -42,10 +42,12 @@ export default function KotaCaseStudy() {
           own menu data, records it, and confirms it to the caller.
         </p>
         <div className="mt-8 max-w-2xl rounded-md border border-hold/40 bg-hold-soft px-4 py-3 leading-relaxed">
-          <span className="font-semibold">Status: </span>a working, tested prototype built against
-          real restaurant menus (combos, required options, bilingual item names). No restaurant has
-          used it in production, it is not currently deployed, and we make no claims about call
-          volume, accuracy, latency, or uptime.
+          <span className="font-semibold">Status: </span>KOTA began as a paid project under the
+          name Serviio. We built the first working version for a US restaurant point-of-sale
+          company, which we don’t name. The code has been reworked since, and this page describes
+          the current version, tested against real restaurant menus (combos, required options,
+          bilingual item names). We don’t run a deployment of it ourselves, and we make no claims
+          about that company’s deployment, call volume, accuracy, latency, or uptime.
         </div>
       </header>
 
@@ -138,20 +140,22 @@ export default function KotaCaseStudy() {
               </ul>
             </div>
             <div>
-              <h2 className="display text-3xl">Not built yet</h2>
+              <h2 className="display text-3xl">Not in the current version</h2>
               <p className="mt-6 leading-relaxed text-graphite">
                 POS integration, kitchen printing, a restaurant-side order dashboard, staff
-                notification, payments, calendar booking, and CRM sync. Each one is a bounded
-                integration on top of the structured order record, the same kind of work we do for
-                clients.
+                notification, payments, calendar booking, and CRM sync. The first version included
+                an integration with that company’s ordering API; it is not part of the current
+                code. Each one is a bounded integration on top of the structured order record, the
+                same kind of work we do for clients.
               </p>
             </div>
             <div>
               <h2 className="display text-3xl">Known defects</h2>
               <p className="mt-6 leading-relaxed text-graphite">
-                Our own diagnostic of the order flow found five issues, including that a failed
-                database write is still announced to the caller as a confirmed order. They are open
-                and will be fixed before KOTA is deployed.{" "}
+                Our own diagnostic of the current code’s order flow found five issues, including
+                that a failed database write is still announced to the caller as a confirmed order.
+                They are open, and we fix them before we deploy it. The public report shows three in
+                full and withholds two security findings until they are fixed.{" "}
                 <Link href="/work/sample-diagnostic" className="link text-ink">
                   Read the report
                 </Link>

@@ -17,12 +17,12 @@ export default function Note() {
       record={[
         {
           label: "Based on",
-          value: "A diagnostic of KOTA, our phone-ordering prototype, and the ordering backend we rebuilt afterwards.",
+          value: "A diagnostic of KOTA, our phone-ordering system, and the ordering backend we rebuilt afterwards.",
         },
         { label: "Evidence", value: "Test output and one typed conversation, quoted exactly. All data is synthetic." },
         {
           label: "Not tested",
-          value: "Live phone calls. The prototype’s two defects are still open; it is not deployed.",
+          value: "Live phone calls. The two defects are still open in KOTA’s current code; we don’t run a deployment of it.",
         },
         {
           label: "Full report",
@@ -36,7 +36,7 @@ export default function Note() {
     >
       <h2>What happened</h2>
       <p>
-        During a diagnostic of KOTA, our phone-ordering prototype, we made the database reject the write that stores an
+        During a diagnostic of KOTA, our phone-ordering system, we made the database reject the write that stores an
         order. Then we placed an order.
       </p>
       <Recorded label="What the agent said">
@@ -154,9 +154,9 @@ AGENT: I couldn’t place the order, and nothing was ordered. You can try again.
 
       <h2>What this note does not show</h2>
       <p>
-        The prototype’s tests replaced the database and the messaging provider with controlled fakes. The rebuilt
+        The diagnostic’s tests replaced the database and the messaging provider with controlled fakes. The rebuilt
         backend was tested against a real Postgres and in typed conversations. It has not been tested on live phone
-        calls. The two defects in the prototype are still open, and they are fixed before it is deployed.
+        calls. The two defects are still open in KOTA’s current code, and we fix them before we deploy it.
       </p>
     </NoteShell>
   );

@@ -89,7 +89,13 @@ export default function StudioHome() {
               See the work
             </Link>
           </div>
-          <p className="mt-5 text-[15px] text-graphite">An engineering studio. English and 中文.</p>
+          <p className="mt-5 text-[15px] leading-relaxed text-graphite">
+            An engineering studio. English and 中文. The first version of{" "}
+            <Link href="/work/kota" className="link">
+              KOTA
+            </Link>
+            , our phone-ordering agent, was built as a paid project for a US restaurant point-of-sale company.
+          </p>
         </div>
       </section>
 
@@ -186,15 +192,16 @@ export default function StudioHome() {
             </div>
           </figure>
           <div className="order-1 lg:order-2">
-            <p className="text-[15px] text-graphite">Prototype. Phone and messaging.</p>
+            <p className="text-[15px] text-graphite">Began as a paid project. Phone and messaging.</p>
             <h3 className="display mt-2 text-3xl sm:text-4xl">KOTA: phone orders in English and 中文</h3>
             <p className="mt-5 max-w-prose text-lg leading-relaxed">
               A voice agent that takes restaurant orders against the restaurant’s own menu database,
               saves each one as a structured record, and texts the caller a confirmation.
             </p>
             <p className="mt-4 max-w-prose leading-relaxed text-graphite">
-              111 automated tests pass. Built against real menus; not used in production, and we say
-              so.
+              We built the first working version as a paid project for a US restaurant
+              point-of-sale company, which we don’t name. The code has been reworked since, and 111
+              automated tests pass on the current version.
             </p>
             <Link href="/work/kota" className="link mt-6 inline-block font-semibold">
               Read the KOTA case study
@@ -225,7 +232,7 @@ export default function StudioHome() {
 
       <section id="services" className="border-t border-rule bg-ink text-paper">
         <div className="mx-auto max-w-[88rem] px-4 py-20 sm:px-6 lg:py-28">
-          <h2 className="display max-w-3xl text-3xl sm:text-5xl">Three ways to start. Most first projects are small.</h2>
+          <h2 className="display max-w-3xl text-3xl sm:text-5xl">Three ways to start.</h2>
           <div className="mt-14 grid gap-12 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-paper/20">
             {hire.map((h, i) => (
               <article key={h.verb} className={`flex flex-col ${i === 0 ? "lg:pr-10" : i === 1 ? "lg:px-10" : "lg:pl-10"}`}>
@@ -349,6 +356,13 @@ export default function StudioHome() {
               </a>
               .
             </p>
+            <div className="mt-10 max-w-xl border-t border-paper/20 pt-6">
+              <h3 className="font-bold">Who you’ll work with</h3>
+              <p className="mt-2 leading-relaxed text-paper/80">
+                Yang Wu designs, builds, and tests every project, and answers your email. Computer
+                science, UC Santa Cruz, 2018. English and Chinese.
+              </p>
+            </div>
           </div>
           <BriefForm />
         </div>

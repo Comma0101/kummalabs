@@ -142,6 +142,12 @@ Studio site claims: every entry in `src/lib/studio-work.ts` and every artifact o
 Quote a test count only when that project's full suite passes. Label every example with where it
 comes from; only illustrative examples may describe systems we haven't built, and they must say so.
 
+KOTA's origin (owner's statement, 2026-11-14): it began as a paid project under the name Serviio; the first
+working version was built for a US restaurant point-of-sale company. Rules: never name that company or add
+figures about it; make no claims about its deployment or usage; keep the wording used in `studio-work.ts`
+and `/work/kota` unless the owner changes it. `/work/sample-diagnostic` withholds findings 3 and 4 (security).
+Do not restore their details, or describe them in notes, until the owner confirms they are fixed.
+
 ## Scope
 
 - Keep the two sites separate: KOTA keeps its product identity on kota.kummalabs.com; the studio

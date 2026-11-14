@@ -39,9 +39,9 @@ export const notes: Note[] = [
     title: "The agent said “confirmed”. The database had nothing.",
     searchTitle: "When an AI agent confirms an order that was never saved: causes and a fix",
     summary:
-      "We forced a database write to fail in our own phone-ordering prototype. The agent confirmed the order anyway and texted the caller. Here is why, how the rebuilt version behaves, and how to check your own agent.",
+      "We forced a database write to fail in our own phone-ordering system. The agent confirmed the order anyway and texted the caller. Here is why, how the rebuilt version behaves, and how to check your own agent.",
     date: "2026-11-12",
-    basis: "A diagnostic of our own prototype, and tests of the backend we rebuilt afterwards",
+    basis: "A diagnostic of our own system, and tests of the backend we rebuilt afterwards",
   },
   {
     slug: "duplicate-tool-calls",
