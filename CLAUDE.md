@@ -61,8 +61,8 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
   omission); `<Recorded>` text is verbatim output, re-run and paste, never hand-edit; every note states
   where its evidence comes from and what was not tested; other people's reports are linked and labeled
   unverified.
-- Public commercial terms (diagnostic price, delivery days, credit window, reply time) live only in
-  `src/lib/studio-offer.ts`. They are commitments: never change them without the owner's approval.
+- Public commercial terms (diagnostic and audit prices and delivery days, credit window, build floor,
+  reply time) live only in `src/lib/studio-offer.ts`. They are commitments: never change them without the owner's approval.
 - Studio design language ("inspect the engineering"): mineral-white paper, deep ink, wide Archivo
   headlines; vermilion (`mark`) is the annotation colour only (selected value and its path);
   green/amber are status only; IBM Plex Mono only for code output. Show artifacts over prose, label

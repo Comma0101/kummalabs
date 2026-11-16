@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DIAGNOSTIC } from "@/lib/studio-offer";
+import { AUDIT, CREDIT_DAYS, DIAGNOSTIC } from "@/lib/studio-offer";
 import { notePath } from "@/lib/studio-notes";
 
 export const metadata: Metadata = {
@@ -176,16 +176,18 @@ export default function RetellService() {
             <p>
               With an {DIAGNOSTIC.name.toLowerCase()}: {DIAGNOSTIC.price} fixed, paid up front. We test one agent and
               the system it writes to, against your own test data, and you get a written report within{" "}
-              {DIAGNOSTIC.deliveryDays} business days of access being ready. The fee is credited toward the build if it
-              starts within {DIAGNOSTIC.creditDays} days.
+              {DIAGNOSTIC.deliveryDays} business days of access being ready. For the whole agent, an{" "}
+              {AUDIT.name.toLowerCase()} is {AUDIT.price}: up to {AUDIT.maxFlows} of its tools or integrations, plus
+              endpoint security checks, in {AUDIT.deliveryDays} business days. Either fee is credited toward a build that
+              starts within {CREDIT_DAYS} days.
             </p>
             <p className="text-graphite">
               If the right answer is to leave it alone, or to use something Retell already provides, the report says
               that.
             </p>
             <p>
-              <Link href="/services/integration#diagnostic" className="link font-semibold">
-                What the diagnostic covers
+              <Link href="/services/integration#pricing" className="link font-semibold">
+                What each one covers, and prices
               </Link>
             </p>
           </div>

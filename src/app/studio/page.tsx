@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BriefForm } from "@/components/studio/BriefForm";
 import { Inspector } from "@/components/studio/Inspector";
-import { DIAGNOSTIC, REPLY_DAYS } from "@/lib/studio-offer";
+import { AUDIT, BUILD_FROM, DIAGNOSTIC, REPLY_DAYS } from "@/lib/studio-offer";
 import { STUDIO_EMAIL } from "@/lib/studio-site";
 import { work } from "@/lib/studio-work";
 
@@ -256,9 +256,26 @@ export default function StudioHome() {
               </article>
             ))}
           </div>
-          <p className="mt-14 max-w-3xl border-t border-paper/20 pt-6 leading-relaxed text-paper/80">
+          <dl className="mt-14 grid gap-6 border-t border-paper/20 pt-6 sm:grid-cols-3">
+            <div>
+              <dt className="text-[14px] text-paper/60">{DIAGNOSTIC.name}</dt>
+              <dd className="mt-1 text-2xl font-bold">{DIAGNOSTIC.price}</dd>
+            </div>
+            <div>
+              <dt className="text-[14px] text-paper/60">{AUDIT.name}</dt>
+              <dd className="mt-1 text-2xl font-bold">{AUDIT.price}</dd>
+            </div>
+            <div>
+              <dt className="text-[14px] text-paper/60">Builds and integrations</dt>
+              <dd className="mt-1 text-2xl font-bold">From {BUILD_FROM}</dd>
+            </div>
+          </dl>
+          <p className="mt-6 max-w-3xl leading-relaxed text-paper/80">
             Every project starts with a written scope: deliverables, exclusions, acceptance tests,
-            milestones, and a fixed price, agreed before any work begins. You pay by milestone.
+            milestones, and a fixed price, agreed before any work begins. You pay by milestone.{" "}
+            <Link href="/services/integration#pricing" className="link text-paper">
+              What each price covers
+            </Link>
           </p>
           <div id="agencies" className="mt-10 grid gap-4 md:grid-cols-[14rem_1fr]">
             <h3 className="text-xl font-bold">For agencies</h3>

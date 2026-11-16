@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DIAGNOSTIC, REPLY_DAYS } from "@/lib/studio-offer";
+import { AUDIT, BUILD_FROM, CREDIT_DAYS, DIAGNOSTIC, REPLY_DAYS } from "@/lib/studio-offer";
 
 export const metadata: Metadata = {
   title: "AI agent integration: connect your agent to one business system",
@@ -101,7 +101,7 @@ export default function IntegrationService() {
             <div>
               <dt className="text-[14px] text-graphite">Price</dt>
               <dd className="mt-1 text-2xl font-bold">{DIAGNOSTIC.price} fixed</dd>
-              <dd className="mt-1 text-[15px] text-graphite">Paid up front. Credited toward the build if it starts within {DIAGNOSTIC.creditDays} days.</dd>
+              <dd className="mt-1 text-[15px] text-graphite">Paid up front. Credited toward a build that starts within {CREDIT_DAYS} days.</dd>
             </div>
             <div>
               <dt className="text-[14px] text-graphite">Delivered</dt>
@@ -116,7 +116,8 @@ export default function IntegrationService() {
               <dt className="text-[14px] text-graphite">You receive</dt>
               <dd className="mt-1 leading-relaxed">
                 Findings with reproduced evidence, a proposed fix or approach for each, acceptance
-                tests, and a fixed quote for the work.
+                tests, and a fixed quote for the work. The report and the test scripts are yours
+                whether or not you continue with us.
               </dd>
             </div>
             <div className="sm:col-span-2">
@@ -127,6 +128,50 @@ export default function IntegrationService() {
               </dd>
             </div>
           </dl>
+        </div>
+      </section>
+
+      <section id="pricing" className="scroll-mt-4 border-b border-rule">
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1fr_2fr]">
+          <div>
+            <h2 className="display text-3xl">Prices</h2>
+            <p className="mt-4 max-w-sm leading-relaxed text-graphite">
+              Fixed, and agreed in writing before any work starts.
+            </p>
+          </div>
+          <div className="max-w-3xl">
+            <dl className="border-t border-ink">
+              <div className="grid gap-x-8 gap-y-1 border-b border-rule py-5 sm:grid-cols-[12rem_7rem_1fr]">
+                <dt className="font-semibold">{DIAGNOSTIC.name}</dt>
+                <dd className="font-semibold">{DIAGNOSTIC.price}</dd>
+                <dd className="leading-relaxed text-graphite">
+                  One agent or automation and one target system. {DIAGNOSTIC.deliveryDays} business days.
+                </dd>
+              </div>
+              <div className="grid gap-x-8 gap-y-1 border-b border-rule py-5 sm:grid-cols-[12rem_7rem_1fr]">
+                <dt className="font-semibold">{AUDIT.name}</dt>
+                <dd className="font-semibold">{AUDIT.price}</dd>
+                <dd className="leading-relaxed text-graphite">
+                  The whole agent: up to {AUDIT.maxFlows} tools or integrations it calls, plus checks
+                  that its endpoints refuse unauthenticated and forged requests. A fix plan with a fixed
+                  price for each group of fixes. {AUDIT.deliveryDays} business days.
+                </dd>
+              </div>
+              <div className="grid gap-x-8 gap-y-1 border-b border-rule py-5 sm:grid-cols-[12rem_7rem_1fr]">
+                <dt className="font-semibold">Builds and integrations</dt>
+                <dd className="font-semibold">From {BUILD_FROM}</dd>
+                <dd className="leading-relaxed text-graphite">
+                  A fixed price per milestone, set in the written scope.
+                </dd>
+              </div>
+            </dl>
+            <p className="mt-6 max-w-prose leading-relaxed text-graphite">
+              The diagnostic and the audit are paid in full before work starts, and either fee is
+              credited toward a build that starts within {CREDIT_DAYS} days. Builds are paid half
+              at the start and the rest by milestone. Vendor, API, and hosting fees stay on your
+              own accounts.
+            </p>
+          </div>
         </div>
       </section>
 
