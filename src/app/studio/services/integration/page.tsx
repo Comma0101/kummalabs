@@ -77,8 +77,8 @@ export default function IntegrationService() {
           <Link href="/#brief" className="rounded-full bg-ink px-5 py-3 font-semibold text-paper hover:bg-ink/90">
             Describe your project
           </Link>
-          <Link href="/work" className="link font-semibold">
-            See the work
+          <Link href="/work/kota" className="link font-semibold">
+            Read the KOTA case study
           </Link>
         </div>
       </header>
@@ -239,16 +239,13 @@ export default function IntegrationService() {
           <h2 className="display text-3xl">What we’ve built that’s like this</h2>
           <div className="max-w-prose space-y-5 leading-relaxed">
             <p>
-              We have not yet delivered an integration for a paying client, and we’d rather say so.
-              What we can show is the same kind of work in our own systems:
-            </p>
-            <p>
               <Link href="/work/kota" className="link font-semibold">
                 KOTA
               </Link>{" "}
-              connects a live phone conversation to a Postgres database and to SMS through typed
-              tool calls, and only tells the caller a text was sent when the messaging API confirms
-              it.
+              began as a paid project under the name Serviio. We built the first working version
+              for a US restaurant point-of-sale company. It included an integration with that
+              company’s ordering API. The case study shows how the current version saves an order
+              in Postgres and checks the SMS provider’s response before telling the caller a text was sent.
             </p>
             <p>
               The{" "}

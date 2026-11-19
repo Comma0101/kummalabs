@@ -5,7 +5,7 @@ import { work } from "@/lib/studio-work";
 export const metadata: Metadata = {
   title: "Work: AI agents we’ve built",
   description:
-    "AI agents and agent infrastructure built by KummaLabs: a bilingual phone-ordering agent, document extraction with validation, a research agent that checks its sources, an approval-gated outreach pipeline, and an open-source agent runtime.",
+    "Engineering work from KummaLabs includes a bilingual phone-ordering agent, document extraction with validation, a research agent with a source log, an approval-gated outreach pipeline, and an open-source agent runtime.",
   alternates: { canonical: "/work" },
 };
 

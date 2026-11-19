@@ -57,14 +57,15 @@ export const work: Work[] = [
   },
   {
     id: "research-agent",
-    name: "Research agent with source checks",
+    name: "Research agent with a source log",
     kind: "Research and monitoring",
     status: "Internal tool",
-    shows: "An agent whose citations can be traced: every source it cites is checked against the log of pages it actually opened.",
+    shows: "A research report with the sources behind each finding available for review.",
     does:
-      "Runs web research and logs every URL it opens. Each citation is then matched against that log: a URL the agent cited but never opened is marked unverified and discounted. That catches invented or misremembered links; it does not prove a source is right, so sources are also graded for credibility and a finding needs at least three independent ones. A person must approve before anything is spent, sent, or published.",
+      "The agent searches the web, saves citations alongside its findings, and scores evidence by source quality, strength, and confidence. A reviewer can follow the cited links before deciding whether to act.",
     built: "Node.js, OpenAI web search with structured outputs, SQLite for runs, sources, evidence, and approvals.",
-    evidence: "208 automated tests pass.",
+    evidence:
+      "In an offline test with synthetic input, search returned one URL and the report cited a different one. The source log kept both. It marked the citation verified even though the agent had opened neither page. A reviewer still needs to check the original source.",
   },
   {
     id: "outreach-pipeline",

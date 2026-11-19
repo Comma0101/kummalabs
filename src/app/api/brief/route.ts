@@ -12,9 +12,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const result = validateBrief(body, Date.now());
+  const result = validateBrief(body);
   if (!result.ok) {
-    return NextResponse.json({ error: "Check the highlighted fields.", fields: result.errors }, { status: 400 });
+    return NextResponse.json({ error: result.errors.form ?? "Check the highlighted fields.", fields: result.errors }, { status: 400 });
   }
   if (result.spam) {
     // Accepted silently so bots get no signal; nothing is sent.

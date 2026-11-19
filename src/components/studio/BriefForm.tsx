@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { MIN_FILL_MS } from "@/lib/brief";
 import { REPLY_DAYS } from "@/lib/studio-offer";
 import { INQUIRY_MAILTO, STUDIO_EMAIL } from "@/lib/studio-site";
 import { readFirstTouch } from "@/lib/first-touch";
@@ -13,22 +14,33 @@ const fieldClass =
 export function BriefForm() {
   const [state, setState] = useState<State>("idle");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-  const startedAt = useRef(0);
+  const openedAt = useRef<number | null>(null);
   const source = useRef<Record<string, string>>({});
   const statusRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    startedAt.current = Date.now();
+    openedAt.current = performance.now();
     // Where the visitor first arrived (landing page, utm tags, outside referrer) plus the page the form is on.
     source.current = { ...readFirstTouch(), path: window.location.pathname };
   }, []);
 
+  useEffect(() => {
+    if (state === "sent" || state === "error") statusRef.current?.focus();
+  }, [state]);
+
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (state === "sending") return;
     const data = new FormData(e.currentTarget);
+    const start = openedAt.current ?? performance.now();
     setState("sending");
     setFieldErrors({});
     try {
+      // A visitor who pastes a prepared brief can submit before the minimum interval.
+      const remaining = MIN_FILL_MS - (performance.now() - start);
+      if (remaining > 0) {
+        await new Promise<void>((resolve) => window.setTimeout(resolve, Math.ceil(remaining)));
+      }
       const res = await fetch("/api/brief", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -39,21 +51,20 @@ export function BriefForm() {
           systems: data.get("systems"),
           timeline: data.get("timeline"),
           website: data.get("website"),
-          startedAt: startedAt.current,
+          elapsedMs: Math.max(MIN_FILL_MS, Math.round(performance.now() - start)),
           source: source.current,
         }),
       });
-      if (res.ok) {
+      const body = await res.json().catch(() => ({}));
+      if (res.ok && body?.ok === true) {
         setState("sent");
       } else {
-        const body = await res.json().catch(() => ({}));
-        setFieldErrors(body.fields ?? {});
+        setFieldErrors(body?.fields ?? {});
         setState("error");
       }
     } catch {
       setState("error");
     }
-    statusRef.current?.focus();
   }
 
   if (state === "sent") {
@@ -61,9 +72,7 @@ export function BriefForm() {
       <div ref={statusRef} tabIndex={-1} role="status" className="rounded-lg border border-paper/30 bg-paper/5 p-6 outline-none">
         <h3 className="text-xl font-bold">Brief sent</h3>
         <p className="mt-2 leading-relaxed text-paper/80">
-          It’s in our inbox. You’ll get a reply by email with questions or a proposed scope within
-          {" "}
-          {REPLY_DAYS} business days.
+          We’ll email you with questions or a proposed scope within {REPLY_DAYS} business days.
         </p>
       </div>
     );
@@ -141,7 +150,7 @@ export function BriefForm() {
         {state === "error" && (
           <p className="rounded-md border border-hold-soft/60 bg-paper/5 px-4 py-3 leading-relaxed">
             {hasFieldErrors
-              ? "The brief wasn’t sent. Fix the fields marked above and send it again."
+              ? fieldErrors.form ?? "The brief wasn’t sent. Fix the fields marked above and send it again."
               : "The brief wasn’t sent because of a problem on our side. Nothing was lost on this page. Try again, or "}
             {!hasFieldErrors && (
               <a href={INQUIRY_MAILTO} className="link">

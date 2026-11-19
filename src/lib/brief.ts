@@ -19,12 +19,12 @@ export type BriefResult =
 const SOURCE_KEYS = ["utm_source", "utm_medium", "utm_campaign", "referrer", "landing", "path"] as const;
 const MAX_LONG = 5000;
 const MAX_SHORT = 500;
-const MIN_FILL_MS = 3000;
+export const MIN_FILL_MS = 3000;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const text = (v: unknown) => (typeof v === "string" ? v.trim() : "");
 
-export function validateBrief(input: unknown, now: number): BriefResult {
+export function validateBrief(input: unknown): BriefResult {
   if (!input || typeof input !== "object") {
     return { ok: false, spam: false, errors: { form: "Invalid request." } };
   }
@@ -50,6 +50,16 @@ export function validateBrief(input: unknown, now: number): BriefResult {
 
   if (Object.keys(errors).length > 0) return { ok: false, spam: false, errors };
 
+  const spam = text(raw.website) !== "";
+  const elapsed = raw.elapsedMs;
+  // Cached forms sent only a device timestamp. Comparing it with server time can discard a real brief.
+  const validTiming = elapsed === undefined
+    ? typeof raw.startedAt === "number" && Number.isFinite(raw.startedAt) && raw.startedAt >= 0
+    : typeof elapsed === "number" && Number.isFinite(elapsed) && elapsed >= MIN_FILL_MS;
+  if (!spam && !validTiming) {
+    return { ok: false, spam: false, errors: { form: "Please wait a moment, then send your brief again." } };
+  }
+
   const source: BriefSource = {};
   if (raw.source && typeof raw.source === "object") {
     for (const key of SOURCE_KEYS) {
@@ -57,10 +67,6 @@ export function validateBrief(input: unknown, now: number): BriefResult {
       if (value) source[key] = value;
     }
   }
-
-  // Bots fill the hidden field or submit instantly. Treated as spam: accepted silently, never sent.
-  const startedAt = typeof raw.startedAt === "number" ? raw.startedAt : NaN;
-  const spam = text(raw.website) !== "" || !(now - startedAt >= MIN_FILL_MS);
 
   return { ok: true, spam, brief: { email, today, result, systems, timeline, source } };
 }
