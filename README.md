@@ -6,6 +6,10 @@ Source for two sites served by one Next.js app, routed by host:
   the code behind AI agents.
 - **[kota.kummalabs.com](https://kota.kummalabs.com)**: the product site for KOTA, a phone-ordering prototype for restaurants.
 
+For a project, the studio publishes its scope, pricing, and work samples for
+[AI agent reliability audits](https://www.kummalabs.com/services/agent-audit) and
+[custom document extraction](https://www.kummalabs.com/services/document-extraction).
+
 ## What is worth reading here
 
 ### A tool backend for a voice agent

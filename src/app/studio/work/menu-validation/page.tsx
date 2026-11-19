@@ -220,8 +220,8 @@ export default function MenuValidationRun() {
             <Link href="/#brief" className="rounded-full bg-paper px-5 py-3 font-semibold text-ink hover:bg-paper/90">
               Describe your project
             </Link>
-            <Link href="/work" className="link text-paper">
-              All work
+            <Link href="/services/document-extraction" className="link text-paper">
+              Document extraction services
             </Link>
           </div>
         </div>

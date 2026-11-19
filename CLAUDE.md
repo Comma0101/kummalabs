@@ -52,7 +52,8 @@ GitHub: `Comma0101/kummalabs` — **this repo is public.**
 - Studio pages: `/` (home + project-brief form at `#brief`), `/work`, `/work/kota`,
   `/work/menu-validation` (recorded run), `/work/sample-diagnostic` (real diagnostic of KOTA's order
   path; evidence strings are verbatim test output), `/services/integration`, `/services/retell` (search landing page: what we have and have
-  not built on Retell; every row maps to code in this repo), `/agencies`, `/notes` and
+  not built on Retell; every row maps to code in this repo), `/services/agent-audit` and
+  `/services/document-extraction` (service scope, linked evidence, and an on-page project brief), `/agencies`, `/notes` and
   `/notes/<slug>`, `/demo` (unlinked and `noindex` until the phone line is on).
 - Notes (`/notes`): a note is one entry in `src/lib/studio-notes.ts` plus a page at
   `src/app/studio/notes/<slug>/page.tsx` built from `src/components/studio/Note.tsx` (`NoteShell`, `Code`,

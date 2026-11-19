@@ -284,8 +284,8 @@ export default function SampleDiagnostic() {
             <Link href="/#brief" className="rounded-full bg-paper px-5 py-3 font-semibold text-ink hover:bg-paper/90">
               Describe your project
             </Link>
-            <Link href="/services/integration" className="link text-paper">
-              What a diagnostic includes
+            <Link href="/services/agent-audit" className="link text-paper">
+              What a full agent audit covers
             </Link>
           </div>
         </div>

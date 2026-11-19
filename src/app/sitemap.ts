@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${STUDIO_URL}/`, changeFrequency: "monthly", priority: 1 },
     { url: `${STUDIO_URL}/work`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${STUDIO_URL}/services/integration`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${STUDIO_URL}/services/agent-audit`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${STUDIO_URL}/services/document-extraction`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${STUDIO_URL}/services/retell`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${STUDIO_URL}/agencies`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${STUDIO_URL}/work/sample-diagnostic`, changeFrequency: "monthly", priority: 0.8 },

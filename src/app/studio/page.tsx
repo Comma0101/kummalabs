@@ -11,6 +11,7 @@ const hire = [
     situation: "“We have a defined process and need a system for it.”",
     first: "One process, end to end, with a person approving anything that matters.",
     get: "A working agent in your accounts, its tests, and a handover.",
+    link: { href: "/services/document-extraction", label: "Document extraction and validation" },
   },
   {
     verb: "Integrate",
@@ -22,9 +23,9 @@ const hire = [
   {
     verb: "Improve",
     situation: "“We have something running, but it behaves unreliably.”",
-    first: `${DIAGNOSTIC.name}: a fixed-fee audit against scripted failure cases.`,
+    first: "A diagnostic for one failing flow, or an audit of the tools your agent calls.",
     get: "A written report: what failed, the evidence, and what each fix involves.",
-    link: { href: "/work/sample-diagnostic", label: "Read a sample report" },
+    link: { href: "/services/agent-audit", label: "AI agent audit scope and pricing" },
   },
 ];
 
@@ -248,11 +249,9 @@ export default function StudioHome() {
                     <dd className="mt-1 leading-relaxed">{h.get}</dd>
                   </div>
                 </dl>
-                {"link" in h && h.link && (
-                  <Link href={h.link.href} className="link mt-6 font-semibold">
-                    {h.link.label}
-                  </Link>
-                )}
+                <Link href={h.link.href} className="link mt-6 font-semibold">
+                  {h.link.label}
+                </Link>
               </article>
             ))}
           </div>

@@ -149,7 +149,9 @@ export default function IntegrationService() {
                 </dd>
               </div>
               <div className="grid gap-x-8 gap-y-1 border-b border-rule py-5 sm:grid-cols-[12rem_7rem_1fr]">
-                <dt className="font-semibold">{AUDIT.name}</dt>
+                <dt className="font-semibold">
+                  <Link href="/services/agent-audit" className="link">{AUDIT.name}</Link>
+                </dt>
                 <dd className="font-semibold">{AUDIT.price}</dd>
                 <dd className="leading-relaxed text-graphite">
                   The whole agent: up to {AUDIT.maxFlows} tools or integrations it calls, plus checks

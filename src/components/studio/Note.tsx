@@ -72,7 +72,8 @@ export function NoteShell({ slug, record, children }: { slug: string; record: Re
             <h2 className="display text-3xl">Want this checked on your agent?</h2>
             <p className="mt-4 text-lg leading-relaxed text-paper/80">
               An integration diagnostic is {DIAGNOSTIC.price}, fixed. You get a written report with the evidence for each
-              finding within {DIAGNOSTIC.deliveryDays} business days of access being ready.
+              finding within {DIAGNOSTIC.deliveryDays} business days of access being ready. For several tools,
+              see the <Link href="/services/agent-audit" className="link text-paper">AI agent audit</Link>.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
